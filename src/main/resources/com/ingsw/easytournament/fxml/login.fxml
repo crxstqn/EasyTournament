@@ -9,23 +9,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane styleClass="root" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane styleClass="root" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingsw.easytournament.controller.LoginController">
     <children>
         <VBox alignment="CENTER" spacing="15" styleClass="stileVbox">
-            <Label styleClass="stileLabel" text="Registrazione">
+            <Label styleClass="stileLabel" text="Benvenuto!">
                 <font>
                     <Font size="30.0" />
                 </font>
                 <padding>
-                    <Insets left="93.5" right="93.5" />
+                    <Insets left="107.0" right="107.0" />
                 </padding>
             </Label>
 
             <TextField fx:id="textmail" promptText="Email" styleClass="stileTextfield">
-                <padding>
-                    <Insets bottom="10.0" left="10.0" top="10.0" />
-                </padding></TextField>
-            <TextField fx:id="textnome" promptText="Nome" styleClass="stileTextfield">
                 <padding>
                     <Insets bottom="10.0" left="10.0" top="10.0" />
                 </padding></TextField>
@@ -34,12 +30,8 @@
                 <padding>
                     <Insets bottom="10.0" left="10.0" top="10.0" />
                 </padding></PasswordField>
-            <PasswordField fx:id="textpassword_conferma" promptText="Ripeti Password" styleClass="stileTextfield">
-                <padding>
-                    <Insets bottom="10.0" left="10.0" top="10.0" />
-                </padding></PasswordField>
 
-            <Button fx:id="buttonsignup" maxWidth="1.7976931348623157E308" styleClass="stileButtonPrincipale" text="Registrati" textFill="WHITE">
+            <Button fx:id="buttonlogin" maxWidth="1.7976931348623157E308" onAction="#accedi" onMouseEntered="#mouse_entered_login" onMouseExited="#mouse_exit_login" styleClass="stileButtonPrincipale" text="Accedi" textFill="WHITE">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -47,15 +39,15 @@
                     <Insets bottom="10.0" top="10.0" />
                 </padding>
             </Button>
-            <Label fx:id="label_errore" maxWidth="1.7976931348623157E308" textFill="#d01515" />
+            <Label fx:id="label_errore" maxWidth="1.7976931348623157E308" textFill="#d32f2f" />
 
             <VBox alignment="CENTER" spacing="10.0">
-                <Label styleClass="stileLabel" text="Hai già un account?" textFill="#555555">
+                <Label styleClass="stileLabel" text="Non hai ancora un account?" textFill="#555555">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Button fx:id="buttonlogin" styleClass="stileButtonSecondario" text="Login!">
+                <Button fx:id="buttonsignup" onAction="#registrati" onMouseEntered="#mouse_entered_registrati" onMouseExited="#mouse_exited_registrati" styleClass="stileButtonSecondario" text="Registrati ora!">
                     <padding>
                         <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
                     </padding></Button>
@@ -69,6 +61,6 @@
         </VBox>
     </children>
     <padding>
-        <Insets bottom="100.0" left="200.0" right="200.0" top="100.0" />
+        <Insets bottom="180.0" left="220.0" right="220.0" top="180.0" />
     </padding>
 </StackPane>

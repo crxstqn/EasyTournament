@@ -33,7 +33,6 @@ public class SceneChanger {
 
             Scene scene = mainStage.getScene();
 
-            // Se non esiste una scene, la crea
             if (scene == null) {
                 scene = new Scene(root);
                 mainStage.setScene(scene);

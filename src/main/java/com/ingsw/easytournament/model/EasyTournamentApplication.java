@@ -12,7 +12,7 @@ public class EasyTournamentApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(EasyTournamentApplication.class.getResource("/com/ingsw/easytournament/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(EasyTournamentApplication.class.getResource("/com/ingsw/easytournament/fxml/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         SceneChanger.getInstance().setStage(stage);
         stage.setTitle("EasyTournament!");
