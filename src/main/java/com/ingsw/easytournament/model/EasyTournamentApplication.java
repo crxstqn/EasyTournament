@@ -1,5 +1,6 @@
 package com.ingsw.easytournament.model;
 
+import com.ingsw.easytournament.utils.SceneChanger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,8 +11,10 @@ import java.io.IOException;
 public class EasyTournamentApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+
         FXMLLoader fxmlLoader = new FXMLLoader(EasyTournamentApplication.class.getResource("/com/ingsw/easytournament/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        SceneChanger.getInstance().setStage(stage);
         stage.setTitle("EasyTournament!");
         stage.setScene(scene);
         stage.show();
