@@ -10,7 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class LoginController {
+public class RegistrazioneController {
 
     @FXML
     private Button buttonlogin;
@@ -22,22 +22,47 @@ public class LoginController {
     private Label label_errore;
 
     @FXML
+    private TextField textnome;
+
+    @FXML
     private TextField textusername;
 
     @FXML
     private PasswordField textpassword;
 
     @FXML
+    private PasswordField textpassword_conferma;
+
+    @FXML
     void accedi(ActionEvent event) {
+        SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/login.fxml");
+    }
+
+    @FXML
+    void registrati(ActionEvent event) {
+        label_errore.setText("");
+
+        String nome = textnome.getText().trim();
         String username = textusername.getText().trim().toLowerCase();
         String password = textpassword.getText();
+        String rip_password = textpassword_conferma.getText();
 
-        if (username.isEmpty() || password.isEmpty()) {
-            alert("Attenzione! Inserisci sia username che password");
+        if (nome.isEmpty() || username.isEmpty() || password.isEmpty() || rip_password.isEmpty()) {
+            alert("Attenzione! Compila tutti i campi");
             return;
         }
 
-        if (password.length()<6) {
+        if (!nome.matches("^[a-zA-ZàèìòùÀÈÌÒÙ0-9 ._'-]{2,50}$")){
+            alert("Inserisci un nome valido");
+            return;
+        }
+
+        if (LoginRegistrazioneModel.usernameEsistente(username)) {
+            alert("Username già utilizzato, prova con un'altro o effettua il login");
+            return;
+        }
+
+        if (password.length()<6 || rip_password.length()<6) {
             alert("La password deve contenere almeno 6 caratteri");
             return;
         }
@@ -47,27 +72,21 @@ public class LoginController {
             return;
         }
 
-        boolean utenteEsistente = LoginRegistrazioneModel.autenticazione(username, password);
+        if (!password.equals(rip_password)){
+            alert("Attenzione! Le Password non coincidono");
+            return;
+        }
 
-        if (utenteEsistente) {
-                SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml");
-        }else {
-            alert("Attenzione! Credenziali errate. Riprova.");
-            textpassword.clear();
+
+        boolean riuscito = LoginRegistrazioneModel.registrazioneUtente(nome, username, password);
+
+        if (riuscito) {
+            SceneChanger.getInstance().changeScene("com/ingsw/easytournament/fxml/home.fxml");
         }
     }
 
     void alert(String testo){
         label_errore.setText(testo);
-    }
-
-    @FXML
-    void registrati(ActionEvent event) {
-        try {
-            SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/registrazione.fxml");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @FXML
@@ -92,8 +111,9 @@ public class LoginController {
     }
 
     @FXML
-    void mouse_exited_registrati(MouseEvent event) {
+    void mouse_exit_registrati(MouseEvent event) {
         buttonsignup.setScaleX(1.0);
         buttonsignup.setScaleY(1.0);
+
     }
 }

@@ -1,18 +1,31 @@
 package com.ingsw.easytournament.utils;
 
+import com.ingsw.easytournament.dao.sqlite.utenteDAOsqlite;
+import com.ingsw.easytournament.dao.utenteDAO;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseConnessione {
-    private static final String DB_posizione = "jdbc:sqlite:database_EasyTournament.db";
+    private static final String DB_URL = "jdbc:sqlite:db_EasyTournament.db";
     private static Connection conn = null;
+    private static DatabaseConnessione instance = null;
 
-    public static Connection get_connessione() {
+    private DatabaseConnessione() {}
+
+    public static DatabaseConnessione getInstance() {
+        if (instance == null) {
+            instance = new DatabaseConnessione();
+        }
+        return instance;
+    }
+
+    public Connection getConnessione() {
         try {
             if (conn == null || conn.isClosed()) {
-                conn = DriverManager.getConnection(DB_posizione);
+                conn = DriverManager.getConnection(DB_URL);
                 Statement stmt = conn.createStatement();
                 stmt.execute("PRAGMA foreign_keys = ON");
             }
@@ -22,7 +35,7 @@ public class DatabaseConnessione {
         return conn;
     }
 
-    public static void chiudiConnessione() {
+    public void chiudiConnessione() {
         if (conn != null) {
             try {
                 conn.close();
@@ -30,5 +43,9 @@ public class DatabaseConnessione {
                 e.printStackTrace();
             }
         }
+    }
+
+    public utenteDAO getUtenteDAO() {
+        return new utenteDAOsqlite(getConnessione());
     }
 }
