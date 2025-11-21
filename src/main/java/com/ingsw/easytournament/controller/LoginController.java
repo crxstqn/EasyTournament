@@ -54,7 +54,7 @@ public class LoginController {
             int id = LoginRegistrazioneModel.getUtenteId(username);
             SessioneUtente.getInstance(id, username);
 
-            SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml", "/com/ingsw/easytournament/css/login_reg.css");
+            SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml", "/com/ingsw/easytournament/css/login_reg.css", true);
             //dobbiamo aggiornare il path del css della home quando esisterà
         }else {
             alert("Attenzione! Credenziali errate. Riprova.");
@@ -69,7 +69,7 @@ public class LoginController {
     @FXML
     void registrati(ActionEvent event) {
         try {
-            SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/registrazione.fxml", "/com/ingsw/easytournament/css/login_reg.css");
+            SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/registrazione.fxml", "/com/ingsw/easytournament/css/login_reg.css",false);
         } catch (Exception e) {
             e.printStackTrace();
         }

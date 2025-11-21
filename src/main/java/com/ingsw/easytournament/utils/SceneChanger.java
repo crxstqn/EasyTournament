@@ -26,13 +26,15 @@ public class SceneChanger {
         mainStage = stage;
     }
 
-    public void changeScene(String fxmlPath, String cssPath) {
+    public void changeScene(String fxmlPath, String cssPath, boolean resizable) {
         try {
             FXMLLoader loader = new FXMLLoader(SceneChanger.class.getResource(fxmlPath));
             Parent root = loader.load();
 
             Scene scene = mainStage.getScene();
             scene.getStylesheets().add(getClass().getResource(cssPath).toExternalForm());
+
+            mainStage.setResizable(resizable);
 
             if (scene == null) {
                 scene = new Scene(root);

@@ -36,7 +36,7 @@ public class RegistrazioneController {
 
     @FXML
     void accedi(ActionEvent event) {
-        SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/login.fxml", "/com/ingsw/easytournament/css/login_reg.css");
+        SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/login.fxml", "/com/ingsw/easytournament/css/login_reg.css",false);
     }
 
     @FXML
@@ -84,7 +84,7 @@ public class RegistrazioneController {
         if (riuscito) {
             int id = LoginRegistrazioneModel.getUtenteId(username);
             SessioneUtente.getInstance(id, username);
-            SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml", "/com/ingsw/easytournament/css/login_reg.css");
+            SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml", "/com/ingsw/easytournament/css/login_reg.css",true);
             //dobbiamo aggiornare il path del css della home quando esisterà
         }
     }
