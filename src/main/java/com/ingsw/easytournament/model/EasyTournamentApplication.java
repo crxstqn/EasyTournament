@@ -17,11 +17,8 @@ public class EasyTournamentApplication extends Application {
         scene.getStylesheets().add(getClass().getResource("/com/ingsw/easytournament/css/login_reg.css").toExternalForm());
         SceneChanger.getInstance().setStage(stage);
 
-        //prova
         stage.setResizable(false);
-        stage.sizeToScene();
         stage.centerOnScreen();
-
 
         stage.setTitle("EasyTournament!");
         stage.setScene(scene);
