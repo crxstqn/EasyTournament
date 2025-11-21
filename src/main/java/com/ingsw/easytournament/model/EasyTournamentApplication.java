@@ -14,6 +14,7 @@ public class EasyTournamentApplication extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(EasyTournamentApplication.class.getResource("/com/ingsw/easytournament/fxml/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(getClass().getResource("/com/ingsw/easytournament/css/login_reg.css").toExternalForm());
         SceneChanger.getInstance().setStage(stage);
         stage.setTitle("EasyTournament!");
         stage.setScene(scene);

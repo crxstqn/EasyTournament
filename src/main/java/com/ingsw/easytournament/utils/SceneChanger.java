@@ -26,12 +26,13 @@ public class SceneChanger {
         mainStage = stage;
     }
 
-    public void changeScene(String fxmlPath) {
+    public void changeScene(String fxmlPath, String cssPath) {
         try {
             FXMLLoader loader = new FXMLLoader(SceneChanger.class.getResource(fxmlPath));
             Parent root = loader.load();
 
             Scene scene = mainStage.getScene();
+            scene.getStylesheets().add(getClass().getResource(cssPath).toExternalForm());
 
             if (scene == null) {
                 scene = new Scene(root);
@@ -39,6 +40,7 @@ public class SceneChanger {
             } else {
                 scene.setRoot(root);
             }
+
 
         } catch (IOException e) {
             e.printStackTrace();

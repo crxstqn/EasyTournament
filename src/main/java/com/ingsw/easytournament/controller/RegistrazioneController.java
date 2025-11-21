@@ -2,6 +2,7 @@ package com.ingsw.easytournament.controller;
 
 import com.ingsw.easytournament.model.LoginRegistrazioneModel;
 import com.ingsw.easytournament.utils.SceneChanger;
+import com.ingsw.easytournament.utils.SessioneUtente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -35,7 +36,7 @@ public class RegistrazioneController {
 
     @FXML
     void accedi(ActionEvent event) {
-        SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/login.fxml");
+        SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/login.fxml", "/com/ingsw/easytournament/css/login_reg.css");
     }
 
     @FXML
@@ -81,7 +82,10 @@ public class RegistrazioneController {
         boolean riuscito = LoginRegistrazioneModel.registrazioneUtente(nome, username, password);
 
         if (riuscito) {
-            SceneChanger.getInstance().changeScene("com/ingsw/easytournament/fxml/home.fxml");
+            int id = LoginRegistrazioneModel.getUtenteId(username);
+            SessioneUtente.getInstance(id, username);
+            SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml", "/com/ingsw/easytournament/css/login_reg.css");
+            //dobbiamo aggiornare il path del css della home quando esisterà
         }
     }
 
