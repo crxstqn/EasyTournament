@@ -3,6 +3,7 @@ package com.ingsw.easytournament.controller;
 import com.ingsw.easytournament.model.LoginRegistrazioneModel;
 import com.ingsw.easytournament.utils.SceneChanger;
 import com.ingsw.easytournament.utils.SessioneUtente;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -38,28 +39,47 @@ public class LoginController {
             return;
         }
 
-        if (password.length()<6) {
-            alert("La password deve contenere almeno 6 caratteri");
-            return;
-        }
+        buttonlogin.setDisable(true);
+        buttonsignup.setDisable(true);
+        buttonlogin.setText("Accesso in corso...");
+        label_errore.setText("");
 
-        if (!password.matches("^(?=.*[a-zA-Z])(?=.*\\d).{6,}$")) {
-            alert("La password deve contenere almeno una lettera e un numero");
-            return;
-        }
+        Task<Boolean> loginTask = new Task<>() {
+            @Override
+            protected Boolean call() throws Exception {
+                return LoginRegistrazioneModel.autenticazione(username, password);
+            }
+        };
 
-        boolean utenteEsistente = LoginRegistrazioneModel.autenticazione(username, password);
 
-        if (utenteEsistente) {
-            int id = LoginRegistrazioneModel.getUtenteId(username);
-            SessioneUtente.getInstance(id, username);
+        loginTask.setOnSucceeded(e -> {
+            boolean utenteEsistente = loginTask.getValue(); // Prendiamo il risultato
 
-            SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml", "/com/ingsw/easytournament/css/login_reg.css", true);
-            //dobbiamo aggiornare il path del css della home quando esisterà
-        }else {
-            alert("Attenzione! Credenziali errate. Riprova.");
-            textpassword.clear();
-        }
+            // Ripristiniamo il bottone
+            buttonlogin.setDisable(false);
+            buttonsignup.setDisable(false);
+            buttonlogin.setText("Accedi");
+
+            if (utenteEsistente) {
+                // Recupero ID (potresti farlo anche nel task per ottimizzare)
+                int id = LoginRegistrazioneModel.getUtenteId(username);
+                SessioneUtente.getInstance(id, username);
+                SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml", "/com/ingsw/easytournament/css/login_reg.css", true);
+            } else {
+                alert("Attenzione! Credenziali errate.");
+                textpassword.clear();
+            }
+        });
+
+        loginTask.setOnFailed(e -> {
+            buttonlogin.setDisable(false);
+            buttonsignup.setDisable(false);
+            buttonlogin.setText("Accedi");
+            alert("Errore di connessione al Database!");
+            loginTask.getException().printStackTrace();
+        });
+
+        new Thread(loginTask).start();
     }
 
     void alert(String testo){

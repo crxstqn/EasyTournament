@@ -20,7 +20,7 @@ public class EasyTournamentApplication extends Application {
         stage.setResizable(false);
         stage.centerOnScreen();
 
-        stage.setTitle("EasyTournament!");
+        stage.setTitle("EasyTournament");
         stage.setScene(scene);
         stage.show();
     }

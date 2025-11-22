@@ -3,6 +3,7 @@ package com.ingsw.easytournament.controller;
 import com.ingsw.easytournament.model.LoginRegistrazioneModel;
 import com.ingsw.easytournament.utils.SceneChanger;
 import com.ingsw.easytournament.utils.SessioneUtente;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -78,15 +79,42 @@ public class RegistrazioneController {
             return;
         }
 
+        buttonsignup.setDisable(true);
+        buttonlogin.setDisable(true);
+        buttonsignup.setText("Registrazione in corso...");
+        label_errore.setText("");
 
-        boolean riuscito = LoginRegistrazioneModel.registrazioneUtente(nome, username, password);
+        Task<Boolean> registrazioneTask = new Task<>() {
+            @Override
+            protected Boolean call() throws Exception {
+                return LoginRegistrazioneModel.registrazioneUtente(nome, username, password);
+            }
+        };
 
-        if (riuscito) {
-            int id = LoginRegistrazioneModel.getUtenteId(username);
-            SessioneUtente.getInstance(id, username);
-            SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml", "/com/ingsw/easytournament/css/login_reg.css",true);
-            //dobbiamo aggiornare il path del css della home quando esisterà
-        }
+        registrazioneTask.setOnSucceeded(e-> {
+            boolean riuscito = registrazioneTask.getValue();
+
+            buttonlogin.setDisable(false);
+            buttonsignup.setDisable(false);
+            buttonsignup.setText("Registrazione");
+
+            if (riuscito) {
+                int id = LoginRegistrazioneModel.getUtenteId(username);
+                SessioneUtente.getInstance(id, username);
+                SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml", "/com/ingsw/easytournament/css/login_reg.css",true);
+                //dobbiamo aggiornare il path del css della home quando esisterà
+            }
+        });
+
+        registrazioneTask.setOnFailed(e -> {
+            buttonlogin.setDisable(false);
+            buttonsignup.setDisable(false);
+            buttonsignup.setText("Registrazione");
+            alert("Errore di connessione al Database!");
+            registrazioneTask.getException().printStackTrace();
+        });
+
+        new Thread(registrazioneTask).start();
     }
 
     void alert(String testo){
@@ -111,7 +139,6 @@ public class RegistrazioneController {
     void mouse_exit_login(MouseEvent event) {
         buttonlogin.setScaleX(1.0);
         buttonlogin.setScaleY(1.0);
-
     }
 
     @FXML
