@@ -51,7 +51,6 @@ public class LoginController {
             }
         };
 
-
         loginTask.setOnSucceeded(e -> {
             boolean utenteEsistente = loginTask.getValue();
 
@@ -64,7 +63,7 @@ public class LoginController {
                 int id = LoginRegistrazioneModel.getUtenteId(username);
                 SessioneUtente.getInstance().setUserId(id);
                 SessioneUtente.getInstance().setUsername(username);
-                SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml", "/com/ingsw/easytournament/css/login_reg.css", true);
+                SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml", "/com/ingsw/easytournament/css/home.css", true);
             } else {
                 alert("Attenzione! Credenziali errate.");
                 textpassword.clear();

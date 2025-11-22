@@ -9,4 +9,8 @@ public class HomeModel {
     public static List<Torneo> getTornei() {
         return DatabaseConnessione.getInstance().getTorneoDAO().getTorneiByUtente(SessioneUtente.getInstance().getUserId());
     }
+
+    public static boolean eliminaTorneo(int idTorneo) {
+        return DatabaseConnessione.getInstance().getTorneoDAO().eliminaTorneo(SessioneUtente.getInstance().getUserId(), idTorneo);
+    }
 }

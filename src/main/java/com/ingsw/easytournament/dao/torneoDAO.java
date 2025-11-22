@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface torneoDAO {
     public List<Torneo> getTorneiByUtente(int idUtente);
+    public boolean eliminaTorneo(int idUtente, int idTorneo);
 }

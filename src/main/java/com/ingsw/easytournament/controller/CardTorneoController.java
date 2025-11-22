@@ -1,7 +1,11 @@
 package com.ingsw.easytournament.controller;
 
+import com.ingsw.easytournament.model.HomeModel;
+import com.ingsw.easytournament.utils.SessioneUtente;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -26,12 +30,21 @@ public class CardTorneoController {
 
     @FXML
     void eliminaTorneo(ActionEvent event) {
-
+//        Task<Boolean> taskEliminazioneTorneo = new Task<>() {
+//            @Override
+//            protected Boolean call() throws Exception {
+//                return HomeModel.eliminaTorneo(idTorneo);
+//            }
+//        };
+//
+//        taskEliminazioneTorneo.setOnSucceeded(e -> {
+//        })
+//
+//
     }
 
     @FXML
     void modificaTorneo(ActionEvent event) {
-
     }
 
     public void setParametri(String nome, LocalDate data, int id) {

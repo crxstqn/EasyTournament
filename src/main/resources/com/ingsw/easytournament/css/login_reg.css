@@ -28,26 +28,26 @@
 
 .stileTextfield:focused {
     -fx-background-color: white;
-    -fx-border-color: #007bff; /* Diventa blu quando scrivi */
+    -fx-border-color: #007bff;
     -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 5, 0, 0, 0);
 }
 
 
 .stileButtonPrincipale {
-    -fx-background-color: #007bff; /* Blu principale */
+    -fx-background-color: #007bff;
     -fx-text-fill: white;
     -fx-background-radius: 5;
     -fx-font-weight: bold;
-    -fx-cursor: hand; /* Cambia il cursore in una manina */
+    -fx-cursor: hand;
     -fx-font-size: 14px;
 }
 
 .stileButtonPrincipale:hover {
-    -fx-background-color: #0056b3; /* Blu più scuro quando passi il mouse */
+    -fx-background-color: #0056b3;
 }
 
 .stileButtonPrincipale:pressed {
-    -fx-background-color: #004085; /* Ancora più scuro quando clicchi */
+    -fx-background-color: #004085;
 }
 
 

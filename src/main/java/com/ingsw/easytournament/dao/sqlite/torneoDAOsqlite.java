@@ -41,4 +41,20 @@ public class torneoDAOsqlite implements torneoDAO {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public boolean eliminaTorneo(int idUtente, int idTorneo) {
+        String query = "DELETE FROM torneo WHERE utente = ? AND id = ?";
+
+        try (PreparedStatement statement = conn.prepareStatement(query)){
+            statement.setInt(1, idUtente);
+            statement.setInt(2,idTorneo);
+            statement.executeQuery();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

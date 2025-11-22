@@ -68,6 +68,7 @@ public class HomeController {
 
         caricatoreTornei.setOnSucceeded(e -> {
             List<Torneo> tornei = caricatoreTornei.getValue();
+            flow_pane.getChildren().clear();
             try {
                 for (Torneo t : tornei) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ingsw/easytournament/fxml/card_torneo.fxml"));
@@ -78,9 +79,9 @@ public class HomeController {
 
                     flow_pane.getChildren().add(card);
                 }
-                } catch (IOException exception) {
-                    exception.printStackTrace();
-                }
+            } catch (IOException exception) {
+                exception.printStackTrace();
+            }
         });
 
         new Thread(caricatoreTornei).start();

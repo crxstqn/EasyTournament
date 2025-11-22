@@ -102,8 +102,7 @@ public class RegistrazioneController {
                 int id = LoginRegistrazioneModel.getUtenteId(username);
                 SessioneUtente.getInstance().setUserId(id);
                 SessioneUtente.getInstance().setUsername(username);
-                SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml", "/com/ingsw/easytournament/css/login_reg.css",true);
-                //dobbiamo aggiornare il path del css della home quando esisterà
+                SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml", "/com/ingsw/easytournament/css/home.css", true);
             }
         });
 

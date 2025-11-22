@@ -10,43 +10,43 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingsw.easytournament.controller.HomeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingsw.easytournament.controller.HomeController">
    <top>
-      <HBox fx:id="hbox_superiore" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="hbox_superiore" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="easy_tournament_label" text="EasyTournament" HBox.hgrow="ALWAYS">
                <HBox.margin>
-                  <Insets left="20.0" top="30.0" />
+                  <Insets bottom="20.0" left="20.0" top="30.0" />
                </HBox.margin>
             </Label>
-            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Region HBox.hgrow="ALWAYS" />
             <Label fx:id="benvenuto_label" text="Benvenuto">
                <HBox.margin>
-                  <Insets right="70.0" top="30.0" />
+                  <Insets bottom="20.0" right="70.0" top="30.0" />
                </HBox.margin>
             </Label>
          </children>
       </HBox>
    </top>
    <center>
-      <VBox fx:id="vbox_centrale" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbox_centrale" BorderPane.alignment="CENTER">
          <children>
-            <HBox fx:id="hbox_centrale" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="hbox_centrale">
                <children>
                   <Label fx:id="i_miei_tornei_label" text="I miei tornei">
                      <HBox.margin>
-                        <Insets left="20.0" top="30.0" />
+                        <Insets left="20.0" top="60.0" />
                      </HBox.margin>
                   </Label>
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="bottone_aggiungi" mnemonicParsing="false" onAction="#aggiungiTorneo" text="ima">
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="bottone_aggiungi" mnemonicParsing="false" onAction="#aggiungiTorneo" text="+">
                      <HBox.margin>
-                        <Insets right="70.0" top="30.0" />
+                        <Insets right="70.0" top="60.0" />
                      </HBox.margin>
                   </Button>
                </children>
             </HBox>
-            <ScrollPane fx:id="scroll_pane" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <ScrollPane fx:id="scroll_pane" fitToWidth="true" VBox.vgrow="ALWAYS">
                <content>
                   <FlowPane fx:id="flow_pane" hgap="20.0" vgap="20.0">
                      <padding>
