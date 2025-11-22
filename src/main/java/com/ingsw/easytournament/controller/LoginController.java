@@ -53,7 +53,7 @@ public class LoginController {
 
 
         loginTask.setOnSucceeded(e -> {
-            boolean utenteEsistente = loginTask.getValue(); // Prendiamo il risultato
+            boolean utenteEsistente = loginTask.getValue();
 
             // Ripristiniamo il bottone
             buttonlogin.setDisable(false);
@@ -61,9 +61,9 @@ public class LoginController {
             buttonlogin.setText("Accedi");
 
             if (utenteEsistente) {
-                // Recupero ID (potresti farlo anche nel task per ottimizzare)
                 int id = LoginRegistrazioneModel.getUtenteId(username);
-                SessioneUtente.getInstance(id, username);
+                SessioneUtente.getInstance().setUserId(id);
+                SessioneUtente.getInstance().setUsername(username);
                 SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/home.fxml", "/com/ingsw/easytournament/css/login_reg.css", true);
             } else {
                 alert("Attenzione! Credenziali errate.");

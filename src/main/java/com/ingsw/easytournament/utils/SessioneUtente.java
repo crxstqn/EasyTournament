@@ -6,17 +6,25 @@ public class SessioneUtente {
 
     private int userId;
     private String username;
+    private String nome;
 
-    private SessioneUtente(int userId, String username) {
-        this.userId = userId;
-        this.username = username;
+    private SessioneUtente() {
     }
 
-    public static SessioneUtente getInstance(int userId, String username) {
+    public static SessioneUtente getInstance() {
         if(instance == null) {
-            instance = new SessioneUtente(userId, username);
+            instance = new SessioneUtente();
         }
         return instance;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+        this.nome = DatabaseConnessione.getInstance().getUtenteDAO().getUtenteNome(userId);
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getUserId() {
@@ -25,5 +33,9 @@ public class SessioneUtente {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getNome(){
+        return nome;
     }
 }

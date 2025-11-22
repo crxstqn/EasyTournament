@@ -12,7 +12,10 @@ import java.sql.SQLException;
 public class utenteDAOsqlite implements utenteDAO {
     Connection conn;
 
-    public utenteDAOsqlite(Connection conn) {this.conn = conn;}
+    public utenteDAOsqlite(Connection conn) {
+        this.conn = conn;
+    }
+
     @Override
     public boolean autenticazione(String username, String password) {
         String query = "SELECT id, password FROM utente WHERE username = ?";
@@ -41,7 +44,7 @@ public class utenteDAOsqlite implements utenteDAO {
         String query = "SELECT COUNT(*) FROM utente WHERE username = ?";
 
         try (
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+                PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, username);
             ResultSet risultato = stmt.executeQuery();
@@ -62,7 +65,7 @@ public class utenteDAOsqlite implements utenteDAO {
         String query = "INSERT INTO utente (nome, username, password) VALUES (?, ?, ?)";
 
         try (
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+                PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, nome);
             stmt.setString(2, username);
@@ -83,18 +86,33 @@ public class utenteDAOsqlite implements utenteDAO {
         String query = "SELECT id FROM utente WHERE username = ?";
 
         try (
-             PreparedStatement stmt = conn.prepareStatement(query)){
+                PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, username.toLowerCase());
-            ResultSet risultato= stmt.executeQuery();
+            ResultSet risultato = stmt.executeQuery();
 
-            if (risultato.next()){
+            if (risultato.next()) {
                 return risultato.getInt("id");
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return -1;
     }
+
+    @Override
+    public String getUtenteNome(int id) {
+        String query = "SELECT nome FROM utente WHERE id = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, id);
+            ResultSet risultato = stmt.executeQuery();
+            if (risultato.next()) {
+                return risultato.getString("nome");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

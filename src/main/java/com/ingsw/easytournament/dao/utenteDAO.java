@@ -5,4 +5,5 @@ public interface utenteDAO {
     public boolean usernameEsistente(String username);
     public boolean registrazioneUtente(String nome, String username, String password);
     public int getUtenteId(String username);
+    public String getUtenteNome(int id);
 }

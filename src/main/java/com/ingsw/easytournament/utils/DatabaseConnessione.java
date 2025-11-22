@@ -1,6 +1,8 @@
 package com.ingsw.easytournament.utils;
 
+import com.ingsw.easytournament.dao.sqlite.torneoDAOsqlite;
 import com.ingsw.easytournament.dao.sqlite.utenteDAOsqlite;
+import com.ingsw.easytournament.dao.torneoDAO;
 import com.ingsw.easytournament.dao.utenteDAO;
 
 import java.sql.Connection;
@@ -47,5 +49,8 @@ public class DatabaseConnessione {
 
     public utenteDAO getUtenteDAO() {
         return new utenteDAOsqlite(getConnessione());
+    }
+    public torneoDAO getTorneoDAO() {
+        return new torneoDAOsqlite(getConnessione());
     }
 }
