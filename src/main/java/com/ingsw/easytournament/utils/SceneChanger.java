@@ -3,6 +3,7 @@ package com.ingsw.easytournament.utils;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -45,6 +46,29 @@ public class SceneChanger {
 
 
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void changeSceneModalityMode(String fxmlPath, String cssPath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneChanger.class.getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource(cssPath).toExternalForm());
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+
+            stage.initOwner(mainStage);
+
+            stage.setTitle("Aggiungi Torneo");
+            stage.setScene(scene);
+            stage.showAndWait();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

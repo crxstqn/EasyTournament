@@ -3,6 +3,7 @@ package com.ingsw.easytournament.controller;
 import com.ingsw.easytournament.model.HomeModel;
 import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.DatabaseConnessione;
+import com.ingsw.easytournament.utils.SceneChanger;
 import com.ingsw.easytournament.utils.SessioneUtente;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -89,7 +90,7 @@ public class HomeController {
 
     @FXML
     void aggiungiTorneo(ActionEvent event) {
-
+        SceneChanger.getInstance().changeSceneModalityMode("/com/ingsw/easytournament/fxml/aggiungi_torneo.fxml","/com/ingsw/easytournament/css/aggiungi_torneo.css" );
     }
 
 }
