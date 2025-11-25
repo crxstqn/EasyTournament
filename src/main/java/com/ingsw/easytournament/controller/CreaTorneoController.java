@@ -54,7 +54,7 @@ public class CreaTorneoController {
     private final ObservableList<String> elencoSquadre = FXCollections.observableArrayList();
 
     public void initialize(){
-        campo_modalita.getItems().addAll("modalità 1", "modalità 2", "modalità 3");
+        campo_modalita.getItems().addAll("Girone all'italiana", "Eliminazione diretta ", "Gironi + Play-off");
         list_view.setItems(elencoSquadre);
 
         // gestione squadre
@@ -166,21 +166,36 @@ public class CreaTorneoController {
             mostraAlert("Nessuna modalita selezionata!");
         }
 
+        int numeroSquadre = elencoSquadre.size();
         switch (modalitaSelezionata) {
+
+            //girone all'italiana
             case 0:
-                if (elencoSquadre.size()<2){
-                    mostraAlert("Il numero delle squadre deve essere almeno due");
+                if (numeroSquadre<2){
+                    mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
+                    return;
                 }
 
+            //eliminazione diretta
             case 1:{
-                break;
+                boolean èUnaPotenzaDi2 = (numeroSquadre > 0) && ((numeroSquadre & (numeroSquadre - 1)) == 0);
+                if (èUnaPotenzaDi2 == false){
+                    mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
+                    return;
+                }
             }
 
+            //girone + eliminazione diretta
             case 2:
             {
-                break;
+                if (numeroSquadre<4){
+                    mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
+                    return;
+                }
             }
         }
+
+
 
     }
 
