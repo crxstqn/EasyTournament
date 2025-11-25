@@ -62,14 +62,38 @@ public class SceneChanger {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
 
-            stage.initOwner(mainStage);
-
             stage.setTitle("Aggiungi Torneo");
             stage.setScene(scene);
             stage.showAndWait();
 
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Object cambiaScena(String fxml, String css, Scene vecchiaScena) {
+        try {
+            FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource(fxml));
+            Parent root = loader.load();
+
+            Object controller = loader.getController();
+
+            Stage stage = (Stage) vecchiaScena.getWindow();
+
+            vecchiaScena.setRoot(root);
+
+            vecchiaScena.getStylesheets().clear();
+            vecchiaScena.getStylesheets().add(getClass().getResource(css).toExternalForm());
+
+            stage.sizeToScene();
+            stage.centerOnScreen();
+
+            return controller;
+
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

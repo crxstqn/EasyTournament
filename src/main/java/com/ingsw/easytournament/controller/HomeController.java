@@ -90,7 +90,7 @@ public class HomeController {
 
     @FXML
     void aggiungiTorneo(ActionEvent event) {
-        SceneChanger.getInstance().changeSceneModalityMode("/com/ingsw/easytournament/fxml/aggiungi_torneo.fxml","/com/ingsw/easytournament/css/aggiungi_torneo.css" );
+        SceneChanger.getInstance().changeSceneModalityMode("/com/ingsw/easytournament/fxml/aggiungi_torneo.fxml","/com/ingsw/easytournament/css/aggiungi_torneo.css");
     }
 
 }

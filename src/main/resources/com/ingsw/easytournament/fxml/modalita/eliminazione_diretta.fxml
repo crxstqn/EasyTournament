@@ -10,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingsw.easytournament.controller.modalita.EliminazioneDirettaController">
    <children>
-      <Label text="Modifica parametri">
+      <Label fx:id="label_titolo" text="Modifica parametri">
          <font>
             <Font size="25.0" />
          </font>
@@ -20,7 +20,7 @@
             <Insets bottom="20.0" left="20.0" top="20.0" />
          </VBox.margin>
       </Label>
-      <CheckBox mnemonicParsing="false" text="Finale 3° e 4° posto">
+      <CheckBox fx:id="scelta_finalina" mnemonicParsing="false" text="Finale 3° e 4° posto">
          <VBox.margin>
             <Insets left="20.0" />
          </VBox.margin>
@@ -28,8 +28,8 @@
       <Region prefHeight="200.0" prefWidth="200.0" />
       <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" text="Indietro" />
-            <Button mnemonicParsing="false" text="Avanti">
+            <Button fx:id="button_indietro" mnemonicParsing="false" onAction="#tornaIndietro" text="Indietro" />
+            <Button fx:id="button_avanti" mnemonicParsing="false" onAction="#mostraRiepilogo" text="Avanti">
                <HBox.margin>
                   <Insets bottom="20.0" left="10.0" right="20.0" />
                </HBox.margin>

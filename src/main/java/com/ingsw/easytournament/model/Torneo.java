@@ -14,7 +14,7 @@ public class Torneo {
     
     Modalita modalita;
     
-    List<Squadra> squadre = new ArrayList<>();
+    List<String> squadre = new ArrayList<>();
     
 
     public Torneo(LocalDate data, int id, int id_utente, String nome, int m) {
@@ -25,7 +25,7 @@ public class Torneo {
         this.nome = nome;
     }
 
-    public Torneo(int id_modalità, int id_utente, String nome, LocalDate data, List<Squadra> squadre) {
+    public Torneo(int id_modalità, int id_utente, String nome, LocalDate data, List<String> squadre) {
         this.id_modalità = id_modalità;
         this.id_utente = id_utente;
         this.nome = nome;

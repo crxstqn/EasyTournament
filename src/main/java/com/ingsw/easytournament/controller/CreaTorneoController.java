@@ -1,12 +1,18 @@
 package com.ingsw.easytournament.controller;
 
+import com.ingsw.easytournament.controller.modalita.EliminazioneDirettaController;
+import com.ingsw.easytournament.controller.modalita.ModalitaController;
 import com.ingsw.easytournament.model.Squadra;
 import com.ingsw.easytournament.model.Torneo;
+import com.ingsw.easytournament.utils.SceneChanger;
 import com.ingsw.easytournament.utils.SessioneUtente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -15,6 +21,7 @@ import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 public class CreaTorneoController {
 
@@ -164,17 +171,20 @@ public class CreaTorneoController {
         //logica numero squadre + modalità
         if (campo_modalita.getValue() == null) {
             mostraAlert("Nessuna modalita selezionata!");
+            return;
         }
 
-        int numeroSquadre = elencoSquadre.size();
+        int numeroSquadre = elencoSquadre.toArray().length;
         switch (modalitaSelezionata) {
-
             //girone all'italiana
-            case 0:
-                if (numeroSquadre<2){
+            case 0: {
+                if (numeroSquadre < 2) {
                     mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
                     return;
                 }
+                cambiaSchermata("/com/ingsw/easytournament/fxml/modalita/girone_all_italiana.fxml","/com/ingsw/easytournament/css/modalita/girone_all_italiana.css");
+                break;
+            }
 
             //eliminazione diretta
             case 1:{
@@ -183,6 +193,8 @@ public class CreaTorneoController {
                     mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
                     return;
                 }
+                cambiaSchermata("/com/ingsw/easytournament/fxml/modalita/eliminazione_diretta.fxml","/com/ingsw/easytournament/css/modalita/eliminazione_diretta.css");
+                break;
             }
 
             //girone + eliminazione diretta
@@ -192,11 +204,45 @@ public class CreaTorneoController {
                     mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
                     return;
                 }
+                cambiaSchermata("/com/ingsw/easytournament/fxml/modalita/gironi_playoff.fxml","/com/ingsw/easytournament/css/modalita/gironi_playoff.css");
+                break;
             }
         }
+    }
+
+    private Torneo creaTorneo(){
+        String nomeTorneo = campo_nome_torneo.getText();
+        LocalDate date = campo_data.getValue();
+        int idModalita = campo_modalita.getSelectionModel().getSelectedIndex();
+        List<String> squadre = elencoSquadre.stream().toList();
+        int idUtente = SessioneUtente.getInstance().getUserId();
+
+        return new Torneo(idModalita,idUtente,nomeTorneo,date,squadre);
+    }
+
+    private void cambiaSchermata(String fxml, String css) {
+        try {
+            FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource(fxml));
+            Parent root = loader.load();
+
+            ModalitaController controller = loader.getController();
+            controller.setTorneo(creaTorneo());
 
 
+            Scene scene = button_avanti.getScene();
+            Stage stage = (javafx.stage.Stage) scene.getWindow();
 
+            scene.setRoot(root);
+
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(getClass().getResource(css).toExternalForm());
+
+            stage.sizeToScene();
+            stage.centerOnScreen();
+
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void mostraAlert(String testoErrore) {
