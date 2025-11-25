@@ -67,8 +67,7 @@ public class CreaTorneoController {
             private final HBox rootHBox = new HBox();
 
             {
-                // Stile minimale per il bottone rosso (INVARIATO)
-                btnElimina.setStyle("-fx-background-color: transparent; -fx-text-fill: red; -fx-font-weight: bold; -fx-cursor: hand; -fx-border-color: #ffcccc; -fx-border-radius: 3;");
+                btnElimina.getStyleClass().add("button-elimina-squadra");
 
                 // Allineamento verticale al centro. L'orizzontale lo gestisce lo spacer.
                 rootHBox.setAlignment(javafx.geometry.Pos.CENTER);
@@ -121,6 +120,14 @@ public class CreaTorneoController {
             return;
         }
 
+        for(String squadra : elencoSquadre){
+            if (squadra.equals(campoNomeSquadra)){
+                mostraAlert("Esiste già una squadra con questo nome!");
+                campo_squadra.clear();
+                return;
+            }
+        }
+
         elencoSquadre.add(campoNomeSquadra);
         campo_squadra.clear();
     }
@@ -150,7 +157,7 @@ public class CreaTorneoController {
         }
 
         if (dataInserita.isBefore(oggi)){
-            mostraAlert("La Data inserita non deve essere precedente alla data odierna!");
+            mostraAlert("La data inserita non deve essere precedente alla data odierna!");
             return;
         }
 

@@ -1,0 +1,276 @@
+/* ==============================================
+   1. STILE GENERALE E INPUT
+   ============================================== */
+.root {
+    -fx-background-color: white;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+}
+
+.label {
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Campi di testo, DatePicker */
+.text-field, .date-picker {
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 0 10px;
+    -fx-min-height: 38px;
+    -fx-max-height: 38px;
+    -fx-font-size: 13px;
+}
+
+.text-field:focused, .date-picker:focused {
+    -fx-background-color: white;
+    -fx-border-color: #007bff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 5, 0, 0, 0);
+}
+
+/* Fix interno per il DatePicker */
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-min-height: 36px;
+}
+
+/* ==============================================
+   2. CHOICE BOX (MENU MODALITÀ)
+   ============================================== */
+.choice-box {
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 0 10px;
+    -fx-min-height: 38px;
+    -fx-max-height: 38px;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+}
+
+.choice-box:focused, .choice-box:showing {
+    -fx-background-color: white;
+    -fx-border-color: #007bff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 5, 0, 0, 0);
+}
+
+.choice-box .open-button { -fx-background-color: transparent; }
+.choice-box .arrow { -fx-background-color: #666666; }
+.choice-box:hover .arrow { -fx-background-color: #007bff; }
+
+.choice-box .context-menu {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #e0e0e0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 3);
+    -fx-padding: 5px;
+}
+
+.choice-box .menu-item { -fx-padding: 8px 12px; -fx-background-radius: 5px; }
+.choice-box .menu-item:focused, .choice-box .menu-item:hover { -fx-background-color: #f0f7ff; }
+.choice-box .menu-item .label { -fx-text-fill: #333333; -fx-font-weight: normal; }
+
+/* ==============================================
+   3. FIX DATEPICKER (ICONA GRANDE)
+   ============================================== */
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-padding: 0 12px;
+}
+
+/* Icona Calendario */
+.date-picker .arrow-button .arrow {
+    -fx-background-color: #007bff;
+    -fx-shape: "M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z";
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+
+/* POPUP CALENDARIO */
+.date-picker-popup {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 2);
+    -fx-background-radius: 10px;
+    -fx-font-size: 16px;
+}
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #007bff;
+    -fx-background-radius: 10px 10px 0 0;
+    -fx-padding: 10px;
+}
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+.date-picker-popup .day-cell {
+    -fx-background-color: white;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5px;
+    -fx-border-color: transparent;
+    -fx-padding: 8px;
+}
+.date-picker-popup .day-cell:hover { -fx-background-color: #e7f1ff; }
+.date-picker-popup .day-cell:selected {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.date-picker-popup .today {
+    -fx-background-color: #f0f8ff;
+    -fx-border-color: #007bff;
+    -fx-text-fill: #007bff;
+}
+
+/* ==============================================
+   4. LIST VIEW (PULIZIA TOTALE PER NO SCROLL)
+   ============================================== */
+#list_view {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    /* RIMOSSO PADDING EXTRA CHE CAUSAVA SCROLL */
+    -fx-padding: 1px;
+}
+
+/* Nasconde e disabilita la barra orizzontale */
+.list-view .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-padding: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+    -fx-visible: false;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    /* PADDING RIDOTTO AL MINIMO PER NON "GONFIARE" LA CELLA */
+    -fx-padding: 2px 5px;
+    -fx-text-fill: #333333;
+    -fx-border-color: transparent transparent #f0f0f0 transparent;
+}
+
+.list-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.list-cell:filled:selected, .list-cell:filled:hover {
+    -fx-background-color: #f0f7ff;
+    -fx-background-radius: 5px;
+}
+
+/* Testo Blu quando selezionato */
+.list-cell:filled:selected .label, .list-cell:filled:hover .label {
+    -fx-text-fill: #007bff;
+}
+
+/* Scrollbar verticale pulita */
+.list-view .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8px;
+}
+.list-view .scroll-bar:vertical .track { -fx-background-color: transparent; }
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #cccccc;
+    -fx-background-radius: 10px;
+}
+.list-view .scroll-bar:vertical .thumb:hover { -fx-background-color: #999999; }
+.list-view .scroll-bar .increment-button, .list-view .scroll-bar .decrement-button {
+    -fx-padding: 0; -fx-shape: " "; -fx-opacity: 0;
+}
+
+/* ==============================================
+   5. BOTTONI
+   ============================================== */
+#button_aggiungi {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-cursor: hand;
+    -fx-min-width: 38px; -fx-min-height: 38px;
+    -fx-max-width: 38px; -fx-max-height: 38px;
+
+    /* QUI LA MODIFICA: 10px invece di 50% */
+    -fx-background-radius: 10px;
+    -fx-padding: 0;
+}
+#button_aggiungi:hover {
+    -fx-background-color: #0056b3;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.4), 6, 0, 0, 1);
+}
+
+#button_avanti {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20px;
+    -fx-padding: 8px 25px;
+    -fx-cursor: hand;
+}
+#button_avanti:hover {
+    -fx-background-color: #0056b3;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.3), 8, 0, 0, 1);
+}
+
+.separator *.line {
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+}
+
+/* ==============================================
+   6. BOTTONE "X" (ELIMINA SQUADRA)
+   ============================================== */
+.button-elimina-squadra {
+    -fx-background-color: transparent;
+    -fx-text-fill: #dc3545; /* Rosso errore standard (Bootstrap style) */
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-cursor: hand;
+
+    /* FORMA: Cerchio perfetto (come il bottone +) */
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+
+    /* Bordo invisibile di default per mantenere le dimensioni */
+    -fx-border-color: transparent;
+    -fx-border-width: 1px;
+
+    /* Dimensioni fisse piccole */
+    -fx-min-width: 26px;
+    -fx-min-height: 26px;
+    -fx-max-width: 26px;
+    -fx-max-height: 26px;
+
+    -fx-padding: 0; /* Centra la X */
+    -fx-alignment: center;
+}
+
+/* Stato Hover: Cerchietto rosso chiaro */
+.button-elimina-squadra:hover {
+    -fx-background-color: #fff5f5; /* Sfondo rosino */
+    -fx-border-color: #dc3545;     /* Bordo rosso */
+    -fx-effect: dropshadow(three-pass-box, rgba(220, 53, 69, 0.2), 3, 0, 0, 1);
+}
+
+/* Stato Premuto: Diventa rosso pieno */
+.button-elimina-squadra:pressed {
+    -fx-background-color: #dc3545;
+    -fx-text-fill: white;
+    -fx-effect: none;
+}
