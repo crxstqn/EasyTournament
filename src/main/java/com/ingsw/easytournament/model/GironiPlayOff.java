@@ -12,6 +12,12 @@ public class GironiPlayOff extends Modalita{
 
     public GironiPlayOff(String nome){
         super(nome);
+        puntiVittoria = 3;
+        puntiPareggio = 1;
+        puntiSconfitta = 0;
+        numeroGironi = 2;
+        vincitoriPerGirone = 1;
+        numSquadreGirone = 2;
     }
 
     public int getNumeroGironi() {

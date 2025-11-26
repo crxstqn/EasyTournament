@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -122,22 +121,24 @@
                   <Insets left="20.0" />
                </VBox.margin>
             </CheckBox>
+              <HBox alignment="BOTTOM_RIGHT">
+                  <children>
+                      <Button fx:id="button_indietro" mnemonicParsing="false" onAction="#tornaIndietro" text="Indietro">
+                          <HBox.margin>
+                              <Insets right="10.0" top="30.0" />
+                          </HBox.margin>
+                      </Button>
+                      <Button fx:id="button_avanti" mnemonicParsing="false" onAction="#mostraRiepilogo" text="Avanti">
+                          <HBox.margin>
+                              <Insets right="20.0" top="30.0" />
+                          </HBox.margin>
+                      </Button>
+                  </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+              </HBox>
          </children>
       </VBox>
-        <Region VBox.vgrow="ALWAYS" />
-        <HBox alignment="TOP_RIGHT">
-            <children>
-                <Button fx:id="button_indietro" mnemonicParsing="false" onAction="#tornaIndietro" text="Indietro">
-                    <HBox.margin>
-                        <Insets right="10.0" />
-                    </HBox.margin>
-                </Button>
-                <Button fx:id="button_avanti" mnemonicParsing="false" onAction="#mostraRiepilogo" text="Avanti">
-                    <HBox.margin>
-                        <Insets bottom="20.0" right="20.0" />
-                    </HBox.margin>
-                </Button>
-            </children>
-        </HBox>
     </children>
 </VBox>
