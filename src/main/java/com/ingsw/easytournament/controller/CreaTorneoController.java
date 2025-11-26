@@ -177,7 +177,7 @@ public class CreaTorneoController {
 
         int numeroSquadre = elencoSquadre.toArray().length;
         String fxmlDestinazione = "";
-        String cssDestinazione = "";
+        String cssDestinazione = "/com/ingsw/easytournament/css/modalita_torneo.css";;
 
         switch (modalitaSelezionata) {
             //girone all'italiana
@@ -188,8 +188,6 @@ public class CreaTorneoController {
                 }
                 modificaParametriTorneo();
                 fxmlDestinazione = "/com/ingsw/easytournament/fxml/modalita/girone_all_italiana.fxml";
-                cssDestinazione = "/com/ingsw/easytournament/css/modalita/girone_all_italiana.css";
-                //SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/modalita/girone_all_italiana.fxml","/com/ingsw/easytournament/css/modalita/girone_all_italiana.css", button_avanti.getScene());
                 break;
             }
 
@@ -202,7 +200,6 @@ public class CreaTorneoController {
                 }
                 modificaParametriTorneo();
                 fxmlDestinazione = "/com/ingsw/easytournament/fxml/modalita/eliminazione_diretta.fxml";
-                cssDestinazione = "/com/ingsw/easytournament/css/modalita/eliminazione_diretta.css";
                 break;
             }
 
@@ -215,11 +212,10 @@ public class CreaTorneoController {
                 }
                 modificaParametriTorneo();
                 fxmlDestinazione = "/com/ingsw/easytournament/fxml/modalita/gironi_playoff.fxml";
-                cssDestinazione = "/com/ingsw/easytournament/css/modalita/gironi_playoff.css";
                 break;
             }
         }
-        SceneChanger.getInstance().changeModalityScene(fxmlDestinazione,cssDestinazione, button_avanti.getScene());
+        SceneChanger.getInstance().changeModalityScene(fxmlDestinazione, cssDestinazione, button_avanti.getScene());
 
     }
 

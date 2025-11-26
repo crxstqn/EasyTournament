@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingsw.easytournament.controller.modalita.GironiPlayOffController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingsw.easytournament.controller.modalita.GironiPlayOffController">
     <children>
         <HBox>
             <children>
@@ -24,86 +24,108 @@
                 </Label>
             </children>
         </HBox>
-        <VBox>
-            <children>
-                <Label text="Punti per vittoria">
-                    <VBox.margin>
+      <HBox>
+         <children>
+              <VBox>
+                  <children>
+                      <Label text="Punti per vittoria">
+                          <VBox.margin>
+                              <Insets bottom="5.0" left="20.0" />
+                          </VBox.margin>
+                      </Label>
+                      <Spinner fx:id="spinner_vittoria">
+                          <VBox.margin>
+                              <Insets bottom="10.0" left="20.0" />
+                          </VBox.margin>
+                      </Spinner>
+                  </children>
+              </VBox>
+              <VBox>
+                  <children>
+                      <Label text="Punti per pareggio">
+                          <VBox.margin>
+                              <Insets bottom="5.0" left="20.0" />
+                          </VBox.margin>
+                      </Label>
+                      <Spinner fx:id="spinner_pareggio">
+                          <VBox.margin>
+                              <Insets bottom="10.0" left="20.0" />
+                          </VBox.margin>
+                      </Spinner>
+                  </children>
+              </VBox>
+              <VBox>
+                  <children>
+                      <Label text="Punti per sconfitta">
+                          <VBox.margin>
+                              <Insets bottom="5.0" left="20.0" right="20.0" />
+                          </VBox.margin>
+                      </Label>
+                      <Spinner fx:id="spinner_sconfitta">
+                          <VBox.margin>
+                              <Insets bottom="15.0" left="20.0" right="20.0" />
+                          </VBox.margin>
+                      </Spinner>
+                  </children>
+              </VBox>
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <VBox>
+               <children>
+                  <Label text="Numero di gironi">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Spinner fx:id="numero_gironi" />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label text="Numero di squadre per girone">
+                     <VBox.margin>
                         <Insets bottom="5.0" left="20.0" />
-                    </VBox.margin>
-                </Label>
-                <Spinner fx:id="spinner_vittoria">
-                    <VBox.margin>
+                     </VBox.margin>
+                  </Label>
+                  <Spinner fx:id="numero_squadre_girone">
+                     <VBox.margin>
                         <Insets bottom="10.0" left="20.0" />
-                    </VBox.margin>
-                </Spinner>
-            </children>
-        </VBox>
-        <VBox layoutX="10.0" layoutY="27.0">
-            <children>
-                <Label text="Punti per pareggio">
-                    <VBox.margin>
+                     </VBox.margin>
+                  </Spinner>
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label text="Numero di squadre vincitrici per girone">
+                     <VBox.margin>
                         <Insets bottom="5.0" left="20.0" />
-                    </VBox.margin>
-                </Label>
-                <Spinner fx:id="spinner_pareggio">
-                    <VBox.margin>
-                        <Insets bottom="10.0" left="20.0" />
-                    </VBox.margin>
-                </Spinner>
-            </children>
-        </VBox>
-        <VBox layoutX="10.0" layoutY="70.0">
-            <children>
-                <Label text="Punti per sconfitta">
-                    <VBox.margin>
-                        <Insets bottom="5.0" left="20.0" />
-                    </VBox.margin>
-                </Label>
-                <Spinner fx:id="spinner_sconfitta">
-                    <VBox.margin>
-                        <Insets bottom="15.0" left="20.0" />
-                    </VBox.margin>
-                </Spinner>
-            <Label text="Numero di gironi">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="20.0" />
-               </VBox.margin>
-            </Label>
-            <Spinner fx:id="numero_gironi">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="20.0" />
-               </VBox.margin>
-            </Spinner>
-            <Label text="Numero di squadre per girone">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="20.0" />
-               </VBox.margin>
-            </Label>
-            <Spinner fx:id="numero_squadre_girone">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="20.0" />
-               </VBox.margin>
-            </Spinner>
-            <Label text="Numero di squadre vincitrici per girone">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="20.0" />
-               </VBox.margin>
-            </Label>
-            <Spinner fx:id="numero_vincitrici_girone">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="20.0" />
-               </VBox.margin>
-            </Spinner>
-            </children>
-        </VBox>
+                     </VBox.margin>
+                  </Label>
+                  <Spinner fx:id="numero_vincitrici_girone">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </Spinner>
+               </children>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </HBox>
         <CheckBox fx:id="scelta_andata_ritorno" mnemonicParsing="false" text="Andata e ritorno">
             <VBox.margin>
-                <Insets left="20.0" />
+                <Insets left="20.0" top="20.0" />
             </VBox.margin>
         </CheckBox>
       <Separator prefWidth="200.0">
          <VBox.margin>
-            <Insets left="5.0" right="5.0" top="10.0" />
+            <Insets left="5.0" right="5.0" top="20.0" />
          </VBox.margin>
       </Separator>
       <VBox prefHeight="200.0" prefWidth="100.0">
@@ -113,7 +135,7 @@
                   <Font size="25.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="10.0" left="20.0" top="10.0" />
+                  <Insets bottom="20.0" left="20.0" top="20.0" />
                </VBox.margin>
             </Label>
             <CheckBox fx:id="scelta_finalina" mnemonicParsing="false" text="Finale 3° e 4° posto">
