@@ -1,6 +1,7 @@
 package com.ingsw.easytournament.controller;
 
 import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
+import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.SceneChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,6 +25,15 @@ public class RiepilogoController {
 
     @FXML
     private ListView<String> list_view_squadre;
+
+    private Torneo torneo;
+
+    public void initialize(){
+        this.torneo = SessioneCreazioneTorneo.getInstance().getBozzaTorneo();
+        this.list_view_squadre.setEditable(false);
+        label_descrizione.setText(this.torneo.getDescrizione());
+        list_view_squadre.getItems().addAll(this.torneo.getSquadre());
+    }
 
     @FXML
     void creaTorneo(ActionEvent event) {

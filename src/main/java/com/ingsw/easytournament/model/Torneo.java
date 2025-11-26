@@ -52,6 +52,10 @@ public class Torneo {
         }
     }
 
+    public String getDescrizione(){
+        return "Nome torneo: " + this.nome + "\nData di inzio: " + this.data.toString() + "\nModalità: " + this.modalita.getNome() + "\n" + this.modalita.getDescrizione();
+    }
+
     public LocalDate getData() {
         return data;
     }

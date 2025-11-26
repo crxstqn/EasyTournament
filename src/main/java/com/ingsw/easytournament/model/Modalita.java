@@ -14,4 +14,6 @@ public abstract class Modalita {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public abstract String getDescrizione();
 }

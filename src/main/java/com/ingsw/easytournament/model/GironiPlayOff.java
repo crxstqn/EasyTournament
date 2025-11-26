@@ -20,6 +20,16 @@ public class GironiPlayOff extends Modalita{
         numSquadreGirone = 2;
     }
 
+    @Override
+    public String getDescrizione() {
+        String andataEritorno = this.andataEritorno ? "SI" : "NO";
+        String finalina = this.finalina ? "SI" : "NO";
+
+        return "Punti vittoria: " + puntiVittoria + "\nPunti pareggio: " + puntiPareggio + "\nPunti sconfitta: " + puntiSconfitta +
+                "\nNumero di squadre per girone: " + numSquadreGirone + "\nNumero gironi: " + numeroGironi + "\nVincitori per girone: " + vincitoriPerGirone +
+                "\nAndata e ritorno: " + andataEritorno + "\nFinalina: " + finalina;
+    }
+
     public int getNumeroGironi() {
         return numeroGironi;
     }

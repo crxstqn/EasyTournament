@@ -14,6 +14,13 @@ public class GironeItaliana extends Modalita{
         andataEritorno = false;
     }
 
+    @Override
+    public String getDescrizione() {
+        String andataEritorno = this.andataEritorno ? "SI" : "NO";
+        return "Punti vittoria: " + puntiVittoria + "\nPunti pareggio: " + puntiPareggio + "\nPunti sconfitta: " + puntiSconfitta
+                + "\nAndata e ritorno: " + andataEritorno;
+    }
+
     public boolean isAndataEritorno() {
         return andataEritorno;
     }
