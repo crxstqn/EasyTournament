@@ -44,16 +44,18 @@ public class GironeItalianaController{
 
         @FXML
     void mostraRiepilogo(ActionEvent event) {
-        String puntiVittoria = spinner_vittoria.getEditor().getText();
-        String puntiPareggio = spinner_pareggio.getEditor().getText();
-        String puntiSconfitta = spinner_sconfitta.getEditor().getText();
+        // Use getValue() directly from spinners instead of parsing text
+        // This is more reliable and type-safe
+        int puntiVittoria = spinner_vittoria.getValue();
+        int puntiPareggio = spinner_pareggio.getValue();
+        int puntiSconfitta = spinner_sconfitta.getValue();
         boolean andataEritorno = scelta_andata_ritorno.isSelected();
 
         //copiamo
         GironeItaliana castModalita =  (GironeItaliana) bozzaModalita;
-        castModalita.setPuntiVittoria(Integer.parseInt(puntiVittoria));
-        castModalita.setPuntiPareggio(Integer.parseInt(puntiPareggio));
-        castModalita.setPuntiSconfitta(Integer.parseInt(puntiSconfitta));
+        castModalita.setPuntiVittoria(puntiVittoria);
+        castModalita.setPuntiPareggio(puntiPareggio);
+        castModalita.setPuntiSconfitta(puntiSconfitta);
         castModalita.setAndataEritorno(andataEritorno);
 
         SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/riepilogo_creazione.fxml", "/com/ingsw/easytournament/css/riepilogo_creazione.css", button_avanti.getScene());
