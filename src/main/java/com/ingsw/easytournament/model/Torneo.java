@@ -1,21 +1,21 @@
 package com.ingsw.easytournament.model;
 
+import com.ingsw.easytournament.utils.SessioneUtente;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Torneo {
-    int id;
-    String nome;
-    LocalDate data;
-    int id_modalità;
-    int id_utente;
-    
-    Modalita modalita;
-    
-    List<String> squadre = new ArrayList<>();
-    
+    private int id;
+    private String nome;
+    private LocalDate data;
+    private int id_modalità;
+    private int id_utente;
+    private Modalita modalita;
+    private List<String> squadre;
+
 
     public Torneo(LocalDate data, int id, int id_utente, String nome, int m) {
         this.data = data;
@@ -25,12 +25,12 @@ public class Torneo {
         this.nome = nome;
     }
 
-    public Torneo(int id_modalità, int id_utente, String nome, LocalDate data, List<String> squadre) {
-        this.id_modalità = id_modalità;
-        this.id_utente = id_utente;
+    public Torneo(String nome, LocalDate data, int id_modalità, List<String> squadre) {
+        this.id_utente = SessioneUtente.getInstance().getUserId();
         this.nome = nome;
         this.data = data;
         this.squadre = squadre;
+        this.id_modalità = id_modalità;
 
         configuraModalita();
     }
@@ -76,12 +76,17 @@ public class Torneo {
         this.id_utente = id_utente;
     }
 
-    public int getModalità() {
+    public int getIdModalità() {
         return id_modalità;
     }
 
-    public void setModalità(int modalità) {
+    public Modalita getModalita() {
+        return modalita;
+    }
+
+    public void setIdModalità(int modalità) {
         this.id_modalità = modalità;
+        configuraModalita();
     }
 
     public String getNome() {
@@ -90,6 +95,14 @@ public class Torneo {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<String> getSquadre() {
+        return squadre;
+    }
+
+    public void setSquadre(List<String> squadre) {
+        this.squadre = squadre;
     }
 }
 

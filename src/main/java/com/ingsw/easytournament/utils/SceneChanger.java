@@ -50,7 +50,7 @@ public class SceneChanger {
         }
     }
 
-    public void changeSceneModalityMode(String fxmlPath, String cssPath) {
+    public void createModalityStage(String fxmlPath, String cssPath) {
         try {
             FXMLLoader loader = new FXMLLoader(SceneChanger.class.getResource(fxmlPath));
             Parent root = loader.load();
@@ -72,12 +72,10 @@ public class SceneChanger {
         }
     }
 
-    public Object cambiaScena(String fxml, String css, Scene vecchiaScena) {
+    public void changeModalityScene(String fxml, String css, Scene vecchiaScena) {
         try {
-            FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource(fxml));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
             Parent root = loader.load();
-
-            Object controller = loader.getController();
 
             Stage stage = (Stage) vecchiaScena.getWindow();
 
@@ -89,11 +87,8 @@ public class SceneChanger {
             stage.sizeToScene();
             stage.centerOnScreen();
 
-            return controller;
-
-        } catch (java.io.IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
     }
 }

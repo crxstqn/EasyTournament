@@ -41,6 +41,8 @@ public class LoginController {
 
         buttonlogin.setDisable(true);
         buttonsignup.setDisable(true);
+        textusername.setDisable(true);
+        textpassword.setDisable(true);
         buttonlogin.setText("Accesso in corso...");
         label_errore.setText("");
 
@@ -57,6 +59,9 @@ public class LoginController {
             // Ripristiniamo il bottone
             buttonlogin.setDisable(false);
             buttonsignup.setDisable(false);
+            textusername.setDisable(false);
+            textpassword.setDisable(false);
+
             buttonlogin.setText("Accedi");
 
             if (utenteEsistente) {
@@ -73,6 +78,8 @@ public class LoginController {
         loginTask.setOnFailed(e -> {
             buttonlogin.setDisable(false);
             buttonsignup.setDisable(false);
+            textusername.setDisable(false);
+            textpassword.setDisable(false);
             buttonlogin.setText("Accedi");
             alert("Errore di connessione al Database!");
             loginTask.getException().printStackTrace();

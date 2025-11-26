@@ -8,6 +8,10 @@ public class GironeItaliana extends Modalita{
 
     GironeItaliana(String nome){
         super(nome);
+        puntiVittoria = 3;
+        puntiPareggio = 1;
+        puntiSconfitta = 0;
+        andataEritorno = false;
     }
 
     public boolean isAndataEritorno() {
@@ -41,4 +45,5 @@ public class GironeItaliana extends Modalita{
     public void setPuntiVittoria(int puntiVittoria) {
         this.puntiVittoria = puntiVittoria;
     }
+
 }

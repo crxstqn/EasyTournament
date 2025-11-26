@@ -81,6 +81,10 @@ public class RegistrazioneController {
 
         buttonsignup.setDisable(true);
         buttonlogin.setDisable(true);
+        textusername.setDisable(true);
+        textpassword.setDisable(true);
+        textpassword_conferma.setDisable(true);
+
         buttonsignup.setText("Registrazione in corso...");
         label_errore.setText("");
 
@@ -96,6 +100,9 @@ public class RegistrazioneController {
 
             buttonlogin.setDisable(false);
             buttonsignup.setDisable(false);
+            textusername.setDisable(false);
+            textpassword.setDisable(false);
+            textpassword_conferma.setDisable(false);
             buttonsignup.setText("Registrazione");
 
             if (riuscito) {
@@ -109,6 +116,9 @@ public class RegistrazioneController {
         registrazioneTask.setOnFailed(e -> {
             buttonlogin.setDisable(false);
             buttonsignup.setDisable(false);
+            textusername.setDisable(false);
+            textpassword.setDisable(false);
+            textpassword_conferma.setDisable(false);
             buttonsignup.setText("Registrazione");
             alert("Errore di connessione al Database!");
             registrazioneTask.getException().printStackTrace();

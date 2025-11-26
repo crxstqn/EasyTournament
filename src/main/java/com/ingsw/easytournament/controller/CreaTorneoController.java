@@ -1,27 +1,18 @@
 package com.ingsw.easytournament.controller;
 
-import com.ingsw.easytournament.controller.modalita.EliminazioneDirettaController;
-import com.ingsw.easytournament.controller.modalita.ModalitaController;
-import com.ingsw.easytournament.model.Squadra;
+import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
 import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.SceneChanger;
-import com.ingsw.easytournament.utils.SessioneUtente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
-import javafx.stage.Stage;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 
 public class CreaTorneoController {
 
@@ -58,9 +49,11 @@ public class CreaTorneoController {
     @FXML
     private ListView<String> list_view;
 
+    private Torneo torneoAttuale;
     private final ObservableList<String> elencoSquadre = FXCollections.observableArrayList();
 
     public void initialize(){
+        torneoAttuale = SessioneCreazioneTorneo.getInstance().getBozzaTorneo();
         campo_modalita.getItems().addAll("Girone all'italiana", "Eliminazione diretta ", "Gironi + Play-off");
         list_view.setItems(elencoSquadre);
 
@@ -117,11 +110,19 @@ public class CreaTorneoController {
                 }
             }
         });
+
+        //carico dati precedenti torneo (se esistenti)
+        if (torneoAttuale!=null){
+            campo_nome_torneo.setText(torneoAttuale.getNome());
+            campo_data.setValue(torneoAttuale.getData());
+            campo_modalita.getSelectionModel().select(torneoAttuale.getIdModalità());
+            elencoSquadre.setAll(torneoAttuale.getSquadre());
+        }
     }
 
     @FXML
     void aggiungiSquadra(ActionEvent event) {
-        String campoNomeSquadra = campo_squadra.getText();
+        String campoNomeSquadra = campo_squadra.getText().trim();
         if (campoNomeSquadra.isEmpty()) {
             mostraAlert("Campo nome squadra vuoto!");
             return;
@@ -141,7 +142,7 @@ public class CreaTorneoController {
 
     @FXML
     void scorriAvanti(ActionEvent event) {
-        String  campoNomeTorneo = campo_nome_torneo.getText();
+        String  campoNomeTorneo = campo_nome_torneo.getText().trim();
         int modalitaSelezionata = campo_modalita.getSelectionModel().getSelectedIndex();
         LocalDate oggi = LocalDate.now();
         LocalDate dataInserita = campo_data.getValue();
@@ -175,6 +176,9 @@ public class CreaTorneoController {
         }
 
         int numeroSquadre = elencoSquadre.toArray().length;
+        String fxmlDestinazione = "";
+        String cssDestinazione = "";
+
         switch (modalitaSelezionata) {
             //girone all'italiana
             case 0: {
@@ -182,7 +186,10 @@ public class CreaTorneoController {
                     mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
                     return;
                 }
-                cambiaSchermata("/com/ingsw/easytournament/fxml/modalita/girone_all_italiana.fxml","/com/ingsw/easytournament/css/modalita/girone_all_italiana.css");
+                modificaParametriTorneo();
+                fxmlDestinazione = "/com/ingsw/easytournament/fxml/modalita/girone_all_italiana.fxml";
+                cssDestinazione = "/com/ingsw/easytournament/css/modalita/girone_all_italiana.css";
+                //SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/modalita/girone_all_italiana.fxml","/com/ingsw/easytournament/css/modalita/girone_all_italiana.css", button_avanti.getScene());
                 break;
             }
 
@@ -193,7 +200,9 @@ public class CreaTorneoController {
                     mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
                     return;
                 }
-                cambiaSchermata("/com/ingsw/easytournament/fxml/modalita/eliminazione_diretta.fxml","/com/ingsw/easytournament/css/modalita/eliminazione_diretta.css");
+                modificaParametriTorneo();
+                fxmlDestinazione = "/com/ingsw/easytournament/fxml/modalita/eliminazione_diretta.fxml";
+                cssDestinazione = "/com/ingsw/easytournament/css/modalita/eliminazione_diretta.css";
                 break;
             }
 
@@ -204,44 +213,25 @@ public class CreaTorneoController {
                     mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
                     return;
                 }
-                cambiaSchermata("/com/ingsw/easytournament/fxml/modalita/gironi_playoff.fxml","/com/ingsw/easytournament/css/modalita/gironi_playoff.css");
+                modificaParametriTorneo();
+                fxmlDestinazione = "/com/ingsw/easytournament/fxml/modalita/gironi_playoff.fxml";
+                cssDestinazione = "/com/ingsw/easytournament/css/modalita/gironi_playoff.css";
                 break;
             }
         }
+        SceneChanger.getInstance().changeModalityScene(fxmlDestinazione,cssDestinazione, button_avanti.getScene());
+
     }
 
-    private Torneo creaTorneo(){
-        String nomeTorneo = campo_nome_torneo.getText();
-        LocalDate date = campo_data.getValue();
-        int idModalita = campo_modalita.getSelectionModel().getSelectedIndex();
-        List<String> squadre = elencoSquadre.stream().toList();
-        int idUtente = SessioneUtente.getInstance().getUserId();
-
-        return new Torneo(idModalita,idUtente,nomeTorneo,date,squadre);
-    }
-
-    private void cambiaSchermata(String fxml, String css) {
-        try {
-            FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource(fxml));
-            Parent root = loader.load();
-
-            ModalitaController controller = loader.getController();
-            controller.setTorneo(creaTorneo());
-
-
-            Scene scene = button_avanti.getScene();
-            Stage stage = (javafx.stage.Stage) scene.getWindow();
-
-            scene.setRoot(root);
-
-            scene.getStylesheets().clear();
-            scene.getStylesheets().add(getClass().getResource(css).toExternalForm());
-
-            stage.sizeToScene();
-            stage.centerOnScreen();
-
-        } catch (java.io.IOException e) {
-            e.printStackTrace();
+    private void modificaParametriTorneo() {
+        if (torneoAttuale == null) {
+            torneoAttuale = new Torneo(campo_nome_torneo.getText(), campo_data.getValue(), campo_modalita.getSelectionModel().getSelectedIndex(), elencoSquadre);
+            SessioneCreazioneTorneo.getInstance().setBozzaTorneo(torneoAttuale);
+        } else {
+            torneoAttuale.setNome(campo_nome_torneo.getText());
+            torneoAttuale.setData(campo_data.getValue());
+            torneoAttuale.setIdModalità(campo_modalita.getSelectionModel().getSelectedIndex());
+            torneoAttuale.setSquadre(elencoSquadre);
         }
     }
 
