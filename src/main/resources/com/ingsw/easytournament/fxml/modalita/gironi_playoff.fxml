@@ -33,7 +33,7 @@
                               <Insets bottom="5.0" left="20.0" />
                           </VBox.margin>
                       </Label>
-                      <Spinner fx:id="spinner_vittoria">
+                      <Spinner fx:id="spinner_vittoria" editable="true">
                           <VBox.margin>
                               <Insets bottom="10.0" left="20.0" />
                           </VBox.margin>
@@ -47,7 +47,7 @@
                               <Insets bottom="5.0" left="20.0" />
                           </VBox.margin>
                       </Label>
-                      <Spinner fx:id="spinner_pareggio">
+                      <Spinner fx:id="spinner_pareggio" editable="true">
                           <VBox.margin>
                               <Insets bottom="10.0" left="20.0" />
                           </VBox.margin>
@@ -61,7 +61,7 @@
                               <Insets bottom="5.0" left="20.0" right="20.0" />
                           </VBox.margin>
                       </Label>
-                      <Spinner fx:id="spinner_sconfitta">
+                      <Spinner fx:id="spinner_sconfitta" editable="true">
                           <VBox.margin>
                               <Insets bottom="15.0" left="20.0" right="20.0" />
                           </VBox.margin>
@@ -79,7 +79,7 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Spinner fx:id="numero_gironi" />
+                  <Spinner fx:id="numero_gironi" editable="true" VBox.vgrow="ALWAYS" />
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="20.0" />
@@ -92,7 +92,7 @@
                         <Insets bottom="5.0" left="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Spinner fx:id="numero_squadre_girone">
+                  <Spinner fx:id="numero_squadre_girone" editable="true" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="10.0" left="20.0" />
                      </VBox.margin>
@@ -106,7 +106,7 @@
                         <Insets bottom="5.0" left="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Spinner fx:id="numero_vincitrici_girone">
+                  <Spinner fx:id="numero_vincitrici_girone" editable="true" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="15.0" left="20.0" right="20.0" />
                      </VBox.margin>
