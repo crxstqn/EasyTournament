@@ -4,13 +4,31 @@ import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
 import com.ingsw.easytournament.utils.SceneChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 
 public class RiepilogoController {
 
     @FXML
+    private Button button_crea_torneo;
+
+    @FXML
     private Button button_indietro;
+
+    @FXML
+    private Label label_descrizione;
+
+    @FXML
+    private Label label_titolo;
+
+    @FXML
+    private ListView<String> list_view_squadre;
+
+    @FXML
+    void creaTorneo(ActionEvent event) {
+
+    }
 
     @FXML
     void tornaIndietro(ActionEvent event) {
@@ -29,3 +47,7 @@ public class RiepilogoController {
     }
 
 }
+
+
+
+
