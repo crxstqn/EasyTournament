@@ -74,6 +74,7 @@ public class GironiPlayOffController{
         if ( 2*numeroGironi < numeroSquadre){
             mostraAlert("Il numero di gironi inserito non è valido per il numero di squadre inserito");
             return;
+
         }
 
         if (numeroGironi * numeroSquadre < SessioneCreazioneTorneo.getInstance().getBozzaTorneo().getSquadre().size()){
