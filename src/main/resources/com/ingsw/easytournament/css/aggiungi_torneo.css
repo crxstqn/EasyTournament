@@ -14,6 +14,12 @@
     -fx-font-weight: bold;
 }
 
+#label_squadre_inserite{
+    -fx-font-size: 13px;
+    -fx-text-fill: #6c757d;
+    -fx-font-weight: normal;
+}
+
 /* Campi di testo, DatePicker */
 .text-field, .date-picker {
     -fx-background-color: #f9f9f9;

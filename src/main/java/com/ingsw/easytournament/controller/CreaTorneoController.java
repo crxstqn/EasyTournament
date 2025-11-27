@@ -3,6 +3,8 @@ package com.ingsw.easytournament.controller;
 import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
 import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.SceneChanger;
+import javafx.beans.Observable;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -47,6 +49,9 @@ public class CreaTorneoController {
     private Label label_nome_torneo;
 
     @FXML
+    private Label label_squadre_inserite;
+
+    @FXML
     private ListView<String> list_view;
 
     private Torneo torneoAttuale;
@@ -56,6 +61,10 @@ public class CreaTorneoController {
         torneoAttuale = SessioneCreazioneTorneo.getInstance().getBozzaTorneo();
         campo_modalita.getItems().addAll("Girone all'italiana", "Eliminazione diretta ", "Gironi + Play-off");
         list_view.setItems(elencoSquadre);
+
+        label_squadre_inserite.textProperty().bind(
+                Bindings.format("Squadre inserite: %d", Bindings.size(elencoSquadre))
+        );
 
         // gestione squadre
         list_view.setCellFactory(param -> new ListCell<String>() {

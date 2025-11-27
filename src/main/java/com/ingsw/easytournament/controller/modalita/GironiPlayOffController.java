@@ -45,7 +45,8 @@ public class GironiPlayOffController{
     private Modalita bozzaModalita;
 
     public void initialize() {
-        bozzaModalita = SessioneCreazioneTorneo.getInstance().getBozzaTorneo().getModalita();
+        torneo = SessioneCreazioneTorneo.getInstance().getBozzaTorneo();
+        bozzaModalita = torneo.getModalita();
         spinner_vittoria.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, ((GironiPlayOff) bozzaModalita).getPuntiVittoria()));
         spinner_pareggio.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, ((GironiPlayOff) bozzaModalita).getPuntiPareggio()));
         spinner_sconfitta.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, ((GironiPlayOff) bozzaModalita).getPuntiSconfitta()));
@@ -54,7 +55,7 @@ public class GironiPlayOffController{
         scelta_finalina.setSelected(((GironiPlayOff) bozzaModalita).isFinalina());
 
         numero_gironi.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 100, ((GironiPlayOff) bozzaModalita).getNumeroGironi()));
-        numero_squadre_girone.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 100, ((GironiPlayOff) bozzaModalita).getNumSquadreGirone()));
+        numero_squadre_girone.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 100, (torneo.getSquadre().size())/2));
         numero_vincitrici_girone.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, ((GironiPlayOff) bozzaModalita).getVincitoriPerGirone()));
     }
 
