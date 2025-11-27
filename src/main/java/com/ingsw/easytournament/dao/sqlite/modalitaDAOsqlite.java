@@ -11,5 +11,8 @@ public class modalitaDAOsqlite implements modalitaDAO {
         this.conn = conn;
     }
 
-
+    @Override
+    public boolean creaModalita(String nome, int puntiVittoria, int puntiPareggio, int puntiSconfitta, boolean andataEritorno, boolean finalina) {
+        return false;
+    }
 }

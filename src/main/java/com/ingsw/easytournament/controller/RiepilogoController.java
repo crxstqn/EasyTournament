@@ -1,13 +1,17 @@
 package com.ingsw.easytournament.controller;
 
+import com.ingsw.easytournament.model.HomeModel;
 import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
 import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.SceneChanger;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
 public class RiepilogoController {
 
@@ -38,7 +42,25 @@ public class RiepilogoController {
     @FXML
     void creaTorneo(ActionEvent event) {
         this.torneo.inizializzaIncontri();
-        //salvo nel db;
+        //alert
+        Task<Boolean> taskCreazioneTorneo = new Task<>() {
+            @Override
+            protected Boolean call() throws Exception {
+                return HomeModel.creaTorneo(torneo);
+            }
+        };
+
+        taskCreazioneTorneo.setOnSucceeded(e -> {
+            boolean creato = taskCreazioneTorneo.getValue();
+            if (creato){
+                //chiudo finestra
+                Stage stage = ((Stage) button_crea_torneo.getScene().getWindow());
+                stage.close();
+            }
+            else {
+                //alert errore
+            }
+        });
 
     }
 

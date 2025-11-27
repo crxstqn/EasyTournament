@@ -13,4 +13,8 @@ public class HomeModel {
     public static boolean eliminaTorneo(int idTorneo) {
         return DatabaseConnessione.getInstance().getTorneoDAO().eliminaTorneo(SessioneUtente.getInstance().getUserId(), idTorneo);
     }
+
+    public static Boolean creaTorneo(Torneo torneo) {
+        return DatabaseConnessione.getInstance().getTorneoDAO().creaTorneo(torneo);
+    }
 }

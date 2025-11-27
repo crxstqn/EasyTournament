@@ -2,6 +2,7 @@ package com.ingsw.easytournament.dao.sqlite;
 
 import com.ingsw.easytournament.dao.torneoDAO;
 import com.ingsw.easytournament.model.Torneo;
+import com.ingsw.easytournament.utils.DatabaseConnessione;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -56,5 +57,10 @@ public class torneoDAOsqlite implements torneoDAO {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public boolean creaTorneo(Torneo torneo) {
+        return false;
     }
 }
