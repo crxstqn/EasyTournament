@@ -37,6 +37,8 @@ public class RiepilogoController {
 
     @FXML
     void creaTorneo(ActionEvent event) {
+        this.torneo.inizializzaIncontri();
+        //salvo nel db;
 
     }
 
