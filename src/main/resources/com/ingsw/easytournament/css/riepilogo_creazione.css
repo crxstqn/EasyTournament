@@ -1,0 +1,156 @@
+/* ==========================================================================
+   STILE PER LA SCHERMATA DI RIEPILOGO CREAZIONE TORNEO
+   ========================================================================== */
+
+/* --- Contenitore Principale --- */
+.root {
+    -fx-background-color: #f4f6f8; /* Grigio chiaro moderno */
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* ==========================================================================
+   TIPOGRAFIA E LABEL
+   ========================================================================== */
+
+/* --- Label Titolo Principale --- */
+#label_titolo {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50; /* Blu scuro elegante */
+}
+
+/* --- Label Generiche (es. "Squadre inserite:") --- */
+.label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #555555;
+    -fx-font-weight: bold;
+}
+
+/* --- CARD DESCRIZIONE TORNEO --- */
+/* Trasforma la label in un pannello riepilogativo elegante */
+#label_descrizione {
+    -fx-background-color: white;
+
+    /* Bordo e Arrotondamento */
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-border-color: transparent; /* Bordo gestito dall'ombra o leggero grigio se preferisci */
+
+    /* Ombra (Card Effect) */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 4);
+
+    /* Spaziatura interna */
+    -fx-padding: 20px;
+
+    /* Tipografia Migliorata */
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 16px;      /* Font più grande come richiesto */
+    -fx-text-fill: #333333;   /* Grigio scuro leggibile */
+    -fx-font-weight: normal;
+
+    /* Leggibilità testo multilinea */
+    -fx-line-spacing: 8px;    /* Più spazio tra le righe */
+}
+
+/* ==========================================================================
+   LIST VIEW (Lista Squadre)
+   ========================================================================== */
+
+#list_view_squadre {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #e0e0e0;
+    -fx-padding: 5px;
+
+    /* Leggera ombra interna/esterna per uniformità */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 5, 0, 0, 2);
+}
+
+/* Celle della lista */
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;     /* Celle più ariose */
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-border-color: transparent transparent #f0f0f0 transparent;
+}
+
+.list-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+/* Hover sulla cella */
+.list-cell:filled:hover {
+    -fx-background-color: #f0f7ff;
+    -fx-text-fill: #007bff;
+    -fx-background-radius: 6px;
+}
+
+/* Scrollbar nascosta/minimal */
+.list-view .scroll-bar:horizontal {
+    -fx-visible: false;
+    -fx-pref-height: 0;
+}
+
+.list-view .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8px;
+}
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #cccccc;
+    -fx-background-radius: 10px;
+}
+.list-view .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #999999;
+}
+
+/* ==========================================================================
+   BOTTONI
+   ========================================================================== */
+
+#button_crea_torneo,
+#button_indietro {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20px; /* Raggio per l'effetto circolare/pillola */
+    -fx-padding: 8px 25px;
+    -fx-cursor: hand;
+}
+
+/* --- Bottone "Avanti" (Primario - Blu) --- */
+/* NESSUNA MODIFICA QUI */
+#button_crea_torneo {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.30), 8, 0, 0, 4);
+}
+#button_crea_torneo:hover {
+    -fx-background-color: #0056b3;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.45), 12, 0, 0, 6);
+    -fx-translate-y: -2px;
+}
+
+#button_crea_torneo:pressed {
+    -fx-background-color: #004085;
+    -fx-effect: none;
+    -fx-translate-y: 0;
+}
+
+/* --- Bottone "Indietro" (Secondario - Grigio con Bordo Blu) --- */
+/* MODIFICATO */
+#button_indietro {
+    -fx-background-color: linear-gradient(to bottom, #d9dbde, #cfd1d4); /* Grigio leggermente più scuro */
+    -fx-text-fill: #2b2b2c;
+}
+
+#button_indietro:hover {
+    -fx-background-color: linear-gradient(to bottom, #e6e7e9, #d8d9db);
+    -fx-translate-y: -1px;
+}
+
+#button_indietro:pressed {
+    -fx-background-color: linear-gradient(to bottom, #c7c9cc, #bfc1c3);
+    -fx-translate-y: 0;
+}
