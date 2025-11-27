@@ -40,6 +40,7 @@ public class RiepilogoController {
 
     }
 
+
     @FXML
     void tornaIndietro(ActionEvent event) {
         int id_modalita = SessioneCreazioneTorneo.getInstance().getBozzaTorneo().getIdModalità();
