@@ -21,35 +21,70 @@
 
 /* --- Label Generiche (es. "Squadre inserite:") --- */
 .label {
-    -fx-font-size: 18px;
+    -fx-font-size: 17px;
     -fx-text-fill: #555555;
     -fx-font-weight: bold;
 }
 
-/* --- CARD DESCRIZIONE TORNEO --- */
-/* Trasforma la label in un pannello riepilogativo elegante */
-#label_descrizione {
-    -fx-background-color: white;
+/* ==========================================================================
+   SCROLL PANE (CARD DESCRIZIONE)
+   Questo diventa il contenitore "Card" rettangolare
+   ========================================================================== */
 
-    /* Bordo e Arrotondamento */
+.scroll-pane {
+    /* Stile Card */
+    -fx-background-color: white;
     -fx-background-radius: 15px;
     -fx-border-radius: 15px;
-    -fx-border-color: transparent; /* Bordo gestito dall'ombra o leggero grigio se preferisci */
 
-    /* Ombra (Card Effect) */
+    /* Rimuove i bordi di default del controllo JavaFX */
+    -fx-background-insets: 0;
+    -fx-padding: 20px; /* Spaziatura interna tra il bordo della card e il testo */
+
+    /* Ombra per dare profondità */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 4);
+}
 
-    /* Spaziatura interna */
-    -fx-padding: 20px;
+/* Il "viewport" è l'area visibile interna: deve essere trasparente per mostrare il bianco della card */
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
 
-    /* Tipografia Migliorata */
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-size: 16px;      /* Font più grande come richiesto */
+/* --- Label Descrizione (Testo Interno) --- */
+/* Ora è pulita, senza bordi, solo tipografia */
+#label_descrizione {
     -fx-text-fill: #333333;   /* Grigio scuro leggibile */
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 16px;      /* Font grande */
     -fx-font-weight: normal;
+    -fx-line-spacing: 6px;    /* Interlinea per leggibilità */
+    -fx-padding: 0;           /* Il padding lo gestisce la scroll pane */
+}
 
-    /* Leggibilità testo multilinea */
-    -fx-line-spacing: 8px;    /* Più spazio tra le righe */
+/* --- Stile Barra di Scorrimento (Scrollbar) --- */
+/* Minimal e coerente con le altre schermate */
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 10px;
+}
+.scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: #dcdcdc; /* Grigio chiaro */
+    -fx-background-radius: 10px;
+}
+.scroll-pane .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #bfbfbf; /* Grigio più scuro all'hover */
+}
+.scroll-pane .scroll-bar .increment-button,
+.scroll-pane .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: " ";
+    -fx-opacity: 0;
+}
+.scroll-pane .corner {
+    -fx-background-color: transparent;
 }
 
 /* ==========================================================================
@@ -63,17 +98,16 @@
     -fx-border-color: #e0e0e0;
     -fx-padding: 5px;
 
-    /* Leggera ombra interna/esterna per uniformità */
+    /* Leggera ombra */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 5, 0, 0, 2);
 }
 
-/* Celle della lista */
 .list-cell {
     -fx-background-color: transparent;
-    -fx-padding: 8px 12px;     /* Celle più ariose */
+    -fx-padding: 6px 10px;
     -fx-text-fill: #333333;
     -fx-font-size: 14px;
-    -fx-border-color: transparent transparent #f0f0f0 transparent;
+    -fx-border-color: transparent transparent #f4f4f4 transparent;
 }
 
 .list-cell:empty {
@@ -81,29 +115,25 @@
     -fx-border-color: transparent;
 }
 
-/* Hover sulla cella */
 .list-cell:filled:hover {
     -fx-background-color: #f0f7ff;
     -fx-text-fill: #007bff;
     -fx-background-radius: 6px;
 }
 
-/* Scrollbar nascosta/minimal */
-.list-view .scroll-bar:horizontal {
+/* Nasconde scrollbar orizzontale della lista */
+#list_view_squadre .scroll-bar:horizontal {
     -fx-visible: false;
     -fx-pref-height: 0;
 }
-
-.list-view .scroll-bar:vertical {
+/* Stile verticale uguale alla scroll pane principale */
+#list_view_squadre .scroll-bar:vertical {
     -fx-background-color: transparent;
     -fx-pref-width: 8px;
 }
-.list-view .scroll-bar:vertical .thumb {
+#list_view_squadre .scroll-bar:vertical .thumb {
     -fx-background-color: #cccccc;
     -fx-background-radius: 10px;
-}
-.list-view .scroll-bar:vertical .thumb:hover {
-    -fx-background-color: #999999;
 }
 
 /* ==========================================================================
@@ -126,6 +156,7 @@
     -fx-text-fill: white;
     -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.30), 8, 0, 0, 4);
 }
+
 #button_crea_torneo:hover {
     -fx-background-color: #0056b3;
     -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.45), 12, 0, 0, 6);

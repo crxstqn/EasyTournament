@@ -60,31 +60,45 @@ public class GironiPlayOffController{
 
     @FXML
     void mostraRiepilogo(ActionEvent event) {
-        String puntiVittoria = spinner_vittoria.getEditor().getText();
-        String puntiPareggio = spinner_pareggio.getEditor().getText();
-        String puntiSconfitta = spinner_sconfitta.getEditor().getText();
+        int puntiVittoria = spinner_vittoria.getValue();
+        int puntiPareggio = spinner_pareggio.getValue();
+        int puntiSconfitta = spinner_sconfitta.getValue();
         boolean andataEritorno = scelta_andata_ritorno.isSelected();
         boolean Finalina = scelta_finalina.isSelected();
 
-        String numeroGironi = numero_gironi.getEditor().getText();
-        String numeroSquadre = numero_squadre_girone.getEditor().getText();
-        String numeroVincitori = numero_vincitrici_girone.getEditor().getText();
+        int numeroGironi = numero_gironi.getValue();
+        int numeroSquadre = numero_squadre_girone.getValue();
+        int numeroVincitori = numero_vincitrici_girone.getValue();
 
         //controlliamo
-        //DA IMPLEMENTARE
+        if ( 2*numeroGironi < numeroSquadre){
+            mostraAlert("Il numero di gironi inserito non è valido per il numero di squadre inserito");
+            return;
+        }
+
+        if (numeroGironi * numeroSquadre < SessioneCreazioneTorneo.getInstance().getBozzaTorneo().getSquadre().size()){
+            mostraAlert("Non hai inserito tutte le squadre per il numero di gironi inserito");
+        }
+
+        int numeroVincitoriTotali = numeroGironi * numeroVincitori;
+        boolean èUnaPotenzaDi2 = (numeroVincitoriTotali > 0) && ((numeroVincitoriTotali & (numeroVincitoriTotali - 1)) == 0);
+        if (!èUnaPotenzaDi2){
+            mostraAlert("Il numero di squadre passanti per girone non è valido per il numero di gironi inserito");
+            return;
+        }
 
         //copiamo
         GironiPlayOff castModalita =  (GironiPlayOff) bozzaModalita;
-        castModalita.setPuntiVittoria(Integer.parseInt(puntiVittoria));
-        castModalita.setPuntiPareggio(Integer.parseInt(puntiPareggio));
-        castModalita.setPuntiSconfitta(Integer.parseInt(puntiSconfitta));
+        castModalita.setPuntiVittoria(puntiVittoria);
+        castModalita.setPuntiPareggio(puntiPareggio);
+        castModalita.setPuntiSconfitta(puntiSconfitta);
 
         castModalita.setAndataEritorno(andataEritorno);
         castModalita.setFinalina(Finalina);
 
-        castModalita.setNumeroGironi(Integer.parseInt(numeroGironi));
-        castModalita.setNumSquadreGirone(Integer.parseInt(numeroSquadre));
-        castModalita.setVincitoriPerGirone(Integer.parseInt(numeroVincitori));
+        castModalita.setNumeroGironi(numeroGironi);
+        castModalita.setNumSquadreGirone(numeroSquadre);
+        castModalita.setVincitoriPerGirone(numeroVincitori);
 
         SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/riepilogo_creazione.fxml", "/com/ingsw/easytournament/css/riepilogo_creazione.css", button_avanti.getScene());
     }
@@ -92,6 +106,15 @@ public class GironiPlayOffController{
     @FXML
     void tornaIndietro(ActionEvent event) {
         SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/aggiungi_torneo.fxml", "/com/ingsw/easytournament/css/aggiungi_torneo.css", button_indietro.getScene());
+    }
+
+    private void mostraAlert(String testoErrore) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setTitle("Attenzione");
+        alert.setGraphic(null);
+        alert.setContentText(testoErrore);
+        alert.showAndWait();
     }
 
 }

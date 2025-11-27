@@ -206,7 +206,7 @@ public class CreaTorneoController {
             //girone + eliminazione diretta
             case 2:
             {
-                if (numeroSquadre<4){
+                if (numeroSquadre<4 || numeroSquadre%2!=0){
                     mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
                     return;
                 }
