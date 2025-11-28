@@ -10,10 +10,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class RiepilogoController {
@@ -44,29 +41,29 @@ public class RiepilogoController {
 
     @FXML
     void creaTorneo(ActionEvent event) {
-        //alert
-        Task<Boolean> taskCreazioneTorneo = new Task<>() {
-            @Override
-            protected Boolean call() throws Exception {
-                return HomeModel.creaTorneo(torneo);
-            }
-        };
+        boolean outputUtente = mostraAlert("Sei sicuro di voler creare il torneo?", Alert.AlertType.CONFIRMATION);
+        if (outputUtente) {
+            Task<Boolean> taskCreazioneTorneo = new Task<>() {
+                @Override
+                protected Boolean call() throws Exception {
+                    return HomeModel.creaTorneo(torneo);
+                }
+            };
 
-        taskCreazioneTorneo.setOnSucceeded(e -> {
-            boolean creato = taskCreazioneTorneo.getValue();
-            if (creato){
-                //chiudo finestra
-                Stage stage = ((Stage) button_crea_torneo.getScene().getWindow());
-                stage.close();
-            }
-            else {
-                mostraAlert("Errore durante la creazione del torneo!");
-            }
-        });
+            taskCreazioneTorneo.setOnSucceeded(e -> {
+                boolean creato = taskCreazioneTorneo.getValue();
+                if (creato) {
+                    //chiudo finestra
+                    Stage stage = ((Stage) button_crea_torneo.getScene().getWindow());
+                    stage.close();
+                } else {
+                    mostraAlert("Errore durante la creazione del torneo!", Alert.AlertType.ERROR);
+                }
+            });
 
-        //avvio torneo
-        new Thread(taskCreazioneTorneo).start();
-
+            //avvio torneo
+            new Thread(taskCreazioneTorneo).start();
+        }
     }
 
 
@@ -86,13 +83,17 @@ public class RiepilogoController {
         }
     }
 
-    private void mostraAlert(String testoErrore) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    private boolean mostraAlert(String testoErrore, Alert.AlertType tipo) {
+        Alert alert = new Alert(tipo);
         alert.setHeaderText(null);
         alert.setTitle("Attenzione");
         alert.setGraphic(null);
         alert.setContentText(testoErrore);
         alert.showAndWait();
+        if (tipo == Alert.AlertType.CONFIRMATION) {
+            return alert.getResult() == ButtonType.OK;
+        }
+        return true;
     }
 
 }
