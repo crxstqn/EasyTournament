@@ -46,7 +46,7 @@
                   </Button>
                </children>
             </HBox>
-            <ScrollPane fx:id="scroll_pane" fitToWidth="true" VBox.vgrow="ALWAYS">
+            <ScrollPane fx:id="scroll_pane" fitToWidth="true" hbarPolicy="NEVER" pannable="true" VBox.vgrow="ALWAYS">
                <content>
                   <FlowPane fx:id="flow_pane" hgap="20.0" vgap="20.0">
                      <padding>

@@ -1,11 +1,7 @@
 package com.ingsw.easytournament.utils;
 
-import com.ingsw.easytournament.dao.modalitaDAO;
-import com.ingsw.easytournament.dao.sqlite.modalitaDAOsqlite;
-import com.ingsw.easytournament.dao.sqlite.torneoDAOsqlite;
-import com.ingsw.easytournament.dao.sqlite.utenteDAOsqlite;
-import com.ingsw.easytournament.dao.torneoDAO;
-import com.ingsw.easytournament.dao.utenteDAO;
+import com.ingsw.easytournament.dao.*;
+import com.ingsw.easytournament.dao.sqlite.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -52,10 +48,20 @@ public class DatabaseConnessione {
     public utenteDAO getUtenteDAO() {
         return new utenteDAOsqlite(getConnessione());
     }
+
     public torneoDAO getTorneoDAO() {
         return new torneoDAOsqlite(getConnessione());
     }
+
     public modalitaDAO getModalitaDAO() {
         return new modalitaDAOsqlite(getConnessione());
+    }
+
+    public squadraDAO getSquadraDAO() {
+        return new squadraDAOsqlite(getConnessione());
+    }
+
+    public incontroDAO getIncontroDAO(){
+        return new incontroDAOsqlite(getConnessione());
     }
 }

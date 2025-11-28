@@ -4,11 +4,13 @@ import com.ingsw.easytournament.model.HomeModel;
 import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
 import com.ingsw.easytournament.model.Squadra;
 import com.ingsw.easytournament.model.Torneo;
+import com.ingsw.easytournament.utils.DatabaseConnessione;
 import com.ingsw.easytournament.utils.SceneChanger;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -42,7 +44,6 @@ public class RiepilogoController {
 
     @FXML
     void creaTorneo(ActionEvent event) {
-        this.torneo.inizializzaIncontri();
         //alert
         Task<Boolean> taskCreazioneTorneo = new Task<>() {
             @Override
@@ -59,9 +60,12 @@ public class RiepilogoController {
                 stage.close();
             }
             else {
-                //alert errore
+                mostraAlert("Errore durante la creazione del torneo!");
             }
         });
+
+        //avvio torneo
+        new Thread(taskCreazioneTorneo).start();
 
     }
 
@@ -80,6 +84,15 @@ public class RiepilogoController {
         else if (id_modalita == 2) {
             SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/modalita/gironi_playoff.fxml", "/com/ingsw/easytournament/css/modalita/gironi_playoff.css", button_indietro.getScene());
         }
+    }
+
+    private void mostraAlert(String testoErrore) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setTitle("Attenzione");
+        alert.setGraphic(null);
+        alert.setContentText(testoErrore);
+        alert.showAndWait();
     }
 
 }

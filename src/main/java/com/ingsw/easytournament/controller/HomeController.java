@@ -6,10 +6,13 @@ import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.DatabaseConnessione;
 import com.ingsw.easytournament.utils.SceneChanger;
 import com.ingsw.easytournament.utils.SessioneUtente;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -57,6 +60,7 @@ public class HomeController {
     public void initialize(){
         caricaTornei();
         benvenuto_label.setText("Benvenuto,\n" + SessioneUtente.getInstance().getNome() + "!");
+
     }
 
     private void caricaTornei() {
@@ -81,6 +85,7 @@ public class HomeController {
 
                     flow_pane.getChildren().add(card);
                 }
+
             } catch (IOException exception) {
                 exception.printStackTrace();
             }
@@ -93,6 +98,8 @@ public class HomeController {
     void aggiungiTorneo(ActionEvent event) {
         SessioneCreazioneTorneo.getInstance().eliminaTorneo();
         SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/aggiungi_torneo.fxml","/com/ingsw/easytournament/css/aggiungi_torneo.css");
+        caricaTornei();
     }
+
 
 }

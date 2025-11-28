@@ -33,6 +33,7 @@ public class SceneChanger {
             Parent root = loader.load();
 
             Scene scene = mainStage.getScene();
+            scene.getStylesheets().clear();
             scene.getStylesheets().add(getClass().getResource(cssPath).toExternalForm());
 
             mainStage.setResizable(resizable);
@@ -56,6 +57,7 @@ public class SceneChanger {
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
+            scene.getStylesheets().clear();
             scene.getStylesheets().add(getClass().getResource(cssPath).toExternalForm());
 
             Stage stage = new Stage();

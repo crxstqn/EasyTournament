@@ -16,22 +16,24 @@ public class Torneo {
     private Map<Integer,List<Incontro>> incontri;
 
 
-    public Torneo(LocalDate data, int id, int id_utente, String nome, int m) {
+    public Torneo(LocalDate data, int id, int id_utente, String nome, int m, String confTorneo) {
         this.data = data;
         this.id = id;
         this.id_utente = id_utente;
         this.id_modalità = m;
         this.nome = nome;
+
+        configuraModalita(confTorneo);
     }
 
-    public Torneo(String nome, LocalDate data, int id_modalità, List<Squadra> squadre, String confTorneo) {
+    public Torneo(String nome, LocalDate data, int id_modalità, List<Squadra> squadre) {
         this.id_utente = SessioneUtente.getInstance().getUserId();
         this.nome = nome;
         this.data = data;
         this.squadre = squadre;
         this.id_modalità = id_modalità;
 
-        configuraModalita(confTorneo);
+        configuraModalita(null);
     }
 
     private void configuraModalita(String confTorneo) {
@@ -49,7 +51,9 @@ public class Torneo {
                 break;
             }
         }
-        this.modalita.setConfigurazione(confTorneo);
+        if (confTorneo != null && !confTorneo.isEmpty()) {
+            this.modalita.setConfigurazione(confTorneo);
+        }
     }
 
     public void inizializzaIncontri(){
@@ -104,11 +108,13 @@ public class Torneo {
 
             List<Squadra> squadraGirone = this.squadre.subList(start, end);
 
-            generaGironeItaliana(squadraGirone,g+1,andataEritorno);
+            generaGironeItaliana(squadraGirone,g+1, andataEritorno);
         }
     }
 
-    private void generaGironeItaliana(List<Squadra> squadre, int idGirone, boolean andataEritorno) {
+    private void generaGironeItaliana(List<Squadra> squadreDaCopiare, int idGirone, boolean andataEritorno) {
+        List<Squadra> squadre = new ArrayList<>(squadreDaCopiare);
+
         int numGiornate;
         if(squadre.size() % 2 != 0) {
             squadre.add(new Squadra(""));
@@ -118,7 +124,7 @@ public class Torneo {
             numGiornate *= 2;
         }
         for (int giornata= 1; giornata < numGiornate + 1; giornata++){
-            this.incontri.put(giornata, new ArrayList<>());
+            this.incontri.putIfAbsent(giornata, new ArrayList<>());
             for(int i = 0; i < squadre.size()/2; i++){
                 Squadra squadra1 = squadre.get(i);
                 Squadra squadra2 = squadre.get(squadre.size()-i-1);
@@ -128,6 +134,9 @@ public class Torneo {
                 }
                 this.incontri.get(giornata).add(new Incontro(this.id, squadra1,squadra2,idGirone));
             }
+            Squadra squadraRuotata = squadre.remove(squadre.size() - 1);
+            squadre.add(1, squadraRuotata);
+
         }
     }
 
@@ -170,7 +179,7 @@ public class Torneo {
 
     public void setIdModalità(int modalità) {
         this.id_modalità = modalità;
-        configuraModalita();
+        configuraModalita(null);
     }
 
     public String getNome() {
@@ -188,6 +197,16 @@ public class Torneo {
     public void setSquadre(List<Squadra> squadre) {
         this.squadre = squadre;
     }
+
+    public Map<Integer, List<Incontro>> getIncontri() {
+        return incontri;
+    }
+
+    public void setIncontri(Map<Integer, List<Incontro>> incontri) {
+        this.incontri = incontri;
+    }
+
+
 }
 
 

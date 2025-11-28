@@ -35,7 +35,9 @@ public class torneoDAOsqlite implements torneoDAO {
                 LocalDate data = LocalDate.parse(dataString);
                 int modalita = risultato.getInt(4);
                 int id_utente = risultato.getInt(5);
-                tornei.add(new Torneo(data,id,id_utente,nome,modalita));
+                String confTorneo = risultato.getString(6);
+                Torneo nuovoTorneo = new Torneo(data,id,id_utente,nome,modalita, confTorneo);
+                tornei.add(nuovoTorneo);
             }
             return tornei;
         } catch (SQLException e) {
@@ -61,6 +63,32 @@ public class torneoDAOsqlite implements torneoDAO {
 
     @Override
     public boolean creaTorneo(Torneo torneo) {
+        String query = "INSERT INTO torneo (nome, data, modalita, utente, configurazione) VALUES (?, ?, ?, ?, ?)";
+
+        try (PreparedStatement statement = conn.prepareStatement(query)){
+            statement.setString(1, torneo.getNome());
+            statement.setString(2, torneo.getData().toString());
+            statement.setInt(3, torneo.getIdModalità());
+            statement.setInt(4, torneo.getId_utente());
+            statement.setString(5, torneo.getModalita().getConfigurazione());
+
+            int esecuzione = statement.executeUpdate();
+
+            if (esecuzione > 0){
+                try(ResultSet rs = statement.getGeneratedKeys()){
+                    if (rs.next()) {
+                        torneo.setId(rs.getInt(1));
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            DatabaseConnessione.getInstance().getSquadraDAO().salvaSquadra(torneo.getId(), torneo.getSquadre());
+            return true;
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         return false;
     }
 }
