@@ -53,4 +53,24 @@ public class GironeItaliana extends Modalita{
         this.puntiVittoria = puntiVittoria;
     }
 
+    @Override
+    public String getConfigurazione() {
+        return puntiVittoria + ";" + puntiPareggio + ";" + puntiSconfitta +  ";" + andataEritorno;
+    }
+
+    @Override
+    public void setConfigurazione(String configurazione) {
+        if (configurazione!= null && !configurazione.isEmpty()) {
+            try {
+                String[] configurazioneSplit = configurazione.split(";");
+                this.puntiVittoria = Integer.parseInt(configurazioneSplit[0]);
+                this.puntiPareggio = Integer.parseInt(configurazioneSplit[1]);
+                this.puntiSconfitta = Integer.parseInt(configurazioneSplit[2]);
+                this.andataEritorno = Boolean.parseBoolean(configurazioneSplit[3]);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

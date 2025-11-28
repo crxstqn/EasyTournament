@@ -16,4 +16,8 @@ public abstract class Modalita {
     }
 
     public abstract String getDescrizione();
+
+    public abstract String getConfigurazione();
+
+    public abstract void setConfigurazione(String configurazione);
 }

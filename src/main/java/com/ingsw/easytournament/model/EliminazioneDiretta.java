@@ -23,4 +23,20 @@ public class EliminazioneDiretta extends Modalita{
     public void setFinalina(boolean finalina) {
         this.finalina = finalina;
     }
+
+    @Override
+    public String getConfigurazione() {
+        return String.valueOf(finalina);
+    }
+
+    @Override
+    public void setConfigurazione(String configurazione) {
+        if (configurazione != null && !configurazione.isEmpty()) {
+            try {
+                finalina = Boolean.parseBoolean(configurazione);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
 }

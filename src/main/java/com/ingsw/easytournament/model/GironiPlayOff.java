@@ -84,4 +84,28 @@ public class GironiPlayOff extends Modalita{
     public void setFinalina(boolean finalina) {
         this.finalina = finalina;
     }
+
+    @Override
+    public String getConfigurazione() {
+        return numeroGironi + ";" + numSquadreGirone+ ";" + vincitoriPerGirone + ";" + puntiVittoria + ";" + puntiPareggio + ";" + puntiSconfitta +  ";" + andataEritorno + ";" + finalina;
+    }
+
+    @Override
+    public void setConfigurazione(String configurazione) {
+        if (configurazione!= null && !configurazione.isEmpty()) {
+            try {
+                String[] configurazioneSplit = configurazione.split(";");
+                this.numeroGironi = Integer.parseInt(configurazioneSplit[0]);
+                this.numSquadreGirone = Integer.parseInt(configurazioneSplit[1]);
+                this.vincitoriPerGirone = Integer.parseInt(configurazioneSplit[2]);
+                this.puntiVittoria = Integer.parseInt(configurazioneSplit[3]);
+                this.puntiPareggio = Integer.parseInt(configurazioneSplit[4]);
+                this.puntiSconfitta = Integer.parseInt(configurazioneSplit[5]);
+                this.andataEritorno = Boolean.parseBoolean(configurazioneSplit[6]);
+                this.finalina = Boolean.parseBoolean(configurazioneSplit[7]);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

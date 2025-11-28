@@ -24,14 +24,14 @@ public class Torneo {
         this.nome = nome;
     }
 
-    public Torneo(String nome, LocalDate data, int id_modalità, List<String> squadre) {
+    public Torneo(String nome, LocalDate data, int id_modalità, List<String> squadre, String confTorneo) {
         this.id_utente = SessioneUtente.getInstance().getUserId();
         this.nome = nome;
         this.data = data;
         this.squadre = squadre;
         this.id_modalità = id_modalità;
 
-        configuraModalita();
+        configuraModalita(confTorneo);
     }
 
     private void configuraModalita(){
