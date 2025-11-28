@@ -12,7 +12,7 @@ public class Torneo {
     private int id_modalità;
     private int id_utente;
     private Modalita modalita;
-    private List<String> squadre;
+    private List<Squadra> squadre;
     private Map<Integer,List<Incontro>> incontri;
 
 
@@ -24,7 +24,7 @@ public class Torneo {
         this.nome = nome;
     }
 
-    public Torneo(String nome, LocalDate data, int id_modalità, List<String> squadre, String confTorneo) {
+    public Torneo(String nome, LocalDate data, int id_modalità, List<Squadra> squadre, String confTorneo) {
         this.id_utente = SessioneUtente.getInstance().getUserId();
         this.nome = nome;
         this.data = data;
@@ -34,7 +34,7 @@ public class Torneo {
         configuraModalita(confTorneo);
     }
 
-    private void configuraModalita(){
+    private void configuraModalita(String confTorneo) {
         switch (this.id_modalità){
             case 0: {
                 this.modalita = new GironeItaliana("Girone all'italiana");
@@ -49,6 +49,7 @@ public class Torneo {
                 break;
             }
         }
+        this.modalita.setConfigurazione(confTorneo);
     }
 
     public void inizializzaIncontri(){
@@ -101,16 +102,16 @@ public class Torneo {
             int start = g*numSquadreGirone;
             int end = start + numSquadreGirone;
 
-            List<String> squadraGirone = this.squadre.subList(start, end);
+            List<Squadra> squadraGirone = this.squadre.subList(start, end);
 
             generaGironeItaliana(squadraGirone,g+1,andataEritorno);
         }
     }
 
-    private void generaGironeItaliana(List<String> squadre, int idGirone, boolean andataEritorno) {
+    private void generaGironeItaliana(List<Squadra> squadre, int idGirone, boolean andataEritorno) {
         int numGiornate;
         if(squadre.size() % 2 != 0) {
-            squadre.add("");
+            squadre.add(new Squadra(""));
         }
         numGiornate = squadre.size()-1;
         if(andataEritorno){
@@ -119,8 +120,8 @@ public class Torneo {
         for (int giornata= 1; giornata < numGiornate + 1; giornata++){
             this.incontri.put(giornata, new ArrayList<>());
             for(int i = 0; i < squadre.size()/2; i++){
-                String squadra1 = squadre.get(i);
-                String squadra2 = squadre.get(squadre.size()-i-1);
+                Squadra squadra1 = squadre.get(i);
+                Squadra squadra2 = squadre.get(squadre.size()-i-1);
                 if (andataEritorno && giornata > numGiornate/2 ){
                     squadra1 = squadre.get(squadre.size()-i-1);
                     squadra2 = squadre.get(i);
@@ -180,11 +181,11 @@ public class Torneo {
         this.nome = nome;
     }
 
-    public List<String> getSquadre() {
+    public List<Squadra> getSquadre() {
         return squadre;
     }
 
-    public void setSquadre(List<String> squadre) {
+    public void setSquadre(List<Squadra> squadre) {
         this.squadre = squadre;
     }
 }
