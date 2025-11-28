@@ -1,6 +1,7 @@
 package com.ingsw.easytournament.controller;
 
 import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
+import com.ingsw.easytournament.model.Squadra;
 import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.SceneChanger;
 import javafx.beans.Observable;
@@ -52,10 +53,10 @@ public class CreaTorneoController {
     private Label label_squadre_inserite;
 
     @FXML
-    private ListView<String> list_view;
+    private ListView<Squadra> list_view;
 
     private Torneo torneoAttuale;
-    private final ObservableList<String> elencoSquadre = FXCollections.observableArrayList();
+    private final ObservableList<Squadra> elencoSquadre = FXCollections.observableArrayList();
 
     public void initialize(){
         torneoAttuale = SessioneCreazioneTorneo.getInstance().getBozzaTorneo();
@@ -67,7 +68,7 @@ public class CreaTorneoController {
         );
 
         // gestione squadre
-        list_view.setCellFactory(param -> new ListCell<String>() {
+        list_view.setCellFactory(param -> new ListCell<Squadra>() {
             private final Label labelNome = new Label();
             // 1. Creiamo una regione "vuota" invisibile che farà da molla
             private final Region spacer = new Region();
@@ -92,14 +93,14 @@ public class CreaTorneoController {
 
                 // AZIONE DEL BOTTONE ELIMINA (INVARIATO)
                 btnElimina.setOnAction(event -> {
-                    String squadraDaEliminare = getItem(); // Recupera il nome della squadra di questa riga
+                    Squadra squadraDaEliminare = getItem(); // Recupera il nome della squadra di questa riga
                     elencoSquadre.remove(squadraDaEliminare); // La rimuove dalla lista dati
                     // La ListView si aggiornerà automaticamente!
                 });
             }
 
             @Override
-            protected void updateItem(String item, boolean empty) {
+            protected void updateItem(Squadra item, boolean empty) {
                 super.updateItem(item, empty);
 
                 if (empty || item == null) {
@@ -110,7 +111,7 @@ public class CreaTorneoController {
                     setStyle("");
                 } else {
                     // Se c'è una squadra, configura la Label e mostra l'HBox personalizzato
-                    labelNome.setText(item);
+                    labelNome.setText(item.getNome());
                     setText(null); // Nascondiamo il testo standard della cella
                     setGraphic(rootHBox); // Mostriamo il nostro HBox
 
@@ -137,15 +138,15 @@ public class CreaTorneoController {
             return;
         }
 
-        for(String squadra : elencoSquadre){
-            if (squadra.equals(campoNomeSquadra)){
+        for(Squadra squadra : elencoSquadre){
+            if (squadra.getNome().equals(campoNomeSquadra)){
                 mostraAlert("Esiste già una squadra con questo nome!");
                 campo_squadra.clear();
                 return;
             }
         }
 
-        elencoSquadre.add(campoNomeSquadra);
+        elencoSquadre.add(new Squadra(campoNomeSquadra));
         campo_squadra.clear();
     }
 

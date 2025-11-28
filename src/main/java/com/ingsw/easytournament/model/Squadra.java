@@ -3,12 +3,17 @@ package com.ingsw.easytournament.model;
 public class Squadra {
     private int id;
     private String nome;
-    private String idTorneo;
+    private int idTorneo;
 
-    public Squadra(String nome, int id, String idTorneo) {
+    public Squadra(String nome, int id, int idTorneo) {
         this.nome = nome;
         this.id = id;
         this.idTorneo = idTorneo;
+    }
+
+    public Squadra(String nome) {
+        this.nome = nome;
+        this.id = -1;
     }
 
     public int getId() {
@@ -19,7 +24,7 @@ public class Squadra {
         this.id = id;
     }
 
-    public void setIdTorneo(String idTorneo) {
+    public void setIdTorneo(int idTorneo) {
         this.idTorneo = idTorneo;
     }
 
@@ -31,7 +36,12 @@ public class Squadra {
         return nome;
     }
 
-    public String getIdTorneo() {
+    public int getIdTorneo() {
         return idTorneo;
+    }
+
+    @Override
+    public String toString() {
+        return getNome();
     }
 }

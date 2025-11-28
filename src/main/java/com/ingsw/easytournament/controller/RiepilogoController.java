@@ -2,6 +2,7 @@ package com.ingsw.easytournament.controller;
 
 import com.ingsw.easytournament.model.HomeModel;
 import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
+import com.ingsw.easytournament.model.Squadra;
 import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.SceneChanger;
 import javafx.concurrent.Task;
@@ -28,7 +29,7 @@ public class RiepilogoController {
     private Label label_titolo;
 
     @FXML
-    private ListView<String> list_view_squadre;
+    private ListView<Squadra> list_view_squadre;
 
     private Torneo torneo;
 

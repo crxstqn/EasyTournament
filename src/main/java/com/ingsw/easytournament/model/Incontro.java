@@ -3,13 +3,13 @@ package com.ingsw.easytournament.model;
 public class Incontro {
     private int id;
     private int idTorneo;
-    private String squadra1;
-    private String squadra2;
+    private Squadra squadra1;
+    private Squadra squadra2;
     private int punteggioSquadra1;
     private int punteggioSquadra2;
     private int gruppo;
 
-    public Incontro(int idTorneo, String squadra1, String squadra2, int gruppo) {
+    public Incontro(int idTorneo, Squadra squadra1, Squadra squadra2, int gruppo) {
         this.idTorneo = idTorneo;
         this.punteggioSquadra1 = 0;
         this.punteggioSquadra2 = 0;
@@ -50,19 +50,19 @@ public class Incontro {
         this.punteggioSquadra2 = punteggioSquadra2;
     }
 
-    public String getSquadra1() {
+    public Squadra getSquadra1() {
         return squadra1;
     }
 
-    public void setSquadra1(String squadra1) {
+    public void setSquadra1(Squadra squadra1) {
         this.squadra1 = squadra1;
     }
 
-    public String getSquadra2() {
+    public Squadra getSquadra2() {
         return squadra2;
     }
 
-    public void setSquadra2(String squadra2) {
+    public void setSquadra2(Squadra squadra2) {
         this.squadra2 = squadra2;
     }
 
