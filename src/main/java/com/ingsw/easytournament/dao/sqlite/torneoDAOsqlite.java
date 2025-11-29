@@ -1,6 +1,8 @@
 package com.ingsw.easytournament.dao.sqlite;
 
 import com.ingsw.easytournament.dao.torneoDAO;
+import com.ingsw.easytournament.model.Incontro;
+import com.ingsw.easytournament.model.Squadra;
 import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.DatabaseConnessione;
 
@@ -12,6 +14,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class torneoDAOsqlite implements torneoDAO {
     Connection conn;
@@ -37,6 +40,13 @@ public class torneoDAOsqlite implements torneoDAO {
                 int id_utente = risultato.getInt(5);
                 String confTorneo = risultato.getString(6);
                 Torneo nuovoTorneo = new Torneo(data,id,id_utente,nome,modalita, confTorneo);
+
+                List<Squadra> squadre = DatabaseConnessione.getInstance().getSquadraDAO().getSquadreDaTorneo(nuovoTorneo.getId());
+                nuovoTorneo.setSquadre(squadre);
+
+                Map<Integer,List<Incontro>> incontri = DatabaseConnessione.getInstance().getIncontroDAO().getIncontriDaTorneo(nuovoTorneo);
+                nuovoTorneo.setIncontri(incontri);
+
                 tornei.add(nuovoTorneo);
             }
             return tornei;

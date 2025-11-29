@@ -9,6 +9,16 @@ public class Incontro {
     private int punteggioSquadra2;
     private int gruppo;
 
+    public Incontro(int idTorneo, int gruppo, int id, int punteggioSquadra1, int punteggioSquadra2, Squadra squadra1, Squadra squadra2) {
+        this.idTorneo = idTorneo;
+        this.gruppo = gruppo;
+        this.id = id;
+        this.punteggioSquadra1 = punteggioSquadra1;
+        this.punteggioSquadra2 = punteggioSquadra2;
+        this.squadra1 = squadra1;
+        this.squadra2 = squadra2;
+    }
+
     public Incontro(int idTorneo, Squadra squadra1, Squadra squadra2, int gruppo) {
         this.idTorneo = idTorneo;
         this.punteggioSquadra1 = 0;

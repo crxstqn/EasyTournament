@@ -4,7 +4,6 @@ import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
 import com.ingsw.easytournament.model.Squadra;
 import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.SceneChanger;
-import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -197,7 +196,7 @@ public class CreaTorneoController {
                     return;
                 }
                 modificaParametriTorneo();
-                fxmlDestinazione = "/com/ingsw/easytournament/fxml/modalita/girone_all_italiana.fxml";
+                fxmlDestinazione = "/com/ingsw/easytournament/fxml/creazione_modalita/girone_all_italiana.fxml";
                 break;
             }
 
@@ -209,7 +208,7 @@ public class CreaTorneoController {
                     return;
                 }
                 modificaParametriTorneo();
-                fxmlDestinazione = "/com/ingsw/easytournament/fxml/modalita/eliminazione_diretta.fxml";
+                fxmlDestinazione = "/com/ingsw/easytournament/fxml/creazione_modalita/eliminazione_diretta.fxml";
                 break;
             }
 
@@ -221,7 +220,7 @@ public class CreaTorneoController {
                     return;
                 }
                 modificaParametriTorneo();
-                fxmlDestinazione = "/com/ingsw/easytournament/fxml/modalita/gironi_playoff.fxml";
+                fxmlDestinazione = "/com/ingsw/easytournament/fxml/creazione_modalita/gironi_playoff.fxml";
                 break;
             }
         }

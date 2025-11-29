@@ -4,12 +4,10 @@ import com.ingsw.easytournament.model.HomeModel;
 import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
 import com.ingsw.easytournament.model.Squadra;
 import com.ingsw.easytournament.model.Torneo;
-import com.ingsw.easytournament.utils.DatabaseConnessione;
 import com.ingsw.easytournament.utils.SceneChanger;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
@@ -71,15 +69,15 @@ public class RiepilogoController {
     void tornaIndietro(ActionEvent event) {
         int id_modalita = SessioneCreazioneTorneo.getInstance().getBozzaTorneo().getIdModalità();
         if (id_modalita == 0) {
-            SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/modalita/girone_all_italiana.fxml", "/com/ingsw/easytournament/css/modalita/girone_all_italiana.css", button_indietro.getScene());
+            SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/creazione_modalita/girone_all_italiana.fxml", "/com/ingsw/easytournament/css/modalita/girone_all_italiana.css", button_indietro.getScene());
         }
 
         else if (id_modalita == 1) {
-            SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/modalita/eliminazione_diretta.fxml", "/com/ingsw/easytournament/css/modalita/eliminazione_diretta.css", button_indietro.getScene());
+            SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/creazione_modalita/eliminazione_diretta.fxml", "/com/ingsw/easytournament/css/modalita/eliminazione_diretta.css", button_indietro.getScene());
         }
 
         else if (id_modalita == 2) {
-            SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/modalita/gironi_playoff.fxml", "/com/ingsw/easytournament/css/modalita/gironi_playoff.css", button_indietro.getScene());
+            SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/creazione_modalita/gironi_playoff.fxml", "/com/ingsw/easytournament/css/modalita/gironi_playoff.css", button_indietro.getScene());
         }
     }
 

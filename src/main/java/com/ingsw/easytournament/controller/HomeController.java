@@ -81,7 +81,7 @@ public class HomeController {
                     Parent card = loader.load();
 
                     CardTorneoController cardController = loader.getController();
-                    cardController.setParametri(t.getNome(), t.getData(), t.getId());
+                    cardController.setTorneo(t);
 
                     flow_pane.getChildren().add(card);
                 }
