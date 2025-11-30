@@ -63,7 +63,7 @@ public class HomeController {
 
     }
 
-    private void caricaTornei() {
+    public void caricaTornei() {
         Task<List<Torneo>> caricatoreTornei = new Task<>(){
 
             @Override
@@ -82,6 +82,7 @@ public class HomeController {
 
                     CardTorneoController cardController = loader.getController();
                     cardController.setTorneo(t);
+                    cardController.setHomeController(this);
 
                     flow_pane.getChildren().add(card);
                 }

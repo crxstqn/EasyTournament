@@ -10,9 +10,9 @@ public class HomeModel {
         return DatabaseConnessione.getInstance().getTorneoDAO().getTorneiByUtente(SessioneUtente.getInstance().getUserId());
     }
 
-//    public static boolean eliminaTorneo(int idTorneo) {
-//        return DatabaseConnessione.getInstance().getTorneoDAO().eliminaTorneo(SessioneUtente.getInstance().getUserId(), idTorneo);
-//    }
+    public static boolean eliminaTorneo(int idTorneo) {
+        return DatabaseConnessione.getInstance().getTorneoDAO().eliminaTorneo(idTorneo);
+    }
 
     public static Boolean creaTorneo(Torneo torneo) {
         boolean salvataggioTorneo =  DatabaseConnessione.getInstance().getTorneoDAO().creaTorneo(torneo);

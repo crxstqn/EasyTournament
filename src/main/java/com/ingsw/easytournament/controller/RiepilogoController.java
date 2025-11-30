@@ -69,15 +69,15 @@ public class RiepilogoController {
     void tornaIndietro(ActionEvent event) {
         int id_modalita = SessioneCreazioneTorneo.getInstance().getBozzaTorneo().getIdModalità();
         if (id_modalita == 0) {
-            SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/creazione_modalita/girone_all_italiana.fxml", "/com/ingsw/easytournament/css/modalita/girone_all_italiana.css", button_indietro.getScene());
+            SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/creazione_modalita/girone_all_italiana.fxml", "/com/ingsw/easytournament/css/modalita_torneo.css", button_indietro.getScene());
         }
 
         else if (id_modalita == 1) {
-            SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/creazione_modalita/eliminazione_diretta.fxml", "/com/ingsw/easytournament/css/modalita/eliminazione_diretta.css", button_indietro.getScene());
+            SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/creazione_modalita/eliminazione_diretta.fxml", "/com/ingsw/easytournament/css/modalita_torneo.css", button_indietro.getScene());
         }
 
         else if (id_modalita == 2) {
-            SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/creazione_modalita/gironi_playoff.fxml", "/com/ingsw/easytournament/css/modalita/gironi_playoff.css", button_indietro.getScene());
+            SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/creazione_modalita/gironi_playoff.fxml", "/com/ingsw/easytournament/css/modalita_torneo.css", button_indietro.getScene());
         }
     }
 
