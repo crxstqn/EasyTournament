@@ -53,10 +53,6 @@ public class DatabaseConnessione {
         return new torneoDAOsqlite(getConnessione());
     }
 
-    public modalitaDAO getModalitaDAO() {
-        return new modalitaDAOsqlite(getConnessione());
-    }
-
     public squadraDAO getSquadraDAO() {
         return new squadraDAOsqlite(getConnessione());
     }

@@ -12,4 +12,6 @@ public interface incontroDAO {
     public boolean salvaIncontro(int idTorneo, Map<Integer, List<Incontro>> incontri);
 
     Map<Integer, List<Incontro>> getIncontriDaTorneo(Torneo torneo);
+
+    boolean aggiornaIncontro(Incontro incontro);
 }

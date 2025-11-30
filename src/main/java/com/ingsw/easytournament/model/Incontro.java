@@ -83,4 +83,13 @@ public class Incontro {
     public void setGruppo(int gruppo) {
         this.gruppo = gruppo;
     }
+
+    @Override
+    public String toString() {
+        if (getPunteggioSquadra1() == -1 || getPunteggioSquadra2() == -1) {
+            return getSquadra1().getNome() + "  -  " + getSquadra2().getNome();
+        } else {
+            return getSquadra1().getNome() + "  " + getPunteggioSquadra1() + "  -  " + getPunteggioSquadra2() + "  " + getSquadra2().getNome();
+        }
+    }
 }

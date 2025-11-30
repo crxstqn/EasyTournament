@@ -14,64 +14,88 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingsw.easytournament.controller.visualizza_torneo.GironeItalianaController">
-   <top>
-      <HBox prefHeight="50.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="button_indietro" mnemonicParsing="false" onAction="#tornaHome" text="indietro" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets left="20.0" top="10.0" />
-               </HBox.margin></Button>
-            <Region HBox.hgrow="ALWAYS" />
-            <Label fx:id="label_titolo" text="Titolo" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin></Label>
-            <Region HBox.hgrow="ALWAYS" />
-            <Label fx:id="label_stato" text="Stato" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets right="20.0" top="10.0" />
-               </HBox.margin></Label>
-         </children>
-      </HBox>
-   </top>
-   <center>
-      <TabPane tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-          <Tab fx:id="sezione_incontri" text="Incontri">
-               <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <ChoiceBox fx:id="selettore_giornate">
-                           <VBox.margin>
-                              <Insets left="10.0" top="5.0" />
-                           </VBox.margin>
-                        </ChoiceBox>
-                        <ListView fx:id="list_view_incontri" VBox.vgrow="ALWAYS">
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </VBox.margin>
-                        </ListView>
-                     </children>
-                  </VBox>
-               </content>
-          </Tab>
-          <Tab fx:id="sezione_classifica" text="Classifica">
-               <content>
-                  <TableView fx:id="table_view_classifica">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="Pos" />
-                      <TableColumn prefWidth="75.0" text="Squadra" />
-                        <TableColumn prefWidth="75.0" text="PT" />
-                        <TableColumn prefWidth="75.0" text="G" />
-                        <TableColumn prefWidth="75.0" text="V" />
-                        <TableColumn prefWidth="75.0" text="N" />
-                        <TableColumn prefWidth="75.0" text="S" />
-                    </columns>
-                  </TableView>
-               </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-   </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="root" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingsw.easytournament.controller.visualizza_torneo.GironeItalianaController">
+
+    <top>
+        <HBox fx:id="hbox_top" alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0" styleClass="top-bar" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="button_indietro" mnemonicParsing="false" onAction="#tornaHome" styleClass="button-indietro" text="← Indietro">
+                    <HBox.margin>
+                        <Insets left="20.0" />
+                    </HBox.margin>
+                </Button>
+                <Region HBox.hgrow="ALWAYS" />
+
+                <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label fx:id="label_titolo" styleClass="label-titolo" text="Nome Torneo" />
+                        <Label fx:id="label_stato" styleClass="label-stato" text="Stato: In Corso" />
+                    </children>
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS" />
+                <Region prefWidth="80.0" />
+            </children>
+            <padding>
+                <Insets bottom="5.0" top="5.0" />
+            </padding>
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane styleClass="modern-tab-pane" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+
+                <Tab text="CALENDARIO">
+                    <content>
+                        <VBox spacing="15.0" styleClass="tab-content-container">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <children>
+                                        <Label styleClass="label-piccola" text="Seleziona Giornata:" />
+                                        <ChoiceBox fx:id="selettore_giornate" prefWidth="150.0" />
+                                    </children>
+                                </HBox>
+
+                                <ListView fx:id="list_view_incontri" styleClass="lista-incontri" VBox.vgrow="ALWAYS" />
+
+                                <Button fx:id="aggiorna_risultato_button" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#aggiornaRisultato" styleClass="button-primario" text="Aggiorna incontro selezionato" />
+                            </children>
+                            <padding>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </padding>
+                        </VBox>
+                    </content>
+                </Tab>
+
+                <Tab text="CLASSIFICA">
+                    <content>
+                        <VBox styleClass="tab-content-container">
+                            <children>
+                                <TableView fx:id="table_view_classifica" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="col_posizione" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" styleClass="col-center" text="#" />
+                                        <TableColumn fx:id="col_squadre" minWidth="150.0" prefWidth="200.0" styleClass="col-left" text="Squadra" />
+                                        <TableColumn fx:id="col_punti" maxWidth="60.0" minWidth="50.0" prefWidth="60.0" styleClass="col-center, col-bold" text="PT" />
+                                        <TableColumn fx:id="col_partite_giocate" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" styleClass="col-center" text="G" />
+                                        <TableColumn fx:id="col_vittorie" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" styleClass="col-center" text="V" />
+                                        <TableColumn fx:id="col_pareggi" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" styleClass="col-center" text="N" />
+                                        <TableColumn fx:id="col_sconfitte" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" styleClass="col-center" text="S" />
+                                    </columns>
+
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+                            </children>
+                            <padding>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </padding>
+                        </VBox>
+                    </content>
+                </Tab>
+
+            </tabs>
+        </TabPane>
+    </center>
 </BorderPane>

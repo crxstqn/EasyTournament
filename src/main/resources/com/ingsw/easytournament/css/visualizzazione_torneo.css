@@ -1,0 +1,241 @@
+/* ==============================================
+   1. GLOBAL & LAYOUT
+   ============================================== */
+.root {
+    -fx-background-color: #f4f6f8; /* Grigio chiaro moderno */
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* Barra superiore bianca con ombra */
+.top-bar {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);
+    -fx-padding: 10px;
+}
+
+.label-titolo {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.label-stato {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6c757d; /* Grigio info */
+    -fx-background-color: #e9ecef;
+    -fx-background-radius: 10px;
+    -fx-padding: 2px 8px;
+}
+
+.label-piccola {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #555;
+}
+
+/* ==============================================
+   2. TAB PANE MODERNO (NO FOCUS BORDERS)
+   ============================================== */
+
+/* Rimuove il colore blu/grigio standard del focus su tutto il pannello */
+.modern-tab-pane,
+.modern-tab-pane .tab,
+.modern-tab-pane .tab-header-area {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* Rimuove specificamente il bordo tratteggiato interno sul focus */
+.modern-tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator,
+.modern-tab-pane .tab:focused > .tab-container > .focus-indicator {
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-opacity: 0;
+}
+
+/* Rimuove sfondo grigio header */
+.modern-tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+/* Stile Tab Base */
+.modern-tab-pane .tab {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-border-width: 0 0 3 0; /* Solo bordo sotto */
+    -fx-border-color: transparent;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+
+/* Tab Selezionata (Linea Blu sotto) */
+.modern-tab-pane .tab:selected {
+    -fx-border-color: #007bff;
+}
+
+/* Testo Tab */
+.modern-tab-pane .tab .tab-label {
+    -fx-text-fill: #6c757d;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+/* Testo Tab Selezionata */
+.modern-tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #007bff;
+}
+
+/* Contenitore interno dei tab */
+.tab-content-container {
+    -fx-background-color: #f4f6f8;
+}
+
+/* ==============================================
+   3. TABLE VIEW (CLASSIFICA)
+   ============================================== */
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #e0e0e0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 1);
+}
+
+/* Intestazione colonne */
+.table-view .column-header-background {
+    -fx-background-color: white;
+    -fx-background-radius: 8px 8px 0 0;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #e0e0e0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-size: 40px; /* Altezza header */
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #555;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+
+/* Celle */
+.table-cell {
+    -fx-border-color: transparent;
+    -fx-padding: 10px;
+    -fx-text-fill: #333;
+    -fx-font-size: 13px;
+}
+
+/* Righe alterne (Zebra striping) */
+.table-row-cell:odd {
+    -fx-background-color: #fcfcfc;
+}
+.table-row-cell:even {
+    -fx-background-color: white;
+}
+
+/* Riga selezionata */
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: #e7f1ff;
+    -fx-table-cell-border-color: transparent;
+}
+.table-view .table-row-cell:filled:selected .table-cell {
+    -fx-text-fill: #007bff;
+}
+
+/* Allineamento specifico colonne (usato nell'FXML) */
+.col-center { -fx-alignment: CENTER; }
+.col-left   { -fx-alignment: CENTER-LEFT; }
+.col-bold   { -fx-font-weight: bold; }
+
+/* Nascondi la colonna extra vuota */
+.table-view .filler {
+    -fx-background-color: transparent;
+}
+
+/* ==============================================
+   4. LIST VIEW (INCONTRI) - FONT PIÙ GRANDE
+   ============================================== */
+.lista-incontri {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #e0e0e0;
+    -fx-padding: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 1);
+}
+
+.lista-incontri .list-cell {
+    /* FONT AUMENTATO */
+    -fx-font-size: 15px;
+    -fx-padding: 12px 15px; /* Più spaziatura */
+
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #f0f0f0 transparent; /* Riga separatrice */
+    -fx-text-fill: #333;
+}
+
+.lista-incontri .list-cell:filled:hover {
+    -fx-background-color: #f8f9fa;
+    -fx-cursor: hand;
+}
+
+.lista-incontri .list-cell:filled:selected {
+    -fx-background-color: #e7f1ff;
+    -fx-text-fill: #007bff;
+}
+
+/* Nasconde le celle vuote */
+.lista-incontri .list-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+/* ==============================================
+   5. INPUT & BUTTONS
+   ============================================== */
+.choice-box {
+    -fx-background-color: white;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 5px;
+}
+
+.button-primario {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+    /* Aumenta il padding verticale a 15px (prima era 8px) */
+    -fx-padding: 10px 20px;
+
+    /* Opzionale: aumenta leggermente il font per bilanciare */
+    -fx-font-size: 16px;
+}
+.button-primario:hover {
+    -fx-background-color: #0056b3;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.45), 12, 0, 0, 6);
+    -fx-translate-y: -2px;
+}
+
+.button-primario:pressed {
+    -fx-background-color: #004085;
+    -fx-effect: none;
+    -fx-translate-y: 0;
+}
+
+.button-indietro {
+    -fx-background-color: transparent;
+    -fx-text-fill: #6c757d;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+.button-indietro:hover {
+    -fx-background-color: #e9ecef;
+    -fx-text-fill: #333;
+}
