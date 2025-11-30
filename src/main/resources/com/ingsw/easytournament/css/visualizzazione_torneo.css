@@ -210,7 +210,7 @@
     -fx-background-radius: 20px;
     -fx-cursor: hand;
     /* Aumenta il padding verticale a 15px (prima era 8px) */
-    -fx-padding: 10px 20px;
+    -fx-padding: 8px 14px;
 
     /* Opzionale: aumenta leggermente il font per bilanciare */
     -fx-font-size: 16px;
