@@ -207,3 +207,23 @@
 .btn_card_elimina {
     -fx-transition: all 0.3s ease;
 }
+
+.button-logout {
+    -fx-background-color: transparent;
+    -fx-text-fill: #6c757d; /* Grigio scuro come il testo benvenuto */
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-padding: 6px 16px;
+    -fx-transition: all 0.2s ease;
+}
+
+.button-logout:hover {
+    -fx-background-color: #ffebee; /* Sfondo rosso chiarissimo */
+    -fx-text-fill: #dc3545; /* Rosso */
+    -fx-border-color: #dc3545;
+    -fx-effect: dropshadow(three-pass-box, rgba(220, 53, 69, 0.2), 5, 0, 0, 1);
+}

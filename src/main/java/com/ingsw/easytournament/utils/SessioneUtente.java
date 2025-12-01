@@ -18,6 +18,10 @@ public class SessioneUtente {
         return instance;
     }
 
+    public static void pulisciSessione() {
+        instance = null;
+    }
+
     public void setUserId(int userId) {
         this.userId = userId;
         this.nome = DatabaseConnessione.getInstance().getUtenteDAO().getUtenteNome(userId);

@@ -38,6 +38,14 @@ public class SceneChanger {
 
             mainStage.setResizable(resizable);
 
+            // magari da rivedere
+            if (fxmlPath.equals("/com/ingsw/easytournament/fxml/login.fxml")) {
+                mainStage.centerOnScreen();
+                mainStage.setWidth(870);
+                mainStage.setHeight(765);
+                mainStage.centerOnScreen();
+            }
+
             if (scene == null) {
                 scene = new Scene(root);
                 mainStage.setScene(scene);
@@ -85,6 +93,7 @@ public class SceneChanger {
 
             vecchiaScena.getStylesheets().clear();
             vecchiaScena.getStylesheets().add(getClass().getResource(css).toExternalForm());
+
 
             stage.sizeToScene();
             stage.centerOnScreen();

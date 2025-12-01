@@ -1,5 +1,7 @@
 package com.ingsw.easytournament.controller;
 
+import com.ingsw.easytournament.EasyTournamentApplication;
+import com.ingsw.easytournament.Main;
 import com.ingsw.easytournament.model.HomeModel;
 import com.ingsw.easytournament.model.SessioneTorneo;
 import com.ingsw.easytournament.model.Torneo;
@@ -95,6 +97,12 @@ public class HomeController {
         SessioneTorneo.getInstance().eliminaTorneo();
         SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/aggiungi_torneo.fxml","/com/ingsw/easytournament/css/aggiungi_torneo.css", "Aggiungi Torneo");
         caricaTornei();
+    }
+
+    @FXML
+    void logout(ActionEvent event) {
+        SessioneUtente.getInstance().pulisciSessione();
+        SceneChanger.getInstance().changeScene("/com/ingsw/easytournament/fxml/login.fxml", "/com/ingsw/easytournament/css/login_reg.css",false);
     }
 
 

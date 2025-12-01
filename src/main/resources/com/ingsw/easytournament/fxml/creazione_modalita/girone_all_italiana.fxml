@@ -8,22 +8,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingsw.easytournament.controller.modalita.GironeItalianaController">
    <children>
-      <HBox>
-         <children>
-            <Label fx:id="label_titolo" text="Modifica parametri">
-               <HBox.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-               </HBox.margin>
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
       <VBox>
          <children>
             <Label text="Punti per vittoria">
@@ -37,6 +24,9 @@
                </VBox.margin>
             </Spinner>
          </children>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
       </VBox>
       <VBox layoutX="10.0" layoutY="27.0">
          <children>

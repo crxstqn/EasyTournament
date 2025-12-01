@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.geom.Arc2D;
 import java.io.IOException;
 
 public class EasyTournamentApplication extends Application {
@@ -23,6 +24,10 @@ public class EasyTournamentApplication extends Application {
 
         stage.setTitle("EasyTournament");
         stage.setScene(scene);
+
+        //dimensioni minime
+        stage.setMinWidth(870);
+        stage.setMinHeight(765);
         stage.show();
     }
 

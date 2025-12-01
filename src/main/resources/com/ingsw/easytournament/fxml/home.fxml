@@ -25,6 +25,11 @@
                   <Insets bottom="20.0" right="70.0" top="30.0" />
                </HBox.margin>
             </Label>
+             <Button fx:id="bottone_logout" mnemonicParsing="false" onAction="#logout" styleClass="button-logout" text="Logout">
+                 <HBox.margin>
+                     <Insets bottom="20.0" right="20.0" top="30.0" />
+                 </HBox.margin>
+             </Button>
          </children>
       </HBox>
    </top>

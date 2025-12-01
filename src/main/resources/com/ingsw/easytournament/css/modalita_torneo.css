@@ -1,216 +1,208 @@
 /* ==========================================================================
-   STILE UNIVERSALE PER LE SCHERMATE DI CREAZIONE TORNEO (MODALITÀ)
-   Basato su aggiungi_torneo.css per coerenza visiva.
+   STILE PREMIUM - CREAZIONE TORNEO (MODALITÀ)
+   Allineato con home.css e login_reg.css
    ========================================================================== */
 
 /* --- Contenitore Principale --- */
 .root {
-    /* Riprende lo sfondo e il font globale */
-    -fx-background-color: #f4f6f8; /* Grigio chiaro moderno */
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    /* Gradiente sottile per coerenza con il resto dell'app */
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #f8f9fa);
+    -fx-font-family: "Segoe UI", "Roboto", Helvetica, Arial, sans-serif;
 }
 
-.choice-box {
-    -fx-background-color: #f9f9f9;
-    -fx-border-color: #dcdcdc;
+/* ==========================================================================
+   TIPOGRAFIA
+   ========================================================================== */
+
+/* --- Titolo Principale della Schermata --- */
+#label_titolo {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;   /* Blu scuro elegante */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 2, 0, 0, 1);
+    -fx-padding: 0 0 10px 0;
+}
+
+/* --- Label Descrittive (es. "Punti vittoria") --- */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #555555;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 5px 0;
+}
+
+/* ==========================================================================
+   INPUT FIELDS (ChoiceBox, Spinner, ecc.)
+   Stile unificato "Premium Input"
+   ========================================================================== */
+
+.choice-box, .spinner {
+    -fx-background-color: #f1f3f5; /* Sfondo grigio chiarissimo */
+    -fx-border-color: #dee2e6;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
-    -fx-padding: 0 10px;
-    -fx-min-height: 38px;
-    -fx-max-height: 38px;
-    -fx-font-size: 13px;
+    -fx-padding: 0 8px;
+
+    /* Altezza confortevole (Touch-friendly feel) */
+    -fx-min-height: 40px;
+    -fx-max-height: 40px;
+
+    -fx-font-size: 14px;
     -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 2, 0, 0, 1);
+    -fx-transition: all 0.2s ease-in-out;
 }
 
-.choice-box:focused, .choice-box:showing {
+/* Stato Focus / Hover */
+.choice-box:focused, .choice-box:hover,
+.spinner:focused, .spinner:hover {
     -fx-background-color: white;
     -fx-border-color: #007bff;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 5, 0, 0, 0);
+    -fx-border-width: 1.5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 8, 0, 0, 2);
 }
 
-.choice-box .open-button { -fx-background-color: transparent; }
-.choice-box .arrow { -fx-background-color: #666666; }
-.choice-box:hover .arrow { -fx-background-color: #007bff; }
+/* --- Specifico per CHOICE BOX --- */
+.choice-box .open-button {
+    -fx-background-color: transparent;
+}
+.choice-box .arrow {
+    -fx-background-color: #6c757d;
+    -fx-padding: 3px;
+}
+.choice-box:hover .arrow {
+    -fx-background-color: #007bff;
+}
 
+/* Dropdown Menu */
 .choice-box .context-menu {
     -fx-background-color: white;
     -fx-background-radius: 8px;
     -fx-border-radius: 8px;
     -fx-border-color: #e0e0e0;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 3);
-    -fx-padding: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 12, 0, 0, 4);
+    -fx-padding: 4px;
+}
+.choice-box .menu-item {
+    -fx-padding: 8px 12px;
+    -fx-background-radius: 5px;
+}
+.choice-box .menu-item:hover {
+    -fx-background-color: #e7f3ff;
 }
 
-.choice-box .menu-item { -fx-padding: 8px 12px; -fx-background-radius: 5px; }
-.choice-box .menu-item:focused, .choice-box .menu-item:hover { -fx-background-color: #f0f7ff; }
-.choice-box .menu-item .label { -fx-text-fill: #333333; -fx-font-weight: normal; }
-
-/* ==========================================================================
-   TIPOGRAFIA E ETICHETTE
-   ========================================================================== */
-
-/* --- Label standard (es. "Punti Vittoria", "Finale 3°/4° posto") --- */
-/* --- Label secondarie (descrizioni, campi, opzioni) --- */
-.label {
-    -fx-font-size: 14px;
-    -fx-text-fill: #555555; /* Grigio scuro ma soft */
-    -fx-font-weight: bold;
-    -fx-padding: 0 0 6px 0;  /* Leggermente più respiro */
-}
-
-/* --- Label principale (titolo della schermata) --- */
-#label_titolo {
-    -fx-font-size: 25px;      /* Dimensione maggiore */
-    -fx-font-weight: bold;    /* Coerente con iOS */
-    -fx-text-fill: #2c3e50;   /* Blu-grigio elegante */
-}
-
-/* --- Titoli di Sezione (se ne aggiungerai) --- */
-.section-title {
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #2c3e50; /* Blu scuro/Grigio */
-    -fx-padding: 0 0 15px 0;
-}
-
-
-/* ==========================================================================
-   CONTROLLI DI INPUT (Spinner, CheckBox, ecc.)
-   ========================================================================== */
-
-/* Stile base per tutti i campi di input per uniformarli */
-.text-field, .spinner, .choice-box, .date-picker {
-    -fx-background-color: white;
-    -fx-border-color: #ced4da; /* Grigio bordo standard */
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
-    -fx-padding: 8px; /* Padding interno confortevole */
-    -fx-font-size: 14px;
-    -fx-text-fill: #495057;
-    /* Transizione morbida per l'hover/focus */
-    -fx-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-/* --- SPINNER (più piccoli e arrotondati) --- */
+/* --- Specifico per SPINNER --- */
 .spinner {
-    -fx-background-color: white;
-    -fx-border-color: #ced4da;
-    -fx-border-radius: 15px;
-    -fx-background-radius: 15px;
-    -fx-padding: 0;           /* Riduce spazi interni */
-    -fx-pref-height: 32px;    /* Altezza più compatta */
-    -fx-pref-width: 110px;    /* Larghezza più piccola */
-    -fx-font-size: 13px;
+    -fx-padding: 0; /* Reset padding per allineare i bottoni interni */
 }
 
-/* Contenitore del campo numerico dentro allo spinner */
 .spinner .text-field {
-    -fx-background-radius: 15px 0 0 15px;
-    -fx-border-radius: 15px 0 0 15px;
-    -fx-padding: 6px;
+    -fx-background-color: transparent;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 0 0 10px;
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
 }
 
-/* Frecce più piccole, stile “pill” */
+/* Frecce Spinner */
 .spinner .increment-arrow-button,
 .spinner .decrement-arrow-button {
     -fx-background-color: transparent;
-    -fx-background-radius: 0 15px 15px 0;
-    -fx-padding: 6px 8px;
     -fx-cursor: hand;
+    -fx-padding: 8px;
 }
-
 .spinner .increment-arrow-button:hover,
 .spinner .decrement-arrow-button:hover {
-    -fx-background-color: #f1f3f5;
+    -fx-background-color: rgba(0,123,255,0.1);
 }
-
-/* Icone frecce più sobrie */
-.spinner .increment-arrow,
-.spinner .decrement-arrow {
+.spinner .increment-arrow, .spinner .decrement-arrow {
     -fx-background-color: #6c757d;
 }
+.spinner:hover .increment-arrow, .spinner:hover .decrement-arrow {
+    -fx-background-color: #007bff;
+}
 
-
-/* --- CHECKBOX (Specifico per Eliminazione Diretta e Gironi) --- */
+/* ==========================================================================
+   CHECKBOX (Stile Moderno)
+   ========================================================================== */
 .check-box {
     -fx-font-size: 14px;
     -fx-text-fill: #495057;
     -fx-cursor: hand;
-    -fx-padding: 5px 0; /* Un po' di aria sopra e sotto */
+    -fx-padding: 8px 0;
 }
 
-/* La scatolina del checkbox */
+/* La scatola */
 .check-box .box {
     -fx-background-color: white;
-    -fx-border-color: #ced4da;
-    -fx-border-radius: 3px;
-    /* Ombra leggera quando non selezionato */
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 2, 0, 0, 1);
-    /* Transizione per l'hover */
-    -fx-transition: background-color 0.2s, border-color 0.2s;
+    -fx-border-color: #adb5bd;
+    -fx-border-radius: 4px;
+    -fx-border-width: 1.5px;
+    -fx-background-insets: 0;
+    -fx-padding: 3px;
+    -fx-transition: all 0.2s;
 }
 
-/* Hover sulla scatolina */
-.check-box:hover .box {
-    -fx-border-color: #007bff; /* Bordo blu all'hover */
-}
-
-/* Quando è selezionato (checked) */
 .check-box:selected .box {
-    -fx-background-color: #007bff; /* Sfondo blu */
+    -fx-background-color: #007bff;
     -fx-border-color: #007bff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.3), 5, 0, 0, 1);
 }
 
-/* La spunta (il "mark") */
 .check-box:selected .mark {
-    -fx-background-color: white; /* Spunta bianca */
-    -fx-shape: "M0,4 L3,7 L9,1 L8,0 L3,5 L1,3 Z"; /* Forma spunta pulita */
-    -fx-scale-shape: false; /* Non deformare la spunta */
+    -fx-background-color: white;
+    -fx-shape: "M0,4 L3,7 L9,1 L8,0 L3,5 L1,3 Z";
+    -fx-scale-shape: true;
 }
 
-/* --- Stili comuni ai bottoni --- */
+/* ==========================================================================
+   BOTTONI (Coerenti con Home.css)
+   ========================================================================== */
+
 #button_avanti,
 #button_indietro {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-background-radius: 20px; /* Raggio per l'effetto circolare/pillola */
-    -fx-padding: 8px 25px;
+    -fx-background-radius: 20px;
+    -fx-padding: 8px 24px;
     -fx-cursor: hand;
+    -fx-transition: all 0.2s ease;
 }
 
-/* --- Bottone "Avanti" (Primario - Blu) --- */
-/* NESSUNA MODIFICA QUI */
+/* --- Bottone Avanti (Primario) --- */
 #button_avanti {
-    -fx-background-color: #007bff;
+    -fx-background-color: linear-gradient(to bottom, #007bff, #0056b3);
     -fx-text-fill: white;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.30), 8, 0, 0, 4);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.30), 8, 0, 0, 3);
 }
 
 #button_avanti:hover {
-    -fx-background-color: #0056b3;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.45), 12, 0, 0, 6);
+    -fx-background-color: linear-gradient(to bottom, #0056b3, #004085);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.5), 12, 0, 0, 5);
     -fx-translate-y: -2px;
 }
 
 #button_avanti:pressed {
     -fx-background-color: #004085;
-    -fx-effect: none;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 4, 0, 0, 1);
     -fx-translate-y: 0;
 }
 
-/* --- Bottone "Indietro" (Secondario - Grigio con Bordo Blu) --- */
-/* MODIFICATO */
+/* --- Bottone Indietro (Secondario Ghost) --- */
 #button_indietro {
-    -fx-background-color: linear-gradient(to bottom, #d9dbde, #cfd1d4); /* Grigio leggermente più scuro */
-    -fx-text-fill: #2b2b2c;
+    -fx-background-color: white;
+    -fx-text-fill: #6c757d;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 20px;
+    -fx-border-width: 1px;
 }
 
 #button_indietro:hover {
-    -fx-background-color: linear-gradient(to bottom, #e6e7e9, #d8d9db);
-    -fx-translate-y: -1px;
+    -fx-background-color: #f8f9fa;
+    -fx-text-fill: #495057;
+    -fx-border-color: #adb5bd;
 }
 
 #button_indietro:pressed {
-    -fx-background-color: linear-gradient(to bottom, #c7c9cc, #bfc1c3);
-    -fx-translate-y: 0;
+    -fx-background-color: #e9ecef;
 }
