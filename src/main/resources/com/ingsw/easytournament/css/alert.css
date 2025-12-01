@@ -1,0 +1,71 @@
+/* Container principale dell'Alert (Simile alle tue Card) */
+.dialog-pane {
+    -fx-background-color: white;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 4); /* Ombra leggera */
+    -fx-padding: 10px;
+}
+
+/* Rimuove lo sfondo grigio di default dell'header */
+.dialog-pane .header-panel {
+    -fx-background-color: transparent;
+}
+
+/* Titolo (Header) - Stile simile a #label_nome_torneo */
+.dialog-pane .header-panel .label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50; /* Il tuo blu scuro */
+}
+
+/* Testo del contenuto - Stile simile alle tue label standard */
+.dialog-pane .content .label {
+    -fx-text-fill: #555555;
+    -fx-wrap-text: true;
+}
+
+/* Nasconde l'icona grafica di default se vuoi un look più pulito (opzionale) */
+/* .dialog-pane .graphic-container { -fx-padding: 0; -fx-background-color: transparent; } */
+
+.button-bar .button {
+    -fx-background-radius: 5px;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+}
+
+/* 1. STILE DI DEFAULT (BLU - Per Info, Successo, Conferme non distruttive) */
+.button-bar .button:default {
+    -fx-background-color: #007bff; /* Il tuo Blu Primario */
+    -fx-text-fill: white;
+}
+
+.button-bar .button:default:hover {
+    -fx-background-color: #0056b3;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 123, 255, 0.3), 5, 0, 0, 1);
+}
+
+/* 2. STILE "PERICOLO" (ROSSO - Solo per eliminazioni)
+   Questa regola si applica SOLO se aggiungi la classe "danger-alert" al dialog */
+.danger-alert .button-bar .button:default {
+    -fx-background-color: #dc3545; /* Rosso */
+}
+
+.danger-alert .button-bar .button:default:hover {
+    -fx-background-color: #c82333;
+    -fx-effect: dropshadow(three-pass-box, rgba(220, 53, 69, 0.3), 5, 0, 0, 1);
+}
+
+/* Bottone Annulla (Cancel) - Rimane uguale */
+.button-bar .button:cancel {
+    -fx-background-color: white;
+    -fx-text-fill: #555555;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+}
+
+.button-bar .button:cancel:hover {
+    -fx-background-color: #f2f2f2;
+}

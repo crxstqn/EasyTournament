@@ -87,6 +87,10 @@ public class RiepilogoController {
         alert.setTitle("Attenzione");
         alert.setGraphic(null);
         alert.setContentText(testoErrore);
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add("/com/ingsw/easytournament/css/alert.css");
+
         alert.showAndWait();
         if (tipo == Alert.AlertType.CONFIRMATION) {
             return alert.getResult() == ButtonType.OK;

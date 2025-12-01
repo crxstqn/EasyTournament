@@ -10,10 +10,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -114,9 +111,16 @@ public class CardTorneoController {
 
     private Optional<ButtonType> chiediConfermaEliminazione(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(null);
+        alert.setGraphic(null);
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add("/com/ingsw/easytournament/css/alert.css");
+        dialogPane.getStyleClass().add("danger-alert");
+
         alert.setTitle("Conferma Eliminazione");
         alert.setHeaderText("Stai per eliminare il torneo: " + torneo.getNome());
-        alert.setContentText("Sei sicuro? Questa azione è irreversibile.");
+        alert.setContentText("Sei sicuro? Questa azione è irreversibile");
         return alert.showAndWait();
     }
 }

@@ -74,13 +74,13 @@
                             <children>
                                 <TableView fx:id="table_view_classifica" VBox.vgrow="ALWAYS">
                                     <columns>
-                                        <TableColumn fx:id="col_posizione" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" styleClass="col-center" text="#" />
-                                        <TableColumn fx:id="col_squadre" minWidth="150.0" prefWidth="200.0" styleClass="col-left" text="Squadra" />
-                                        <TableColumn fx:id="col_punti" maxWidth="60.0" minWidth="50.0" prefWidth="60.0" styleClass="col-center, col-bold" text="PT" />
-                                        <TableColumn fx:id="col_partite_giocate" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" styleClass="col-center" text="G" />
-                                        <TableColumn fx:id="col_vittorie" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" styleClass="col-center" text="V" />
-                                        <TableColumn fx:id="col_pareggi" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" styleClass="col-center" text="N" />
-                                        <TableColumn fx:id="col_sconfitte" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" styleClass="col-center" text="S" />
+                                        <TableColumn fx:id="col_posizione" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" sortable="false" styleClass="col-center" text="#" />
+                                        <TableColumn fx:id="col_squadre" minWidth="150.0" prefWidth="200.0" sortable="false" styleClass="col-left" text="Squadra" />
+                                        <TableColumn fx:id="col_punti" maxWidth="60.0" minWidth="50.0" prefWidth="60.0" sortType="DESCENDING" sortable="false" styleClass="col-center, col-bold" text="PT" />
+                                        <TableColumn fx:id="col_partite_giocate" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" sortable="false" styleClass="col-center" text="G" />
+                                        <TableColumn fx:id="col_vittorie" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" sortable="false" styleClass="col-center" text="V" />
+                                        <TableColumn fx:id="col_pareggi" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" sortable="false" styleClass="col-center" text="N" />
+                                        <TableColumn fx:id="col_sconfitte" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" sortable="false" styleClass="col-center" text="S" />
                                     </columns>
 
                                     <columnResizePolicy>

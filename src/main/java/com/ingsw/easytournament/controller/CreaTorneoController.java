@@ -245,6 +245,10 @@ public class CreaTorneoController {
         alert.setHeaderText(null);
         alert.setTitle("Attenzione");
         alert.setGraphic(null);
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add("/com/ingsw/easytournament/css/alert.css");
+
         alert.setContentText(testoErrore);
         alert.showAndWait();
     }

@@ -224,6 +224,8 @@ public class GironeItalianaController {
         alert.setTitle("Attenzione");
         alert.setGraphic(null);
         alert.setContentText(testoErrore);
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add("/com/ingsw/easytournament/css/alert.css");
         alert.showAndWait();
     }
 
