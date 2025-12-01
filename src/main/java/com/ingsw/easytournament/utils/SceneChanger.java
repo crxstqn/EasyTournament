@@ -51,7 +51,7 @@ public class SceneChanger {
         }
     }
 
-    public void createModalityStage(String fxmlPath, String cssPath) {
+    public void createModalityStage(String fxmlPath, String cssPath, String titolo) {
         try {
             FXMLLoader loader = new FXMLLoader(SceneChanger.class.getResource(fxmlPath));
             Parent root = loader.load();
@@ -64,7 +64,7 @@ public class SceneChanger {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
 
-            stage.setTitle("Aggiungi Torneo");
+            stage.setTitle(titolo);
             stage.setScene(scene);
             stage.showAndWait();
 

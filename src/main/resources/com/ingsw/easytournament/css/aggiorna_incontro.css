@@ -1,0 +1,90 @@
+/* ==============================================
+   STILE PER LA FINESTRA DI AGGIORNAMENTO RISULTATO
+   ============================================== */
+
+.root {
+    -fx-background-color: white;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    /* Un leggero bordo per definire la finestra se è un dialog */
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+}
+
+/* --- Titolo "Aggiorna incontro" --- */
+#label_titolo {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50; /* Blu scuro/Grigio */
+    -fx-padding: 10px;
+}
+
+/* --- Nomi delle Squadre --- */
+#label_squadra_1,
+#label_squadra2 {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+/* Label del trattino "-" tra i punteggi */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #555555;
+}
+
+/* --- Spinner dei Punteggi --- */
+.spinner {
+    -fx-background-color: white;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 0;
+    -fx-pref-height: 40px;  /* Più alti per essere cliccati facilmente */
+    -fx-pref-width: 80px;   /* Più larghi */
+    -fx-font-size: 16px;    /* Numeri più grandi */
+    -fx-alignment: CENTER;
+}
+
+/* Campo di testo dentro lo spinner */
+.spinner .text-field {
+    -fx-background-color: transparent;
+    -fx-alignment: CENTER; /* Centra il numero */
+    -fx-font-weight: bold;
+}
+
+/* Frecce dello spinner */
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-padding: 8px;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+/* --- Bottone "Aggiorna risultato" --- */
+#button_raggiorna_risultato {
+    -fx-background-color: #007bff; /* Blu primario */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 20px; /* Pillola */
+    -fx-padding: 8px 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.30), 8, 0, 0, 4);
+}
+
+#button_raggiorna_risultato:hover {
+    -fx-background-color: #0056b3; /* Blu più scuro */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.45), 12, 0, 0, 6);
+    -fx-translate-y: -2px;
+}
+
+#button_raggiorna_risultato:pressed {
+    -fx-background-color: #004085;
+    -fx-effect: none;
+    -fx-translate-y: 0;
+}

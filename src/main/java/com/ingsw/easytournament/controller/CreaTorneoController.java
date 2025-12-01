@@ -1,6 +1,6 @@
 package com.ingsw.easytournament.controller;
 
-import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
+import com.ingsw.easytournament.model.SessioneTorneo;
 import com.ingsw.easytournament.model.Squadra;
 import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.SceneChanger;
@@ -58,7 +58,7 @@ public class CreaTorneoController {
     private final ObservableList<Squadra> elencoSquadre = FXCollections.observableArrayList();
 
     public void initialize(){
-        torneoAttuale = SessioneCreazioneTorneo.getInstance().getBozzaTorneo();
+        torneoAttuale = SessioneTorneo.getInstance().getBozzaTorneo();
         campo_modalita.getItems().addAll("Girone all'italiana", "Eliminazione diretta ", "Gironi + Play-off");
         list_view.setItems(elencoSquadre);
 
@@ -231,7 +231,7 @@ public class CreaTorneoController {
     private void modificaParametriTorneo() {
         if (torneoAttuale == null) {
             torneoAttuale = new Torneo(campo_nome_torneo.getText(), campo_data.getValue(), campo_modalita.getSelectionModel().getSelectedIndex(), elencoSquadre);
-            SessioneCreazioneTorneo.getInstance().setBozzaTorneo(torneoAttuale);
+            SessioneTorneo.getInstance().setBozzaTorneo(torneoAttuale);
         } else {
             torneoAttuale.setNome(campo_nome_torneo.getText());
             torneoAttuale.setData(campo_data.getValue());

@@ -45,7 +45,7 @@ public class GironiPlayOffController{
     private Modalita bozzaModalita;
 
     public void initialize() {
-        torneo = SessioneCreazioneTorneo.getInstance().getBozzaTorneo();
+        torneo = SessioneTorneo.getInstance().getBozzaTorneo();
         bozzaModalita = torneo.getModalita();
         spinner_vittoria.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, ((GironiPlayOff) bozzaModalita).getPuntiVittoria()));
         spinner_pareggio.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, ((GironiPlayOff) bozzaModalita).getPuntiPareggio()));
@@ -78,7 +78,7 @@ public class GironiPlayOffController{
 
         }
 
-        if (numeroGironi * numeroSquadre < SessioneCreazioneTorneo.getInstance().getBozzaTorneo().getSquadre().size()){
+        if (numeroGironi * numeroSquadre < SessioneTorneo.getInstance().getBozzaTorneo().getSquadre().size()){
             mostraAlert("Non hai inserito tutte le squadre per il numero di gironi inserito");
         }
 

@@ -7,11 +7,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -72,7 +68,7 @@ public class GironeItalianaController {
     private Map<Integer, int[]> statistiche = new HashMap<>();
 
     public void initialize(){
-        this.torneo = SessioneCreazioneTorneo.getInstance().getBozzaTorneo();
+        this.torneo = SessioneTorneo.getInstance().getBozzaTorneo();
         this.label_titolo.setText(torneo.getNome());
         boolean torneoIniziato = (this.torneo.getData().isBefore(LocalDate.now()) || this.torneo.getData().isEqual(LocalDate.now()));
         if (torneoIniziato){
@@ -129,7 +125,7 @@ public class GironeItalianaController {
         else {
             SessioneAggiornamentoIncontro.getInstance().pulisciSessione();
             SessioneAggiornamentoIncontro.getInstance().setIncontro(incontro);
-            SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/visualizza_torneo/aggiorna_incontro.fxml","/com/ingsw/easytournament/css/aggiorna_incontro.css");
+            SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/visualizza_torneo/aggiorna_incontro.fxml","/com/ingsw/easytournament/css/aggiorna_incontro.css", null);
         }
         calcolaAggiornaClassifica();
         aggiornaListaIncontri(selettore_giornate.getValue());

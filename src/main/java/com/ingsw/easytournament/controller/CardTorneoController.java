@@ -1,22 +1,18 @@
 package com.ingsw.easytournament.controller;
 
 import com.ingsw.easytournament.model.HomeModel;
-import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
+import com.ingsw.easytournament.model.SessioneTorneo;
 import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.SceneChanger;
-import com.ingsw.easytournament.utils.SessioneUtente;
 import javafx.animation.FadeTransition;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.Optional;
 
 public class CardTorneoController {
@@ -89,8 +85,8 @@ public class CardTorneoController {
             case 2: fxmlDestinazione = "/com/ingsw/easytournament/fxml/visualizza_torneo/gironi_playoff.fxml"; break;
         }
 
-        SessioneCreazioneTorneo.getInstance().eliminaTorneo();
-        SessioneCreazioneTorneo.getInstance().setBozzaTorneo(this.torneo);
+        SessioneTorneo.getInstance().eliminaTorneo();
+        SessioneTorneo.getInstance().setBozzaTorneo(this.torneo);
 
         SceneChanger.getInstance().changeScene(fxmlDestinazione,cssDestinazione,true);
     }

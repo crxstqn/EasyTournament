@@ -1,7 +1,7 @@
 package com.ingsw.easytournament.controller;
 
 import com.ingsw.easytournament.model.HomeModel;
-import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
+import com.ingsw.easytournament.model.SessioneTorneo;
 import com.ingsw.easytournament.model.Squadra;
 import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.SceneChanger;
@@ -31,7 +31,7 @@ public class RiepilogoController {
     private Torneo torneo;
 
     public void initialize(){
-        this.torneo = SessioneCreazioneTorneo.getInstance().getBozzaTorneo();
+        this.torneo = SessioneTorneo.getInstance().getBozzaTorneo();
         this.list_view_squadre.setEditable(false);
         label_descrizione.setText(this.torneo.getDescrizione());
         list_view_squadre.getItems().addAll(this.torneo.getSquadre());
@@ -67,7 +67,7 @@ public class RiepilogoController {
 
     @FXML
     void tornaIndietro(ActionEvent event) {
-        int id_modalita = SessioneCreazioneTorneo.getInstance().getBozzaTorneo().getIdModalità();
+        int id_modalita = SessioneTorneo.getInstance().getBozzaTorneo().getIdModalità();
         if (id_modalita == 0) {
             SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/creazione_modalita/girone_all_italiana.fxml", "/com/ingsw/easytournament/css/modalita_torneo.css", button_indietro.getScene());
         }

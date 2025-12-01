@@ -2,12 +2,10 @@ package com.ingsw.easytournament.controller.modalita;
 
 import com.ingsw.easytournament.model.GironeItaliana;
 import com.ingsw.easytournament.model.Modalita;
-import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
-import com.ingsw.easytournament.model.Torneo;
+import com.ingsw.easytournament.model.SessioneTorneo;
 import com.ingsw.easytournament.utils.SceneChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 
 public class GironeItalianaController{
@@ -35,7 +33,7 @@ public class GironeItalianaController{
     private Modalita bozzaModalita;
 
     public void initialize() {
-        bozzaModalita = SessioneCreazioneTorneo.getInstance().getBozzaTorneo().getModalita();
+        bozzaModalita = SessioneTorneo.getInstance().getBozzaTorneo().getModalita();
         spinner_vittoria.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, ((GironeItaliana) bozzaModalita).getPuntiVittoria()));
         spinner_pareggio.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, ((GironeItaliana) bozzaModalita).getPuntiPareggio()));
         spinner_sconfitta.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, ((GironeItaliana) bozzaModalita).getPuntiSconfitta()));

@@ -1,14 +1,14 @@
 package com.ingsw.easytournament.model;
 
-public class SessioneCreazioneTorneo {
+public class SessioneTorneo {
     private Torneo bozzaTorneo;
-    private static SessioneCreazioneTorneo instance;
+    private static SessioneTorneo instance;
 
-    private SessioneCreazioneTorneo() {};
+    private SessioneTorneo() {};
 
-    public static SessioneCreazioneTorneo getInstance() {
+    public static SessioneTorneo getInstance() {
         if (instance == null) {
-            instance = new SessioneCreazioneTorneo();
+            instance = new SessioneTorneo();
         }
         return instance;
     }

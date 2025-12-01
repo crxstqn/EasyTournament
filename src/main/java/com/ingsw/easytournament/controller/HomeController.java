@@ -1,18 +1,14 @@
 package com.ingsw.easytournament.controller;
 
 import com.ingsw.easytournament.model.HomeModel;
-import com.ingsw.easytournament.model.SessioneCreazioneTorneo;
+import com.ingsw.easytournament.model.SessioneTorneo;
 import com.ingsw.easytournament.model.Torneo;
-import com.ingsw.easytournament.utils.DatabaseConnessione;
 import com.ingsw.easytournament.utils.SceneChanger;
 import com.ingsw.easytournament.utils.SessioneUtente;
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,9 +17,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import javax.smartcardio.Card;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomeController {
@@ -97,8 +91,8 @@ public class HomeController {
 
     @FXML
     void aggiungiTorneo(ActionEvent event) {
-        SessioneCreazioneTorneo.getInstance().eliminaTorneo();
-        SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/aggiungi_torneo.fxml","/com/ingsw/easytournament/css/aggiungi_torneo.css");
+        SessioneTorneo.getInstance().eliminaTorneo();
+        SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/aggiungi_torneo.fxml","/com/ingsw/easytournament/css/aggiungi_torneo.css", "Aggiungi Torneo");
         caricaTornei();
     }
 

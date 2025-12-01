@@ -27,7 +27,7 @@ public class EliminazioneDirettaController {
     private Modalita bozzaModalita;
 
     public void initialize() {
-        bozzaModalita = SessioneCreazioneTorneo.getInstance().getBozzaTorneo().getModalita();
+        bozzaModalita = SessioneTorneo.getInstance().getBozzaTorneo().getModalita();
         scelta_finalina.setSelected(((EliminazioneDiretta) bozzaModalita).isFinalina());
     }
     @FXML
