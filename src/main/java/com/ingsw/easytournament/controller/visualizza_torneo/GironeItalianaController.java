@@ -123,9 +123,14 @@ public class GironeItalianaController {
             mostraAlert("Non hai selezionato alcun incontro!");
         }
         else {
-            SessioneAggiornamentoIncontro.getInstance().pulisciSessione();
-            SessioneAggiornamentoIncontro.getInstance().setIncontro(incontro);
-            SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/visualizza_torneo/aggiorna_incontro.fxml","/com/ingsw/easytournament/css/aggiorna_incontro.css", null);
+            if (LocalDate.now().isAfter(torneo.getData())) {
+                SessioneAggiornamentoIncontro.getInstance().pulisciSessione();
+                SessioneAggiornamentoIncontro.getInstance().setIncontro(incontro);
+                SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/visualizza_torneo/aggiorna_incontro.fxml", "/com/ingsw/easytournament/css/aggiorna_incontro.css", null);
+            }
+            else {
+                mostraAlert("Il torneo deve ancora iniziare!");
+            }
         }
         calcolaAggiornaClassifica();
         aggiornaListaIncontri(selettore_giornate.getValue());

@@ -136,10 +136,6 @@
     -fx-background-radius: 10px;
 }
 
-/* ==========================================================================
-   BOTTONI
-   ========================================================================== */
-
 #button_crea_torneo,
 #button_indietro {
     -fx-font-size: 14px;
@@ -149,24 +145,26 @@
     -fx-cursor: hand;
 }
 
-/* --- Bottone "Avanti" (Primario - Blu) --- */
-/* NESSUNA MODIFICA QUI */
+
 #button_crea_torneo {
-    -fx-background-color: #007bff;
+    -fx-background-color: linear-gradient(to bottom, #007bff, #0056b3);
     -fx-text-fill: white;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.30), 8, 0, 0, 4);
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.3), 8, 0, 0, 3);
 }
 
 #button_crea_torneo:hover {
-    -fx-background-color: #0056b3;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.45), 12, 0, 0, 6);
-    -fx-translate-y: -2px;
+    -fx-background-color: linear-gradient(to bottom, #0056b3, #004085);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.5), 12, 0, 0, 6);
+    -fx-translate-y: -3px;
+    -fx-scale-x: 1.02;
 }
 
 #button_crea_torneo:pressed {
     -fx-background-color: #004085;
-    -fx-effect: none;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 4, 0, 0, 1);
     -fx-translate-y: 0;
+    -fx-scale-x: 0.98;
 }
 
 /* --- Bottone "Indietro" (Secondario - Grigio con Bordo Blu) --- */
