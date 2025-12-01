@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -16,17 +17,17 @@
                 <font>
                     <Font size="30.0" />
                 </font>
-                <padding>
-                    <Insets left="107.0" right="107.0" />
-                </padding>
+            <VBox.margin>
+               <Insets left="107.0" right="107.0" />
+            </VBox.margin>
             </Label>
 
-            <TextField fx:id="textusername" promptText="Username" styleClass="stileTextfield">
+            <TextField fx:id="textusername" maxWidth="1.7976931348623157E308" promptText="Username" styleClass="stileTextfield">
                 <padding>
                     <Insets bottom="10.0" left="10.0" top="10.0" />
                 </padding></TextField>
 
-            <PasswordField fx:id="textpassword" promptText="Password" styleClass="stileTextfield">
+            <PasswordField fx:id="textpassword" maxWidth="1.7976931348623157E308" promptText="Password" styleClass="stileTextfield">
                 <padding>
                     <Insets bottom="10.0" left="10.0" top="10.0" />
                 </padding></PasswordField>
@@ -42,10 +43,14 @@
             <Label fx:id="label_errore" maxWidth="1.7976931348623157E308" textFill="#d32f2f" />
 
             <VBox alignment="CENTER" spacing="10.0">
-                <Label styleClass="stileLabel" text="Non hai ancora un account?" textFill="#555555">
+                <Label text="Non hai ancora un account?" textFill="#555555">
                     <font>
                         <Font size="14.0" />
                     </font>
+               <styleClass>
+                  <String fx:value="stileLabel" />
+                  <String fx:value="registrazione" />
+               </styleClass>
                 </Label>
                 <Button fx:id="buttonsignup" onAction="#registrati" onMouseEntered="#mouse_entered_registrati" onMouseExited="#mouse_exited_registrati" styleClass="stileButtonSecondario" text="Registrati ora!">
                     <padding>
@@ -55,9 +60,12 @@
                     <Insets top="15.0" />
                 </VBox.margin>
             </VBox>
-            <padding>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-            </padding>
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
         </VBox>
     </children>
     <padding>

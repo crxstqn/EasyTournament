@@ -16,25 +16,25 @@
                 <font>
                     <Font size="30.0" />
                 </font>
-                <padding>
-                    <Insets left="93.5" right="93.5" />
-                </padding>
+            <VBox.margin>
+               <Insets left="93.5" right="93.5" />
+            </VBox.margin>
             </Label>
 
-            <TextField fx:id="textnome" promptText="Nome" styleClass="stileTextfield">
+            <TextField fx:id="textnome" maxWidth="1.7976931348623157E308" promptText="Nome" styleClass="stileTextfield">
                 <padding>
                     <Insets bottom="10.0" left="10.0" top="10.0" />
                 </padding></TextField>
-            <TextField fx:id="textusername" promptText="Username" styleClass="stileTextfield">
+            <TextField fx:id="textusername" maxWidth="1.7976931348623157E308" promptText="Username" styleClass="stileTextfield">
                 <padding>
                     <Insets bottom="10.0" left="10.0" top="10.0" />
                 </padding></TextField>
 
-            <PasswordField fx:id="textpassword" promptText="Password" styleClass="stileTextfield">
+            <PasswordField fx:id="textpassword" maxWidth="1.7976931348623157E308" promptText="Password" styleClass="stileTextfield">
                 <padding>
                     <Insets bottom="10.0" left="10.0" top="10.0" />
                 </padding></PasswordField>
-            <PasswordField fx:id="textpassword_conferma" promptText="Ripeti Password" styleClass="stileTextfield">
+            <PasswordField fx:id="textpassword_conferma" maxWidth="1.7976931348623157E308" promptText="Ripeti Password" styleClass="stileTextfield">
                 <padding>
                     <Insets bottom="10.0" left="10.0" top="10.0" />
                 </padding></PasswordField>

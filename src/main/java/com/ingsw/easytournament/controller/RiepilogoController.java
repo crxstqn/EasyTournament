@@ -4,6 +4,7 @@ import com.ingsw.easytournament.model.HomeModel;
 import com.ingsw.easytournament.model.SessioneTorneo;
 import com.ingsw.easytournament.model.Squadra;
 import com.ingsw.easytournament.model.Torneo;
+import com.ingsw.easytournament.utils.DatabaseConnessione;
 import com.ingsw.easytournament.utils.SceneChanger;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -29,12 +30,15 @@ public class RiepilogoController {
     private ListView<Squadra> list_view_squadre;
 
     private Torneo torneo;
+    private boolean torneoEsistente;
 
     public void initialize(){
         this.torneo = SessioneTorneo.getInstance().getBozzaTorneo();
         this.list_view_squadre.setEditable(false);
         label_descrizione.setText(this.torneo.getDescrizione());
         list_view_squadre.getItems().addAll(this.torneo.getSquadre());
+
+//        if ()
     }
 
     @FXML

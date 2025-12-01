@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 public class CardTorneoController {
@@ -93,6 +94,13 @@ public class CardTorneoController {
 
     @FXML
     void modificaTorneo(ActionEvent event) {
+        if (LocalDate.now().isBefore(torneo.getData()) || LocalDate.now().isEqual(torneo.getData())) {
+            SessioneTorneo.getInstance().setBozzaTorneo(torneo);
+            SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/aggiungi_torneo.fxml","/com/ingsw/easytournament/css/aggiungi_torneo.css", "Modifica Torneo");
+        }
+        else {
+            mostraAlert("Non puoi modificare un torneo già iniziato");
+        }
     }
 
     public void setTorneo(Torneo torneo) {
@@ -118,5 +126,18 @@ public class CardTorneoController {
         alert.setHeaderText("Stai per eliminare il torneo: " + torneo.getNome());
         alert.setContentText("Sei sicuro? Questa azione è irreversibile");
         return alert.showAndWait();
+    }
+
+    private void mostraAlert(String testoErrore) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setTitle("Attenzione");
+        alert.setGraphic(null);
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add("/com/ingsw/easytournament/css/alert.css");
+
+        alert.setContentText(testoErrore);
+        alert.showAndWait();
     }
 }

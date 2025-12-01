@@ -100,4 +100,14 @@ public class torneoDAOsqlite implements torneoDAO {
         }
         return false;
     }
+
+    public boolean modificaTorneo(Torneo torneo){
+        return false;
+    }
+
+//    public boolean torneoEsistente(String idTorneo){
+//        String query = "SELECT * FROM torneo WHERE id = ?";
+//
+//        try {PreparedStatement statement = conn.prepareStatement(query);
+//    }
 }

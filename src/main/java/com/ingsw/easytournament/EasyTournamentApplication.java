@@ -1,5 +1,6 @@
-package com.ingsw.easytournament.model;
+package com.ingsw.easytournament;
 
+import com.ingsw.easytournament.utils.DatabaseConnessione;
 import com.ingsw.easytournament.utils.SceneChanger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -28,5 +29,8 @@ public class EasyTournamentApplication extends Application {
     @Override
     public void stop() throws Exception {
         super.stop();
+        if (DatabaseConnessione.getInstance() != null) {
+            DatabaseConnessione.getInstance().chiudiConnessione();
+        }
     }
 }

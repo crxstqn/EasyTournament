@@ -20,4 +20,8 @@ public class HomeModel {
         boolean salvataggioIncontro = DatabaseConnessione.getInstance().getIncontroDAO().salvaIncontro(torneo.getId(), torneo.getIncontri());
         return salvataggioTorneo && salvataggioIncontro;
     }
+
+//    public static Boolean torneoEsiste(Torneo torneo){
+//        return DatabaseConnessione.getInstance().getTorneoDAO().
+//    }
 }

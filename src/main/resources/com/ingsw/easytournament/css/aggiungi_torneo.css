@@ -1,156 +1,243 @@
 /* ==============================================
-   1. STILE GENERALE E INPUT
+   1. STILE GENERALE E ROOT
    ============================================== */
 .root {
-    -fx-background-color: white;
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-border-color: #cccccc;
+    -fx-background-color: linear-gradient(to bottom right, #ffffff, #f8f9fa);
+    -fx-font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+    -fx-border-color: #e0e0e0;
     -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
 }
 
+/* Label standard */
 .label {
-    -fx-text-fill: #333333;
+    -fx-text-fill: #2c3e50;
     -fx-font-size: 14px;
-    -fx-font-weight: bold;
+    -fx-font-weight: 600;
 }
 
-#label_squadre_inserite{
+/* Label contatore squadre */
+#label_squadre_inserite {
     -fx-font-size: 13px;
     -fx-text-fill: #6c757d;
-    -fx-font-weight: normal;
+    -fx-font-weight: 500;
+    -fx-font-style: italic;
 }
 
-/* Campi di testo, DatePicker */
+/* ==============================================
+   2. CAMPI INPUT (TextField e DatePicker)
+   ============================================== */
 .text-field, .date-picker {
-    -fx-background-color: #f9f9f9;
-    -fx-border-color: #dcdcdc;
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
-    -fx-padding: 0 10px;
-    -fx-min-height: 38px;
-    -fx-max-height: 38px;
-    -fx-font-size: 13px;
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-padding: 0 14px;
+    -fx-min-height: 42px;
+    -fx-max-height: 42px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #495057;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 2, 0, 0, 1);
 }
 
 .text-field:focused, .date-picker:focused {
     -fx-background-color: white;
     -fx-border-color: #007bff;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 5, 0, 0, 0);
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.25), 8, 0, 0, 2);
 }
 
-/* Fix interno per il DatePicker */
+.text-field:hover, .date-picker:hover {
+    -fx-border-color: #adb5bd;
+}
+
+/* Fix interno DatePicker */
 .date-picker .text-field {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
     -fx-padding: 0;
-    -fx-min-height: 36px;
+    -fx-min-height: 40px;
+    -fx-effect: none;
+}
+
+/* Placeholder styling */
+.text-field:empty {
+    -fx-prompt-text-fill: #adb5bd;
 }
 
 /* ==============================================
-   2. CHOICE BOX (MENU MODALITÀ)
+   3. CHOICE BOX (Menù a tendina)
    ============================================== */
 .choice-box {
-    -fx-background-color: #f9f9f9;
-    -fx-border-color: #dcdcdc;
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
-    -fx-padding: 0 10px;
-    -fx-min-height: 38px;
-    -fx-max-height: 38px;
-    -fx-font-size: 13px;
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-padding: 0 14px;
+    -fx-min-height: 42px;
+    -fx-max-height: 42px;
+    -fx-font-size: 14px;
     -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 2, 0, 0, 1);
+}
+
+.choice-box:hover {
+    -fx-border-color: #adb5bd;
 }
 
 .choice-box:focused, .choice-box:showing {
     -fx-background-color: white;
     -fx-border-color: #007bff;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 5, 0, 0, 0);
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.25), 8, 0, 0, 2);
 }
 
-.choice-box .open-button { -fx-background-color: transparent; }
-.choice-box .arrow { -fx-background-color: #666666; }
-.choice-box:hover .arrow { -fx-background-color: #007bff; }
+.choice-box .open-button {
+    -fx-background-color: transparent;
+}
 
+.choice-box .arrow {
+    -fx-background-color: #6c757d;
+    -fx-padding: 4px;
+}
+
+.choice-box:hover .arrow {
+    -fx-background-color: #007bff;
+}
+
+/* Dropdown menu */
 .choice-box .context-menu {
     -fx-background-color: white;
-    -fx-background-radius: 8px;
-    -fx-border-radius: 8px;
-    -fx-border-color: #e0e0e0;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 3);
-    -fx-padding: 5px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #dee2e6;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 12, 0, 0, 4);
+    -fx-padding: 6px;
 }
 
-.choice-box .menu-item { -fx-padding: 8px 12px; -fx-background-radius: 5px; }
-.choice-box .menu-item:focused, .choice-box .menu-item:hover { -fx-background-color: #f0f7ff; }
-.choice-box .menu-item .label { -fx-text-fill: #333333; -fx-font-weight: normal; }
+.choice-box .menu-item {
+    -fx-padding: 10px 14px;
+    -fx-background-radius: 6px;
+}
+
+.choice-box .menu-item:focused, .choice-box .menu-item:hover {
+    -fx-background-color: #e7f3ff;
+}
+
+.choice-box .menu-item .label {
+    -fx-text-fill: #495057;
+    -fx-font-weight: normal;
+    -fx-font-size: 13px;
+}
 
 /* ==============================================
-   3. FIX DATEPICKER (ICONA GRANDE)
+   4. DATEPICKER AVANZATO
    ============================================== */
 .date-picker .arrow-button {
     -fx-background-color: transparent;
     -fx-cursor: hand;
-    -fx-padding: 0 12px;
+    -fx-padding: 0 14px;
 }
 
-/* Icona Calendario */
+.date-picker .arrow-button:hover {
+    -fx-background-color: rgba(0,123,255,0.08);
+    -fx-background-radius: 8px;
+}
+
+/* Icona Calendario moderna */
 .date-picker .arrow-button .arrow {
     -fx-background-color: #007bff;
     -fx-shape: "M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z";
-    -fx-scale-x: 1.2;
-    -fx-scale-y: 1.2;
+    -fx-scale-x: 1.3;
+    -fx-scale-y: 1.3;
 }
 
-/* POPUP CALENDARIO */
+/* Popup Calendario */
 .date-picker-popup {
     -fx-background-color: white;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 2);
-    -fx-background-radius: 10px;
-    -fx-font-size: 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 16, 0, 0, 4);
+    -fx-background-radius: 14px;
+    -fx-border-radius: 14px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
 }
+
 .date-picker-popup .month-year-pane {
-    -fx-background-color: #007bff;
-    -fx-background-radius: 10px 10px 0 0;
-    -fx-padding: 10px;
+    -fx-background-color: linear-gradient(to right, #007bff, #0056b3);
+    -fx-background-radius: 14px 14px 0 0;
+    -fx-padding: 14px;
 }
+
 .date-picker-popup .month-year-pane .label {
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-font-size: 16px;
+    -fx-font-size: 17px;
 }
+
+.date-picker-popup .spinner .button {
+    -fx-background-color: rgba(255,255,255,0.2);
+    -fx-background-radius: 6px;
+}
+
+.date-picker-popup .spinner .button:hover {
+    -fx-background-color: rgba(255,255,255,0.3);
+}
+
+.date-picker-popup .week-number-cell {
+    -fx-text-fill: #95a5a6;
+    -fx-font-size: 12px;
+}
+
+.date-picker-popup .day-name-cell {
+    -fx-text-fill: #6c757d;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
 .date-picker-popup .day-cell {
     -fx-background-color: white;
-    -fx-text-fill: #333333;
+    -fx-text-fill: #495057;
     -fx-font-size: 14px;
-    -fx-background-radius: 5px;
+    -fx-background-radius: 8px;
     -fx-border-color: transparent;
-    -fx-padding: 8px;
+    -fx-padding: 10px;
 }
-.date-picker-popup .day-cell:hover { -fx-background-color: #e7f1ff; }
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #e7f3ff;
+    -fx-text-fill: #007bff;
+}
+
 .date-picker-popup .day-cell:selected {
     -fx-background-color: #007bff;
     -fx-text-fill: white;
     -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,123,255,0.4), 4, 0, 0, 2);
 }
+
 .date-picker-popup .today {
-    -fx-background-color: #f0f8ff;
+    -fx-background-color: #e7f3ff;
     -fx-border-color: #007bff;
+    -fx-border-width: 2px;
     -fx-text-fill: #007bff;
+    -fx-font-weight: bold;
 }
 
 /* ==============================================
-   4. LIST VIEW (PULIZIA TOTALE PER NO SCROLL)
+   5. LIST VIEW (Ultra pulita, no scroll orizzontale)
    ============================================== */
 #list_view {
     -fx-background-color: white;
-    -fx-border-color: #e0e0e0;
-    -fx-border-radius: 8px;
-    -fx-background-radius: 8px;
-    /* RIMOSSO PADDING EXTRA CHE CAUSAVA SCROLL */
-    -fx-padding: 1px;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-padding: 2px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 6, 0, 0, 2);
 }
 
-/* Nasconde e disabilita la barra orizzontale */
+/* Nasconde completamente scrollbar orizzontale */
 .list-view .scroll-bar:horizontal {
     -fx-opacity: 0;
     -fx-padding: 0;
@@ -159,12 +246,12 @@
     -fx-visible: false;
 }
 
+/* Celle lista */
 .list-cell {
     -fx-background-color: transparent;
-    /* PADDING RIDOTTO AL MINIMO PER NON "GONFIARE" LA CELLA */
     -fx-padding: 2px 5px;
-    -fx-text-fill: #333333;
-    -fx-border-color: transparent transparent #f0f0f0 transparent;
+    -fx-text-fill: #495057;
+    -fx-border-color: transparent transparent #f1f3f5 transparent;
 }
 
 .list-cell:empty {
@@ -172,120 +259,163 @@
     -fx-border-color: transparent;
 }
 
-.list-cell:filled:selected, .list-cell:filled:hover {
-    -fx-background-color: #f0f7ff;
-    -fx-background-radius: 5px;
+.list-cell:filled:selected {
+    -fx-background-color: #e7f3ff;
+    -fx-background-radius: 8px;
+    -fx-border-color: transparent;
 }
 
-/* Testo Blu quando selezionato */
-.list-cell:filled:selected .label, .list-cell:filled:hover .label {
+.list-cell:filled:hover {
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 8px;
+}
+
+.list-cell:filled:selected .label {
+    -fx-text-fill: #007bff;
+    -fx-font-weight: 600;
+}
+
+.list-cell:filled:hover .label {
     -fx-text-fill: #007bff;
 }
 
-/* Scrollbar verticale pulita */
+/* Scrollbar verticale moderna */
 .list-view .scroll-bar:vertical {
     -fx-background-color: transparent;
-    -fx-pref-width: 8px;
+    -fx-pref-width: 10px;
 }
-.list-view .scroll-bar:vertical .track { -fx-background-color: transparent; }
+
 .list-view .scroll-bar:vertical .thumb {
-    -fx-background-color: #cccccc;
-    -fx-background-radius: 10px;
+    -fx-background-color: rgba(0,123,255,0.3);
+    -fx-background-radius: 5px;
 }
-.list-view .scroll-bar:vertical .thumb:hover { -fx-background-color: #999999; }
-.list-view .scroll-bar .increment-button, .list-view .scroll-bar .decrement-button {
-    -fx-padding: 0; -fx-shape: " "; -fx-opacity: 0;
+
+.list-view .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: rgba(0,123,255,0.5);
+}
+
+.list-view .scroll-bar .increment-button,
+.list-view .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: " ";
+    -fx-opacity: 0;
 }
 
 /* ==============================================
-   5. BOTTONI
+   6. BOTTONI PRINCIPALI
    ============================================== */
+
+/* Bottone "+" Aggiungi */
 #button_aggiungi {
-    -fx-background-color: #007bff;
+    -fx-background-color: linear-gradient(to bottom, #28a745, #218838);
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-font-size: 18px;
+    -fx-font-size: 20px;
     -fx-cursor: hand;
-    -fx-min-width: 38px; -fx-min-height: 38px;
-    -fx-max-width: 38px; -fx-max-height: 38px;
-
-    /* QUI LA MODIFICA: 10px invece di 50% */
-    -fx-background-radius: 10px;
+    -fx-min-width: 42px;
+    -fx-min-height: 42px;
+    -fx-max-width: 42px;
+    -fx-max-height: 42px;
+    -fx-background-radius: 12px;
     -fx-padding: 0;
-}
-#button_aggiungi:hover {
-    -fx-background-color: #0056b3;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.4), 6, 0, 0, 1);
+    -fx-effect: dropshadow(three-pass-box, rgba(40,167,69,0.3), 6, 0, 0, 2);
 }
 
+#button_aggiungi:hover {
+    -fx-background-color: linear-gradient(to bottom, #218838, #1e7e34);
+    -fx-effect: dropshadow(three-pass-box, rgba(40,167,69,0.5), 10, 0, 0, 4);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+#button_aggiungi:pressed {
+    -fx-background-color: #1e7e34;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+/* Bottone "Avanti" */
 #button_avanti {
-    -fx-background-color: #007bff;
+    -fx-background-color: linear-gradient(to bottom, #007bff, #0056b3);
     -fx-text-fill: white;
-    -fx-font-size: 14px;
+    -fx-font-size: 15px;
     -fx-font-weight: bold;
-    -fx-background-radius: 20px;
-    -fx-padding: 8px 25px;
+    -fx-background-radius: 24px;
+    -fx-padding: 12px 32px;
     -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.3), 8, 0, 0, 3);
 }
 
 #button_avanti:hover {
-    -fx-background-color: #0056b3; /* Blu più scuro */
-    /* Ombra più marcata e si alza leggermente */
-    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.4), 12, 0, 0, 6);
-    -fx-translate-y: -2px;
+    -fx-background-color: linear-gradient(to bottom, #0056b3, #004085);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.5), 12, 0, 0, 6);
+    -fx-translate-y: -3px;
+    -fx-scale-x: 1.02;
 }
 
 #button_avanti:pressed {
-    -fx-background-color: #004085; /* Blu molto scuro al click */
-    -fx-effect: none;
-    -fx-translate-y: 0px; /* Torna giù */
+    -fx-background-color: #004085;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 4, 0, 0, 1);
+    -fx-translate-y: 0;
+    -fx-scale-x: 0.98;
 }
 
+/* ==============================================
+   7. SEPARATORE
+   ============================================== */
 .separator *.line {
-    -fx-border-color: #e0e0e0;
+    -fx-border-color: #e9ecef;
     -fx-border-width: 1px;
     -fx-border-style: solid;
 }
 
 /* ==============================================
-   6. BOTTONE "X" (ELIMINA SQUADRA)
+   8. BOTTONE ELIMINA SQUADRA "X"
    ============================================== */
 .button-elimina-squadra {
     -fx-background-color: transparent;
-    -fx-text-fill: #dc3545; /* Rosso errore standard (Bootstrap style) */
+    -fx-text-fill: #dc3545;
     -fx-font-weight: bold;
-    -fx-font-size: 12px;
-    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", "Segoe UI Emoji", sans-serif;
     -fx-cursor: hand;
-
-    /* FORMA: Cerchio perfetto (come il bottone +) */
     -fx-background-radius: 50%;
     -fx-border-radius: 50%;
-
-    /* Bordo invisibile di default per mantenere le dimensioni */
     -fx-border-color: transparent;
     -fx-border-width: 1px;
-
-    /* Dimensioni fisse piccole */
-    -fx-min-width: 26px;
-    -fx-min-height: 26px;
-    -fx-max-width: 26px;
-    -fx-max-height: 26px;
-
-    -fx-padding: 0; /* Centra la X */
+    -fx-min-width: 28px;
+    -fx-min-height: 28px;
+    -fx-max-width: 28px;
+    -fx-max-height: 28px;
+    -fx-padding: 0;
     -fx-alignment: center;
 }
 
-/* Stato Hover: Cerchietto rosso chiaro */
 .button-elimina-squadra:hover {
-    -fx-background-color: #fff5f5; /* Sfondo rosino */
-    -fx-border-color: #dc3545;     /* Bordo rosso */
-    -fx-effect: dropshadow(three-pass-box, rgba(220, 53, 69, 0.2), 3, 0, 0, 1);
+    -fx-background-color: #ffebee;
+    -fx-border-color: #dc3545;
+    -fx-effect: dropshadow(three-pass-box, rgba(220,53,69,0.25), 4, 0, 0, 2);
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 
-/* Stato Premuto: Diventa rosso pieno */
 .button-elimina-squadra:pressed {
     -fx-background-color: #dc3545;
     -fx-text-fill: white;
     -fx-effect: none;
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
+}
+
+/* ==============================================
+   9. ANIMAZIONI E TRANSIZIONI
+   ============================================== */
+.text-field,
+.date-picker,
+.choice-box,
+#button_aggiungi,
+#button_avanti,
+.button-elimina-squadra,
+.list-cell {
+    -fx-transition: all 0.2s ease-in-out;
 }

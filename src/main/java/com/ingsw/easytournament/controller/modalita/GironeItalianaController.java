@@ -3,6 +3,7 @@ package com.ingsw.easytournament.controller.modalita;
 import com.ingsw.easytournament.model.GironeItaliana;
 import com.ingsw.easytournament.model.Modalita;
 import com.ingsw.easytournament.model.SessioneTorneo;
+import com.ingsw.easytournament.utils.DatabaseConnessione;
 import com.ingsw.easytournament.utils.SceneChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,6 +39,7 @@ public class GironeItalianaController{
         spinner_pareggio.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, ((GironeItaliana) bozzaModalita).getPuntiPareggio()));
         spinner_sconfitta.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, ((GironeItaliana) bozzaModalita).getPuntiSconfitta()));
         scelta_andata_ritorno.setSelected(((GironeItaliana) bozzaModalita).isAndataEritorno());
+        //boolean torneoEsistente = DatabaseConnessione.getInstance().
     }
 
         @FXML
