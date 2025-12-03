@@ -24,12 +24,13 @@ public class AggiornaIncontroController {
     private Label label_titolo;
 
     @FXML
-    private Spinner<Integer> spinner_squadra2;
+    private Spinner<Integer> spinner_squadra_2;
 
     @FXML
     private Spinner<Integer> spinner_squadra_1;
     
     private Incontro incontro;
+    private static boolean pareggioPossibile;
     
     public void initialize(){
         this.incontro = SessioneAggiornamentoIncontro.getInstance().getIncontro();
@@ -47,15 +48,19 @@ public class AggiornaIncontroController {
         if (punteggioSquadra2 != -1) punteggioDefaultSquadra2 = punteggioSquadra2;
 
         spinner_squadra_1.setEditable(true);
-        spinner_squadra2.setEditable(true);
+        spinner_squadra_2.setEditable(true);
         spinner_squadra_1.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, punteggioDefaultSquadra1 ));
-        spinner_squadra2.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, punteggioDefaultSquadra2 ));
+        spinner_squadra_2.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, punteggioDefaultSquadra2 ));
     }
     
     @FXML
     void aggiorna_risultato(ActionEvent event) {
+        if (!pareggioPossibile && spinner_squadra_1.getValue() == spinner_squadra_2.getValue()){
+            mostraAlert("Non sono ammessi pareggi!");
+            return;
+        }
         incontro.setPunteggioSquadra1(spinner_squadra_1.getValue());
-        incontro.setPunteggioSquadra2(spinner_squadra2.getValue());
+        incontro.setPunteggioSquadra2(spinner_squadra_2.getValue());
         Task<Boolean> aggiornaIncontro = new Task<>() {
             @Override
             protected Boolean call() throws Exception {
@@ -89,4 +94,7 @@ public class AggiornaIncontroController {
         alert.showAndWait();
     }
 
+    public static void setPareggioPossibile(boolean pareggioPossibile){
+        AggiornaIncontroController.pareggioPossibile = pareggioPossibile;
+    }
 }

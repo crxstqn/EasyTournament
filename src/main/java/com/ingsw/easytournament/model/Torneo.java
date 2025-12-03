@@ -1,6 +1,8 @@
 package com.ingsw.easytournament.model;
 
+import com.ingsw.easytournament.utils.DatabaseConnessione;
 import com.ingsw.easytournament.utils.SessioneUtente;
+import javafx.util.Pair;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -66,7 +68,7 @@ public class Torneo {
             }
             //eliminazione diretta
             case 1: {
-                inizializzaIncontriEliminazioneDiretta();
+                inizializzaIncontriEliminazioneDiretta(this.squadre);
                 break;
             }
             //gironi + playoff
@@ -82,12 +84,13 @@ public class Torneo {
         generaGironeItaliana(this.squadre,0,andataEritorno);
     }
 
-    private void inizializzaIncontriEliminazioneDiretta(){
-        int stadio = this.squadre.size()/2;
+    private void inizializzaIncontriEliminazioneDiretta(List<Squadra> squadre){
+        int stadio = squadre.size()/2;
         this.incontri.put(stadio, new ArrayList<>());
-        Collections.shuffle(this.squadre);
-        for (int i = 0; i < this.squadre.size()-1; i+=2){
-            this.incontri.get(stadio).add(new Incontro(this.id, this.squadre.get(i),this.squadre.get(i+1),-1));
+
+        Collections.shuffle(squadre);
+        for (int i = 0; i < squadre.size()-1; i+=2){
+            this.incontri.get(stadio).add(new Incontro(this.id, squadre.get(i),squadre.get(i+1),-1));
         }
     }
 
@@ -138,6 +141,53 @@ public class Torneo {
             squadre.add(1, squadraRuotata);
 
         }
+    }
+
+
+    //per eliminazione diretta
+    public Pair<Integer, List<Incontro>> avanzaTurno(){
+        int ultimoTurno = Collections.min(this.incontri.keySet());
+        List<Squadra> squadrePerdenti = new ArrayList<>();
+        List<Squadra> squadreVincitrici = new ArrayList<>();
+
+        for (Incontro incontri : this.incontri.get(ultimoTurno)){
+            if (incontri.getPunteggioSquadra1() > incontri.getPunteggioSquadra2()){
+                if (ultimoTurno == 2) {
+                    squadrePerdenti.add(incontri.getSquadra2());
+                }
+                squadreVincitrici.add(incontri.getSquadra1());
+            }
+            else {
+                if (ultimoTurno == 2) {
+                    squadrePerdenti.add(incontri.getSquadra1());
+                }
+                squadreVincitrici.add(incontri.getSquadra2());
+            }
+        }
+
+        //metodo per finalina
+
+        inizializzaIncontriEliminazioneDiretta(squadreVincitrici);
+        ultimoTurno = Collections.min(this.incontri.keySet());
+
+//        if (ultimoTurno == 1 && this.getModalita() instanceof EliminazioneDiretta) {
+//            EliminazioneDiretta eliminazioneDiretta = (EliminazioneDiretta) modalita;
+//            if (eliminazioneDiretta.getFinalina()){
+//                creaFinalina(squadrePerdenti);
+//            }
+//        }
+        System.out.println(ultimoTurno);
+        return new Pair<>(ultimoTurno, this.incontri.get(ultimoTurno));
+    }
+
+    private void creaFinalina(List<Squadra> squadre){
+        this.incontri.put(0, new ArrayList<>());
+        this.incontri.get(0).add(new Incontro(this.id, squadre.get(0),squadre.get(1),-1));
+    }
+
+    public Pair<Integer, Incontro> getFinalina(){
+        if (!this.incontri.containsKey(0)) return null;
+        return new Pair<>(0, this.incontri.get(0).get(0));
     }
 
 

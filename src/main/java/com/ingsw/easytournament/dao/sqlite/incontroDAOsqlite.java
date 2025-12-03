@@ -4,11 +4,9 @@ import com.ingsw.easytournament.dao.incontroDAO;
 import com.ingsw.easytournament.model.Incontro;
 import com.ingsw.easytournament.model.Squadra;
 import com.ingsw.easytournament.model.Torneo;
+import javafx.util.Pair;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +20,7 @@ public class incontroDAOsqlite implements incontroDAO {
     }
 
     @Override
-    public boolean salvaIncontro(int idTorneo, Map<Integer,List<Incontro>> incontri) {
+    public boolean salvaIncontro(int idTorneo, Map<Integer, List<Incontro>> incontri) {
         String query = "INSERT INTO incontro (id_torneo, squadra_casa, squadra_ospite, giornata, girone) VALUES (?, ?, ?, ?, ?)";
         for (Map.Entry<Integer, List<Incontro>> entry : incontri.entrySet()) {
             System.out.println("Giornata " + entry.getKey() + " - Numero incontri: " + entry.getValue().size());
@@ -45,6 +43,27 @@ public class incontroDAOsqlite implements incontroDAO {
         }
         return true;
     }
+
+    @Override
+    public boolean salvaSingoloIncontro(int idTorneo, Pair<Integer, Incontro> incontroFinalina) {
+        String query = "INSERT INTO incontro (id_torneo, squadra_casa, squadra_ospite, giornata, girone) VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement statement = conn.prepareStatement(query)) {
+            statement.setInt(1, idTorneo);
+            statement.setInt(2, incontroFinalina.getValue().getSquadra1().getId());
+            statement.setInt(3, incontroFinalina.getValue().getSquadra2().getId());
+            statement.setInt(4, incontroFinalina.getKey());
+            statement.setInt(5, incontroFinalina.getValue().getGruppo());
+
+            int righeModificate = statement.executeUpdate();
+            return righeModificate > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
 
     @Override
     public Map<Integer, List<Incontro>> getIncontriDaTorneo(Torneo torneo) {
@@ -91,6 +110,26 @@ public class incontroDAOsqlite implements incontroDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("Errore aggiornamento incontro");
+        return false;
+    }
+
+    @Override
+    public boolean salvaNuoviIncontri(int turno, List<Incontro> nuoviIncontri) {
+        String query = "INSERT INTO incontro (id_torneo, squadra_casa, squadra_ospite, giornata, girone) VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement statement = conn.prepareStatement(query)){
+            for (Incontro incontro : nuoviIncontri) {
+                statement.setInt(1, incontro.getIdTorneo());
+                statement.setInt(2, incontro.getSquadra1().getId());
+                statement.setInt(3, incontro.getSquadra2().getId());
+                statement.setInt(4, turno);
+                statement.setInt(5, incontro.getGruppo());
+                int modificato =  statement.executeUpdate();
+                return modificato > 0;
+            }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         return false;
     }
 }

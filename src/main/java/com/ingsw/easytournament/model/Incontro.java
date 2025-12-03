@@ -21,8 +21,8 @@ public class Incontro {
 
     public Incontro(int idTorneo, Squadra squadra1, Squadra squadra2, int gruppo) {
         this.idTorneo = idTorneo;
-        this.punteggioSquadra1 = 0;
-        this.punteggioSquadra2 = 0;
+        this.punteggioSquadra1 = -1;
+        this.punteggioSquadra2 = -1;
         this.squadra2 = squadra2;
         this.squadra1 = squadra1;
         this.gruppo = gruppo;

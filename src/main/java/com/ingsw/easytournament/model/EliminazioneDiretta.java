@@ -39,4 +39,8 @@ public class EliminazioneDiretta extends Modalita{
             }
         }
     }
+
+    public boolean getFinalina(){
+        return finalina;
+    }
 }

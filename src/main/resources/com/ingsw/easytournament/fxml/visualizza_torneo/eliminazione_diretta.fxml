@@ -1,14 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="root" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingsw.easytournament.controller.visualizza_torneo.EliminazioneDirettaController">
 
-</AnchorPane>
+    <top>
+        <HBox fx:id="hbox_top" alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0" styleClass="top-bar" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="button_indietro" mnemonicParsing="false" onAction="#tornaHome" styleClass="button-indietro" text="← Indietro">
+                    <HBox.margin>
+                        <Insets left="20.0" />
+                    </HBox.margin>
+                </Button>
+                <Region HBox.hgrow="ALWAYS" />
+
+                <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label fx:id="label_titolo" styleClass="label-titolo" text="Nome Torneo" />
+                        <Label fx:id="label_stato" styleClass="label-stato" text="Stato: In Corso" />
+                    </children>
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS" />
+                <Region prefWidth="80.0" />
+            </children>
+            <padding>
+                <Insets bottom="5.0" top="5.0" />
+            </padding>
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane styleClass="modern-tab-pane" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+
+                <Tab text="CALENDARIO">
+                    <content>
+                        <VBox spacing="15.0" styleClass="tab-content-container">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <children>
+                                        <Label styleClass="label-piccola" text="Seleziona turno:" />
+                                        <ChoiceBox fx:id="selettore_turno" prefWidth="150.0" />
+                                    </children>
+                                </HBox>
+
+                                <ListView fx:id="list_view_incontri" styleClass="lista-incontri" VBox.vgrow="ALWAYS" />
+
+                                <Button fx:id="aggiorna_risultato_button" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#aggiornaRisultato" styleClass="button-primario" text="Aggiorna incontro selezionato" />
+                        <Button fx:id="avanza_turno_button" layoutX="30.0" layoutY="373.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#avanzaTurno" styleClass="button-primario" text="Avanza turno" />
+                            </children>
+                            <padding>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </padding>
+                        </VBox>
+                    </content>
+                </Tab>
+
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>

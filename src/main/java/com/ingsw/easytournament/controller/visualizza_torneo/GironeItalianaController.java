@@ -123,9 +123,10 @@ public class GironeItalianaController {
             mostraAlert("Non hai selezionato alcun incontro!");
         }
         else {
-            if (LocalDate.now().isAfter(torneo.getData())) {
+            if (LocalDate.now().isAfter(torneo.getData()) || LocalDate.now().isEqual(torneo.getData())) {
                 SessioneAggiornamentoIncontro.getInstance().pulisciSessione();
                 SessioneAggiornamentoIncontro.getInstance().setIncontro(incontro);
+                AggiornaIncontroController.setPareggioPossibile(true);
                 SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/visualizza_torneo/aggiorna_incontro.fxml", "/com/ingsw/easytournament/css/aggiorna_incontro.css", null);
             }
             else {
