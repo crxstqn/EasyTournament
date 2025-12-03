@@ -170,12 +170,12 @@ public class Torneo {
         inizializzaIncontriEliminazioneDiretta(squadreVincitrici);
         ultimoTurno = Collections.min(this.incontri.keySet());
 
-//        if (ultimoTurno == 1 && this.getModalita() instanceof EliminazioneDiretta) {
-//            EliminazioneDiretta eliminazioneDiretta = (EliminazioneDiretta) modalita;
-//            if (eliminazioneDiretta.getFinalina()){
-//                creaFinalina(squadrePerdenti);
-//            }
-//        }
+        if (ultimoTurno == 1 && this.getModalita() instanceof EliminazioneDiretta) {
+            EliminazioneDiretta eliminazioneDiretta = (EliminazioneDiretta) modalita;
+            if (eliminazioneDiretta.getFinalina()){
+                creaFinalina(squadrePerdenti);
+            }
+        }
         System.out.println(ultimoTurno);
         return new Pair<>(ultimoTurno, this.incontri.get(ultimoTurno));
     }

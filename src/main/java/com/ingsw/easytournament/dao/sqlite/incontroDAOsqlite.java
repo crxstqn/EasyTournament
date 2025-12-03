@@ -55,6 +55,13 @@ public class incontroDAOsqlite implements incontroDAO {
             statement.setInt(5, incontroFinalina.getValue().getGruppo());
 
             int righeModificate = statement.executeUpdate();
+
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    int nuovoId = generatedKeys.getInt(1);
+                    incontroFinalina.getValue().setId(nuovoId);
+                }
+            }
             return righeModificate > 0;
 
         } catch (SQLException e) {
@@ -124,12 +131,19 @@ public class incontroDAOsqlite implements incontroDAO {
                 statement.setInt(3, incontro.getSquadra2().getId());
                 statement.setInt(4, turno);
                 statement.setInt(5, incontro.getGruppo());
-                int modificato =  statement.executeUpdate();
-                return modificato > 0;
+                statement.executeUpdate();
+
+                try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        int nuovoId = generatedKeys.getInt(1);
+                        incontro.setId(nuovoId);
+                    }
+                }
             }
             } catch (SQLException e) {
                 e.printStackTrace();
+                return false;
             }
-        return false;
+        return true;
     }
 }
