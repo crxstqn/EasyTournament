@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -87,6 +88,15 @@ public class EliminazioneDirettaController {
             mostraAlert("Il torneo deve ancora iniziare!");
             return;
         }
+
+        int ultimoTurno = Collections.min(incontri.keySet());
+        // se l'ultimo turno è 0 e 1 , vuol dire che l'ultimo turno è stato già raggiunto
+        if (ultimoTurno <= 1){
+            mostraAlert("Il torneo ha già raggiunto il turno finale!");
+            this.avanza_turno_button.setDisable(true);
+            return;
+        }
+
         for (int turno : incontri.keySet()) {
             for (Incontro incontro : incontri.get(turno)) {
                 if (incontro.getPunteggioSquadra1() == -1 || incontro.getPunteggioSquadra2() == -1) {
