@@ -1,11 +1,8 @@
 package com.ingsw.easytournament.model;
 
 import com.ingsw.easytournament.utils.DatabaseConnessione;
-import javafx.scene.SubScene;
 import javafx.util.Pair;
-
 import java.util.List;
-import java.util.Map;
 
 public class VisualizzazioneModel {
     private static VisualizzazioneModel instance;

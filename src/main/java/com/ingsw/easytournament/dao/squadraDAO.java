@@ -5,7 +5,7 @@ import com.ingsw.easytournament.model.Squadra;
 import java.util.List;
 
 public interface squadraDAO {
-    public void salvaSquadra(int idTorneo, List<Squadra> squadra);
+    void salvaSquadra(int idTorneo, List<Squadra> squadra);
 
     List<Squadra> getSquadreDaTorneo(int id);
 }

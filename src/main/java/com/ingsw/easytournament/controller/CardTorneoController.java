@@ -83,7 +83,6 @@ public class CardTorneoController {
         switch (this.torneo.getIdModalità()){
             case 0: fxmlDestinazione = "/com/ingsw/easytournament/fxml/visualizza_torneo/girone_all_italiana.fxml"; break;
             case 1: fxmlDestinazione = "/com/ingsw/easytournament/fxml/visualizza_torneo/eliminazione_diretta.fxml"; break;
-            case 2: fxmlDestinazione = "/com/ingsw/easytournament/fxml/visualizza_torneo/gironi_playoff.fxml"; break;
         }
 
         SessioneTorneo.getInstance().eliminaTorneo();

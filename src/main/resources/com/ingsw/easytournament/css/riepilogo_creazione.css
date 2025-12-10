@@ -1,68 +1,48 @@
-/* ==========================================================================
-   STILE PER LA SCHERMATA DI RIEPILOGO CREAZIONE TORNEO
-   ========================================================================== */
 
-/* --- Contenitore Principale --- */
 .root {
-    -fx-background-color: #f4f6f8; /* Grigio chiaro moderno */
+    -fx-background-color: #f4f6f8;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
-/* ==========================================================================
-   TIPOGRAFIA E LABEL
-   ========================================================================== */
 
-/* --- Label Titolo Principale --- */
 #label_titolo {
     -fx-font-size: 26px;
     -fx-font-weight: bold;
-    -fx-text-fill: #2c3e50; /* Blu scuro elegante */
+    -fx-text-fill: #2c3e50;
 }
 
-/* --- Label Generiche (es. "Squadre inserite:") --- */
+
 .label {
     -fx-font-size: 17px;
     -fx-text-fill: #555555;
     -fx-font-weight: bold;
 }
 
-/* ==========================================================================
-   SCROLL PANE (CARD DESCRIZIONE)
-   Questo diventa il contenitore "Card" rettangolare
-   ========================================================================== */
-
 .scroll-pane {
-    /* Stile Card */
     -fx-background-color: white;
     -fx-background-radius: 15px;
     -fx-border-radius: 15px;
 
-    /* Rimuove i bordi di default del controllo JavaFX */
     -fx-background-insets: 0;
-    -fx-padding: 20px; /* Spaziatura interna tra il bordo della card e il testo */
+    -fx-padding: 20px;
 
-    /* Ombra per dare profondità */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 4);
 }
 
-/* Il "viewport" è l'area visibile interna: deve essere trasparente per mostrare il bianco della card */
 .scroll-pane > .viewport {
     -fx-background-color: transparent;
 }
 
-/* --- Label Descrizione (Testo Interno) --- */
-/* Ora è pulita, senza bordi, solo tipografia */
 #label_descrizione {
-    -fx-text-fill: #333333;   /* Grigio scuro leggibile */
+    -fx-text-fill: #333333;
     -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-size: 16px;      /* Font grande */
+    -fx-font-size: 16px;
     -fx-font-weight: normal;
-    -fx-line-spacing: 6px;    /* Interlinea per leggibilità */
-    -fx-padding: 0;           /* Il padding lo gestisce la scroll pane */
+    -fx-line-spacing: 6px;
+    -fx-padding: 0;
 }
 
-/* --- Stile Barra di Scorrimento (Scrollbar) --- */
-/* Minimal e coerente con le altre schermate */
+
 .scroll-pane .scroll-bar:vertical {
     -fx-background-color: transparent;
     -fx-pref-width: 10px;
@@ -71,11 +51,11 @@
     -fx-background-color: transparent;
 }
 .scroll-pane .scroll-bar:vertical .thumb {
-    -fx-background-color: #dcdcdc; /* Grigio chiaro */
+    -fx-background-color: #dcdcdc;
     -fx-background-radius: 10px;
 }
 .scroll-pane .scroll-bar:vertical .thumb:hover {
-    -fx-background-color: #bfbfbf; /* Grigio più scuro all'hover */
+    -fx-background-color: #bfbfbf;
 }
 .scroll-pane .scroll-bar .increment-button,
 .scroll-pane .scroll-bar .decrement-button {
@@ -87,10 +67,6 @@
     -fx-background-color: transparent;
 }
 
-/* ==========================================================================
-   LIST VIEW (Lista Squadre)
-   ========================================================================== */
-
 #list_view_squadre {
     -fx-background-color: white;
     -fx-background-radius: 10px;
@@ -98,7 +74,7 @@
     -fx-border-color: #e0e0e0;
     -fx-padding: 5px;
 
-    /* Leggera ombra */
+
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 5, 0, 0, 2);
 }
 
@@ -121,12 +97,12 @@
     -fx-background-radius: 6px;
 }
 
-/* Nasconde scrollbar orizzontale della lista */
+
 #list_view_squadre .scroll-bar:horizontal {
     -fx-visible: false;
     -fx-pref-height: 0;
 }
-/* Stile verticale uguale alla scroll pane principale */
+
 #list_view_squadre .scroll-bar:vertical {
     -fx-background-color: transparent;
     -fx-pref-width: 8px;
@@ -140,7 +116,7 @@
 #button_indietro {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-background-radius: 20px; /* Raggio per l'effetto circolare/pillola */
+    -fx-background-radius: 20px;
     -fx-padding: 8px 25px;
     -fx-cursor: hand;
 }
@@ -167,10 +143,9 @@
     -fx-scale-x: 0.98;
 }
 
-/* --- Bottone "Indietro" (Secondario - Grigio con Bordo Blu) --- */
-/* MODIFICATO */
+
 #button_indietro {
-    -fx-background-color: linear-gradient(to bottom, #d9dbde, #cfd1d4); /* Grigio leggermente più scuro */
+    -fx-background-color: linear-gradient(to bottom, #d9dbde, #cfd1d4);
     -fx-text-fill: #2b2b2c;
 }
 

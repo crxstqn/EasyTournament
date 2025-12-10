@@ -44,8 +44,6 @@ public class GironeItalianaController{
 
         @FXML
     void mostraRiepilogo(ActionEvent event) {
-        // Use getValue() directly from spinners instead of parsing text
-        // This is more reliable and type-safe
         int puntiVittoria = spinner_vittoria.getValue();
         int puntiPareggio = spinner_pareggio.getValue();
         int puntiSconfitta = spinner_sconfitta.getValue();

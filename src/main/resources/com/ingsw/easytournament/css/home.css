@@ -1,10 +1,8 @@
-/* Root e sfondo generale */
 .root {
     -fx-background-color: linear-gradient(to bottom, #f8f9fa, #e9ecef);
     -fx-font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Header superiore */
 #hbox_superiore {
     -fx-background-color: white;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 2);
@@ -12,7 +10,7 @@
     -fx-padding: 16px 24px;
 }
 
-/* Logo/Titolo principale */
+
 #easy_tournament_label {
     -fx-font-size: 26px;
     -fx-font-weight: bold;
@@ -20,14 +18,14 @@
     -fx-effect: dropshadow(gaussian, rgba(0,123,255,0.1), 4, 0, 0, 1);
 }
 
-/* Label benvenuto */
+
 #benvenuto_label {
     -fx-font-size: 16px;
     -fx-text-fill: #6c757d;
     -fx-font-weight: 500;
 }
 
-/* Titolo sezione tornei */
+
 #i_miei_tornei_label {
     -fx-font-size: 24px;
     -fx-font-weight: bold;
@@ -35,7 +33,7 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 2, 0, 0, 1);
 }
 
-/* Bottone aggiungi principale */
+
 #bottone_aggiungi {
     -fx-background-color: linear-gradient(to bottom, #007bff, #0056b3);
     -fx-text-fill: white;
@@ -60,7 +58,7 @@
     -fx-scale-x: 0.98;
 }
 
-/* ScrollPane styling */
+
 #scroll_pane {
     -fx-background-color: transparent;
     -fx-padding: 0;
@@ -71,7 +69,7 @@
     -fx-background-color: transparent;
 }
 
-/* Scrollbar verticale */
+
 #scroll_pane .scroll-bar:vertical {
     -fx-background-color: transparent;
     -fx-pref-width: 12px;
@@ -97,7 +95,7 @@
     -fx-opacity: 0;
 }
 
-/* Scrollbar orizzontale */
+
 #scroll_pane .scroll-bar:horizontal {
     -fx-background-color: transparent;
     -fx-pref-height: 12px;
@@ -123,13 +121,13 @@
     -fx-opacity: 0;
 }
 
-/* FlowPane container */
+
 #flow_pane {
     -fx-background-color: transparent;
     -fx-padding: 8px;
 }
 
-/* Card torneo */
+
 .card_torneo {
     -fx-background-color: white;
     -fx-background-radius: 16px;
@@ -148,21 +146,21 @@
     -fx-translate-y: -4;
 }
 
-/* Label nome torneo */
+
 #label_nome_torneo {
     -fx-font-size: 19px;
     -fx-font-weight: bold;
     -fx-text-fill: #2c3e50;
 }
 
-/* Label data */
+
 #label_data {
     -fx-font-size: 13px;
     -fx-text-fill: #95a5a6;
     -fx-font-style: italic;
 }
 
-/* Bottone modifica card */
+
 .btn_card_modifica {
     -fx-background-color: #e3f2fd;
     -fx-text-fill: #007bff;
@@ -181,7 +179,7 @@
     -fx-effect: dropshadow(gaussian, rgba(0,123,255,0.4), 6, 0, 0, 2);
 }
 
-/* Bottone elimina card */
+
 .btn_card_elimina {
     -fx-background-color: #ffebee;
     -fx-text-fill: #dc3545;
@@ -200,7 +198,7 @@
     -fx-effect: dropshadow(gaussian, rgba(220,53,69,0.4), 6, 0, 0, 2);
 }
 
-/* Animazioni e transizioni */
+
 .card_torneo,
 #bottone_aggiungi,
 .btn_card_modifica,
@@ -210,7 +208,7 @@
 
 .button-logout {
     -fx-background-color: transparent;
-    -fx-text-fill: #6c757d; /* Grigio scuro come il testo benvenuto */
+    -fx-text-fill: #6c757d;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
     -fx-border-color: #dee2e6;
@@ -222,8 +220,8 @@
 }
 
 .button-logout:hover {
-    -fx-background-color: #ffebee; /* Sfondo rosso chiarissimo */
-    -fx-text-fill: #dc3545; /* Rosso */
+    -fx-background-color: #ffebee;
+    -fx-text-fill: #dc3545;
     -fx-border-color: #dc3545;
     -fx-effect: dropshadow(three-pass-box, rgba(220, 53, 69, 0.2), 5, 0, 0, 1);
 }

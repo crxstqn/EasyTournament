@@ -1,20 +1,16 @@
-/* ==============================================
-   1. GLOBAL & LAYOUT - DESIGN SYSTEM
-   ============================================== */
 .root {
-    /* Gradiente sottile coerente con Home e Login */
     -fx-background-color: linear-gradient(to bottom, #ffffff, #f4f6f8);
     -fx-font-family: "Segoe UI", "Roboto", Helvetica, Arial, sans-serif;
 }
 
-/* Barra superiore bianca con ombra diffusa */
+
 .top-bar {
     -fx-background-color: white;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 15, 0, 0, 4);
     -fx-padding: 15px 25px;
 }
 
-/* Titolo principale */
+
 .label-titolo {
     -fx-font-size: 24px;
     -fx-font-weight: bold;
@@ -22,28 +18,25 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 2, 0, 0, 1);
 }
 
-/* Badge Stato (Pillola) */
+
 .label-stato {
     -fx-font-size: 12px;
     -fx-font-weight: bold;
-    -fx-text-fill: #007bff; /* Testo blu */
-    -fx-background-color: rgba(0,123,255,0.1); /* Sfondo blu molto chiaro */
+    -fx-text-fill: #007bff;
+    -fx-background-color: rgba(0,123,255,0.1);
     -fx-background-radius: 15px;
     -fx-padding: 4px 12px;
 }
 
-/* Label generiche piccole */
+
 .label-piccola {
     -fx-font-size: 14px;
     -fx-font-weight: 600;
     -fx-text-fill: #6c757d;
 }
 
-/* ==============================================
-   2. TAB PANE "INVISIBLE" (Minimalista)
-   ============================================== */
 
-/* Rimuove sfondi e bordi di default */
+
 .modern-tab-pane,
 .modern-tab-pane .tab-header-area,
 .modern-tab-pane .tab-header-background {
@@ -51,71 +44,65 @@
     -fx-padding: 10px 0 0 0; /* Spazio sopra */
 }
 
-/* Rimuove focus rings */
 .modern-tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
     -fx-border-width: 0;
     -fx-opacity: 0;
 }
 
-/* Stile Tab Singolo */
 .modern-tab-pane .tab {
     -fx-background-color: transparent;
     -fx-background-insets: 0;
-    -fx-border-width: 0 0 3px 0; /* Solo linea sotto */
+    -fx-border-width: 0 0 3px 0;
     -fx-border-color: transparent;
     -fx-padding: 10px 25px;
     -fx-cursor: hand;
     -fx-transition: all 0.3s;
 }
 
-/* Tab Hover */
+
 .modern-tab-pane .tab:hover {
     -fx-background-color: rgba(0,0,0,0.02);
     -fx-background-radius: 5px 5px 0 0;
 }
 
-/* Tab Selezionata */
+
 .modern-tab-pane .tab:selected {
-    -fx-border-color: #007bff; /* Linea blu attiva */
+    -fx-border-color: #007bff;
 }
 
-/* Testo Tab */
+
 .modern-tab-pane .tab .tab-label {
     -fx-text-fill: #95a5a6;
     -fx-font-weight: bold;
     -fx-font-size: 15px;
 }
 
-/* Testo Tab Selezionata */
+
 .modern-tab-pane .tab:selected .tab-label {
     -fx-text-fill: #007bff;
     -fx-effect: dropshadow(gaussian, rgba(0,123,255,0.2), 5, 0, 0, 0);
 }
 
-/* Contenitore interno dei contenuti */
+
 .tab-content-container {
     -fx-padding: 20px;
 }
 
-/* ==============================================
-   3. TABLE VIEW (CLASSIFICA PREMIUM)
-   ============================================== */
 .table-view {
     -fx-background-color: white;
     -fx-background-radius: 12px;
     -fx-border-radius: 12px;
     -fx-border-color: transparent;
-    /* Ombra "Card" */
+
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 4);
     -fx-padding: 0;
 }
 
-/* Intestazione colonne */
 .table-view .column-header-background {
     -fx-background-color: white;
     -fx-background-radius: 12px 12px 0 0;
     -fx-border-width: 0 0 2px 0;
-    -fx-border-color: #f1f3f5; /* Linea separatrice sottile */
+    -fx-border-color: #f1f3f5;
 }
 
 .table-view .column-header {
@@ -131,35 +118,34 @@
     -fx-alignment: CENTER;
 }
 
-/* Celle */
+
 .table-cell {
-    -fx-border-color: transparent; /* No griglie verticali */
+    -fx-border-color: transparent;
     -fx-padding: 12px;
     -fx-text-fill: #34495e;
     -fx-font-size: 14px;
     -fx-font-weight: 500;
     -fx-border-width: 0 0 1px 0;
-    -fx-border-color: #f8f9fa; /* Righe orizzontali leggerissime */
+    -fx-border-color: #f8f9fa;
 }
 
-/* Righe */
+
 .table-row-cell {
     -fx-background-color: white;
 }
 
 .table-row-cell:odd {
-    -fx-background-color: #fcfcfc; /* Zebra striping ultra-soft */
+    -fx-background-color: #fcfcfc;
 }
 
-/* Riga selezionata */
 .table-view .table-row-cell:filled:selected {
-    -fx-background-color: #e7f1ff; /* Blu chiarissimo */
+    -fx-background-color: #e7f1ff;
 }
 .table-view .table-row-cell:filled:selected .table-cell {
     -fx-text-fill: #007bff;
 }
 
-/* Nascondi scrollbar se non serve o rendila moderna */
+
 .table-view .scroll-bar:vertical {
     -fx-background-color: transparent;
 }
@@ -168,19 +154,16 @@
     -fx-background-radius: 5px;
 }
 
-/* Nascondi la colonna extra */
+
 .table-view .filler {
     -fx-background-color: white;
 }
 
-/* Allineamenti helper */
+
 .col-center { -fx-alignment: CENTER; }
 .col-left   { -fx-alignment: CENTER-LEFT; }
 .col-bold   { -fx-font-weight: 700; }
 
-/* ==============================================
-   4. LIST VIEW (INCONTRI)
-   ============================================== */
 .lista-incontri {
     -fx-background-color: white;
     -fx-background-radius: 12px;
@@ -196,7 +179,7 @@
     -fx-background-color: white;
     -fx-text-fill: #34495e;
 
-    /* Bordo inferiore separatore */
+
     -fx-border-color: transparent transparent #f1f3f5 transparent;
     -fx-border-width: 1px;
 
@@ -206,7 +189,7 @@
 
 .lista-incontri .list-cell:filled:hover {
     -fx-background-color: #f8f9fa;
-    -fx-translate-x: 5px; /* Piccola animazione di spostamento a destra */
+    -fx-translate-x: 5px;
     -fx-text-fill: #007bff;
 }
 
@@ -214,7 +197,7 @@
     -fx-background-color: #e7f1ff;
     -fx-text-fill: #007bff;
     -fx-font-weight: bold;
-    -fx-background-radius: 8px; /* Arrotonda la selezione */
+    -fx-background-radius: 8px;
     -fx-border-color: transparent;
 }
 
@@ -223,11 +206,8 @@
     -fx-border-color: transparent;
 }
 
-/* ==============================================
-   5. CONTROLLI INPUT & BOTTONI
-   ============================================== */
 
-/* ChoiceBox Premium */
+
 .choice-box {
     -fx-background-color: #f1f3f5;
     -fx-border-color: #dee2e6;
@@ -246,7 +226,7 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 5, 0, 0, 2);
 }
 
-/* Bottone Primario (Gradiente Blu) */
+
 .button-primario {
     -fx-background-color: linear-gradient(to bottom, #007bff, #0056b3);
     -fx-text-fill: white;
@@ -272,7 +252,7 @@
     -fx-scale-x: 0.98;
 }
 
-/* Bottone Indietro (Ghost) */
+
 .button-indietro {
     -fx-background-color: white;
     -fx-text-fill: #6c757d;

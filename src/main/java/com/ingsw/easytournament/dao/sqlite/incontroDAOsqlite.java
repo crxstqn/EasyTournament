@@ -76,7 +76,6 @@ public class incontroDAOsqlite implements incontroDAO {
     public Map<Integer, List<Incontro>> getIncontriDaTorneo(Torneo torneo) {
         String query = "SELECT * FROM incontro WHERE id_torneo = ?";
         Map<Integer, List<Incontro>> incontri = new HashMap<>();
-        List<Squadra> squadre = torneo.getSquadre();
         //creo una mappa id_squadra : squadra per evitare di dover scorrere tutte le squadre
         Map<Integer, Squadra> squadraMap = torneo.getSquadre().stream().collect(java.util.stream.Collectors.toMap(Squadra::getId, s -> s));
 

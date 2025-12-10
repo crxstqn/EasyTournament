@@ -79,10 +79,6 @@ public class RiepilogoController {
         else if (id_modalita == 1) {
             SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/creazione_modalita/eliminazione_diretta.fxml", "/com/ingsw/easytournament/css/modalita_torneo.css", button_indietro.getScene());
         }
-
-        else if (id_modalita == 2) {
-            SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/creazione_modalita/gironi_playoff.fxml", "/com/ingsw/easytournament/css/modalita_torneo.css", button_indietro.getScene());
-        }
     }
 
     private boolean mostraAlert(String testoErrore, Alert.AlertType tipo) {
