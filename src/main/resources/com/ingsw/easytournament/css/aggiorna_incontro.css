@@ -1,32 +1,22 @@
-/* ==============================================
-   STILE PREMIUM - FINESTRA AGGIORNAMENTO RISULTATO
-   Coerente con home.css e login_reg.css
-   ============================================== */
-
-/* --- Contenitore Principale --- */
 .root {
-    /* Gradiente sottile per dare profondità invece del bianco piatto */
     -fx-background-color: linear-gradient(to bottom, #ffffff, #f8f9fa);
     -fx-font-family: "Segoe UI", "Roboto", Helvetica, Arial, sans-serif;
 
-    /* Bordo sottile e pulito */
     -fx-border-color: rgba(0,0,0,0.08);
     -fx-border-width: 1px;
-
-    /* Spaziatura interna per non far toccare i bordi */
     -fx-padding: 15px;
 }
 
-/* --- Titolo "Aggiorna incontro" --- */
+
 #label_titolo {
     -fx-font-size: 24px;
     -fx-font-weight: bold;
-    -fx-text-fill: #2c3e50; /* Blu scuro elegante */
+    -fx-text-fill: #2c3e50;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 2, 0, 0, 1);
     -fx-padding: 0 0 15px 0;
 }
 
-/* --- Nomi delle Squadre --- */
+
 #label_squadra_1,
 #label_squadra2 {
     -fx-font-size: 18px;
@@ -35,29 +25,28 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 2, 0, 0, 1);
 }
 
-/* Label del trattino "-" o "VS" */
+
 .label {
     -fx-font-size: 16px;
-    -fx-text-fill: #95a5a6; /* Grigio soft */
+    -fx-text-fill: #95a5a6;
     -fx-font-weight: bold;
 }
 
-/* --- Spinner dei Punteggi (Input Moderni) --- */
+
 .spinner {
-    -fx-background-color: #f1f3f5; /* Sfondo leggermente grigio */
+    -fx-background-color: #f1f3f5;
     -fx-border-color: #dee2e6;
     -fx-border-radius: 12px;
     -fx-background-radius: 12px;
     -fx-padding: 0;
 
-    /* Dimensioni generose per estetica e usabilità */
+
     -fx-pref-height: 48px;
     -fx-pref-width: 90px;
 
     -fx-font-size: 18px;
     -fx-alignment: CENTER;
 
-    /* Ombra interna per effetto "incassato" */
     -fx-transition: all 0.2s ease-in-out;
 }
 
@@ -68,16 +57,14 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 8, 0, 0, 2);
 }
 
-/* Campo di testo dentro lo spinner */
 .spinner .text-field {
     -fx-background-color: transparent;
     -fx-alignment: CENTER;
     -fx-font-weight: bold;
     -fx-text-fill: #2c3e50;
-    -fx-padding: 0 0 0 10px; /* Bilanciamo le frecce a destra */
+    -fx-padding: 0 0 0 10px;
 }
 
-/* Pulsanti freccia nello spinner */
 .spinner .increment-arrow-button,
 .spinner .decrement-arrow-button {
     -fx-background-color: transparent;
@@ -87,20 +74,18 @@
 
 .spinner .increment-arrow-button:hover,
 .spinner .decrement-arrow-button:hover {
-    -fx-background-color: rgba(0,123,255,0.1); /* Hover bluastro soft */
+    -fx-background-color: rgba(0,123,255,0.1);
 }
 
-/* Icone frecce (i triangolini neri) */
 .spinner .increment-arrow,
 .spinner .decrement-arrow {
     -fx-background-color: #6c757d;
 }
 .spinner:focused .increment-arrow,
 .spinner:focused .decrement-arrow {
-    -fx-background-color: #007bff; /* Diventano blu al focus */
+    -fx-background-color: #007bff;
 }
 
-/* --- Bottone "Aggiorna risultato" --- */
 #button_raggiorna_risultato {
     -fx-background-color: linear-gradient(to bottom, #007bff, #0056b3);
     -fx-text-fill: white;
@@ -110,7 +95,6 @@
     -fx-padding: 10px 24px;
     -fx-cursor: hand;
 
-    /* Ombra coerente con la Home */
     -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.3), 8, 0, 0, 3);
     -fx-transition: all 0.2s ease;
 }
@@ -118,7 +102,7 @@
 #button_raggiorna_risultato:hover {
     -fx-background-color: linear-gradient(to bottom, #0056b3, #004085);
     -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.5), 12, 0, 0, 5);
-    -fx-translate-y: -2px; /* Effetto sollevamento */
+    -fx-translate-y: -2px;
 }
 
 #button_raggiorna_risultato:pressed {

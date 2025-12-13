@@ -1,6 +1,3 @@
-/* ==============================================
-   1. STILE GENERALE E ROOT
-   ============================================== */
 .root {
     -fx-background-color: linear-gradient(to bottom right, #ffffff, #f8f9fa);
     -fx-font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
@@ -10,14 +7,14 @@
     -fx-background-radius: 12px;
 }
 
-/* Label standard */
+
 .label {
     -fx-text-fill: #2c3e50;
     -fx-font-size: 14px;
     -fx-font-weight: 600;
 }
 
-/* Label contatore squadre */
+
 #label_squadre_inserite {
     -fx-font-size: 13px;
     -fx-text-fill: #6c757d;
@@ -25,9 +22,6 @@
     -fx-font-style: italic;
 }
 
-/* ==============================================
-   2. CAMPI INPUT (TextField e DatePicker)
-   ============================================== */
 .text-field, .date-picker {
     -fx-background-color: #f8f9fa;
     -fx-border-color: #dee2e6;
@@ -52,7 +46,7 @@
     -fx-border-color: #adb5bd;
 }
 
-/* Fix interno DatePicker */
+
 .date-picker .text-field {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
@@ -61,14 +55,12 @@
     -fx-effect: none;
 }
 
-/* Placeholder styling */
+
 .text-field:empty {
     -fx-prompt-text-fill: #adb5bd;
 }
 
-/* ==============================================
-   3. CHOICE BOX (Menù a tendina)
-   ============================================== */
+
 .choice-box {
     -fx-background-color: #f8f9fa;
     -fx-border-color: #dee2e6;
@@ -106,7 +98,7 @@
     -fx-background-color: #007bff;
 }
 
-/* Dropdown menu */
+
 .choice-box .context-menu {
     -fx-background-color: white;
     -fx-background-radius: 10px;
@@ -132,9 +124,7 @@
     -fx-font-size: 13px;
 }
 
-/* ==============================================
-   4. DATEPICKER AVANZATO
-   ============================================== */
+
 .date-picker .arrow-button {
     -fx-background-color: transparent;
     -fx-cursor: hand;
@@ -146,7 +136,7 @@
     -fx-background-radius: 8px;
 }
 
-/* Icona Calendario moderna */
+
 .date-picker .arrow-button .arrow {
     -fx-background-color: #007bff;
     -fx-shape: "M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z";
@@ -154,7 +144,7 @@
     -fx-scale-y: 1.3;
 }
 
-/* Popup Calendario */
+
 .date-picker-popup {
     -fx-background-color: white;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 16, 0, 0, 4);
@@ -225,9 +215,7 @@
     -fx-font-weight: bold;
 }
 
-/* ==============================================
-   5. LIST VIEW (Ultra pulita, no scroll orizzontale)
-   ============================================== */
+
 #list_view {
     -fx-background-color: white;
     -fx-border-color: #dee2e6;
@@ -237,7 +225,7 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 6, 0, 0, 2);
 }
 
-/* Nasconde completamente scrollbar orizzontale */
+
 .list-view .scroll-bar:horizontal {
     -fx-opacity: 0;
     -fx-padding: 0;
@@ -246,7 +234,7 @@
     -fx-visible: false;
 }
 
-/* Celle lista */
+
 .list-cell {
     -fx-background-color: transparent;
     -fx-padding: 2px 5px;
@@ -279,7 +267,7 @@
     -fx-text-fill: #007bff;
 }
 
-/* Scrollbar verticale moderna */
+
 .list-view .scroll-bar:vertical {
     -fx-background-color: transparent;
     -fx-pref-width: 10px;
@@ -301,11 +289,6 @@
     -fx-opacity: 0;
 }
 
-/* ==============================================
-   6. BOTTONI PRINCIPALI
-   ============================================== */
-
-/* Bottone "+" Aggiungi */
 #button_aggiungi {
     -fx-background-color: linear-gradient(to bottom, #28a745, #218838);
     -fx-text-fill: white;
@@ -360,18 +343,12 @@
     -fx-scale-x: 0.98;
 }
 
-/* ==============================================
-   7. SEPARATORE
-   ============================================== */
 .separator *.line {
     -fx-border-color: #e9ecef;
     -fx-border-width: 1px;
     -fx-border-style: solid;
 }
 
-/* ==============================================
-   8. BOTTONE ELIMINA SQUADRA "X"
-   ============================================== */
 .button-elimina-squadra {
     -fx-background-color: transparent;
     -fx-text-fill: #dc3545;
@@ -407,9 +384,6 @@
     -fx-scale-y: 0.9;
 }
 
-/* ==============================================
-   9. ANIMAZIONI E TRANSIZIONI
-   ============================================== */
 .text-field,
 .date-picker,
 .choice-box,

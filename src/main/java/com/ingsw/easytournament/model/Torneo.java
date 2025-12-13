@@ -48,10 +48,6 @@ public class Torneo {
                 this.modalita = new EliminazioneDiretta("Eliminazione diretta");
                 break;
             }
-            case 2: {
-                this.modalita = new GironiPlayOff("Gironi + Play-off");
-                break;
-            }
         }
         if (confTorneo != null && !confTorneo.isEmpty()) {
             this.modalita.setConfigurazione(confTorneo);
@@ -71,11 +67,6 @@ public class Torneo {
                 inizializzaIncontriEliminazioneDiretta(this.squadre);
                 break;
             }
-            //gironi + playoff
-            case 2: {
-                inizializzaIncontriGironiPlayOff();
-                break;
-            }
         }
     }
 
@@ -91,27 +82,6 @@ public class Torneo {
         Collections.shuffle(squadre);
         for (int i = 0; i < squadre.size()-1; i+=2){
             this.incontri.get(stadio).add(new Incontro(this.id, squadre.get(i),squadre.get(i+1),-1));
-        }
-    }
-
-    private void inizializzaIncontriGironiPlayOff(){
-        int numGironi = ((GironiPlayOff) this.modalita).getNumeroGironi();
-        int numSquadreGirone = ((GironiPlayOff) this.modalita).getNumSquadreGirone();
-        int numVincitoriPerGirone = ((GironiPlayOff) this.modalita).getVincitoriPerGirone();
-        boolean andataEritorno = ((GironiPlayOff)this.modalita).isAndataEritorno();
-
-        //mischio le squadre
-        Collections.shuffle(this.squadre);
-
-        //itero per ogni girone
-        for (int g = 0; g < numGironi; g++){
-            //prendo uno start e un end per creare le sottoliste
-            int start = g*numSquadreGirone;
-            int end = start + numSquadreGirone;
-
-            List<Squadra> squadraGirone = this.squadre.subList(start, end);
-
-            generaGironeItaliana(squadraGirone,g+1, andataEritorno);
         }
     }
 

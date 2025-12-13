@@ -62,7 +62,7 @@ public class CreaTorneoController {
 
     public void initialize(){
         torneoAttuale = SessioneTorneo.getInstance().getBozzaTorneo();
-        campo_modalita.getItems().addAll("Girone all'italiana", "Eliminazione diretta ", "Gironi + Play-off");
+        campo_modalita.getItems().addAll("Girone all'italiana", "Eliminazione diretta ");
         list_view.setItems(elencoSquadre);
 
         label_squadre_inserite.textProperty().bind(
@@ -219,18 +219,6 @@ public class CreaTorneoController {
                 }
                 modificaParametriTorneo();
                 fxmlDestinazione = "/com/ingsw/easytournament/fxml/creazione_modalita/eliminazione_diretta.fxml";
-                break;
-            }
-
-            //girone + eliminazione diretta
-            case 2:
-            {
-                if (numeroSquadre<4 || numeroSquadre%2!=0){
-                    mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
-                    return;
-                }
-                modificaParametriTorneo();
-                fxmlDestinazione = "/com/ingsw/easytournament/fxml/creazione_modalita/gironi_playoff.fxml";
                 break;
             }
         }
