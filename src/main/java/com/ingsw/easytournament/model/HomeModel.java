@@ -21,7 +21,8 @@ public class HomeModel {
         return salvataggioTorneo && salvataggioIncontro;
     }
 
-//    public static Boolean torneoEsiste(Torneo torneo){
-//        return DatabaseConnessione.getInstance().getTorneoDAO().
-//    }
+    public static boolean torneoEsistente(String nomeTorneo, int idUtente){
+        return DatabaseConnessione.getInstance().getTorneoDAO().torneoEsistente(nomeTorneo, idUtente);
+    }
+
 }

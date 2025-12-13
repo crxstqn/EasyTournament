@@ -101,6 +101,20 @@ public class torneoDAOsqlite implements torneoDAO {
         return false;
     }
 
+    public boolean torneoEsistente(String nome, int idUtente){
+        String query = "SELECT 1 FROM torneo WHERE nome = ? AND utente = ?";
+        try (PreparedStatement statement = conn.prepareStatement(query)){
+            statement.setString(1, nome);
+            statement.setInt(2, idUtente);
+            ResultSet rs = statement.executeQuery();
+            return rs.next();
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public boolean modificaTorneo(Torneo torneo){
         return false;
     }

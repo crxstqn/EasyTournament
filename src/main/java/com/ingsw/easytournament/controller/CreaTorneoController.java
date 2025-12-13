@@ -1,12 +1,15 @@
 package com.ingsw.easytournament.controller;
 
+import com.ingsw.easytournament.model.HomeModel;
 import com.ingsw.easytournament.model.SessioneTorneo;
 import com.ingsw.easytournament.model.Squadra;
 import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.SceneChanger;
+import com.ingsw.easytournament.utils.SessioneUtente;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -181,6 +184,13 @@ public class CreaTorneoController {
         //logica numero squadre + modalità
         if (campo_modalita.getValue() == null) {
             mostraAlert("Nessuna modalita selezionata!");
+            return;
+        }
+
+        boolean esisteGia = HomeModel.torneoEsistente(campo_nome_torneo.getText().trim(), SessioneUtente.getInstance().getUserId());
+
+        if (esisteGia){
+            mostraAlert("Esiste già un torneo con questo nome!");
             return;
         }
 

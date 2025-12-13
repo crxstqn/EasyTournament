@@ -8,6 +8,6 @@ public interface torneoDAO {
     public List<Torneo> getTorneiByUtente(int idUtente);
     public boolean eliminaTorneo(int idTorneo);
     public boolean creaTorneo(Torneo torneo);
+    public boolean torneoEsistente(String nome, int idUtente);
 //    public boolean modificaTorneo(Torneo torneo);
-//    public boolean torneoEsistente(String nome);
 }
