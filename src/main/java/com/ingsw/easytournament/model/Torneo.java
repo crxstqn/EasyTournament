@@ -79,9 +79,10 @@ public class Torneo {
         int stadio = squadre.size()/2;
         this.incontri.put(stadio, new ArrayList<>());
 
-        Collections.shuffle(squadre);
-        for (int i = 0; i < squadre.size()-1; i+=2){
-            this.incontri.get(stadio).add(new Incontro(this.id, squadre.get(i),squadre.get(i+1),-1));
+        List<Squadra> squadreCopy = new ArrayList<>(squadre);
+        Collections.shuffle(squadreCopy);
+        for (int i = 0; i < squadreCopy.size()-1; i+=2){
+            this.incontri.get(stadio).add(new Incontro(this.id, squadreCopy.get(i),squadreCopy.get(i+1),-1));
         }
     }
 

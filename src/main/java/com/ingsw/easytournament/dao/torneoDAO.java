@@ -9,5 +9,5 @@ public interface torneoDAO {
     public boolean eliminaTorneo(int idTorneo);
     public boolean creaTorneo(Torneo torneo);
     public boolean torneoEsistente(String nome, int idUtente);
-//    public boolean modificaTorneo(Torneo torneo);
+    public boolean modificaTorneo(Torneo torneo);
 }

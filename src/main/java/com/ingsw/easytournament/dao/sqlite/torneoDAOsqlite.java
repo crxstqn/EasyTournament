@@ -114,13 +114,55 @@ public class torneoDAOsqlite implements torneoDAO {
         return false;
     }
 
-    public boolean modificaTorneo(Torneo torneo){
-        return false;
-    }
+    @Override
+    public boolean modificaTorneo(Torneo torneo) {
+        String updateTorneo = "UPDATE torneo SET nome = ?, data = ?, modalita = ?, configurazione = ? WHERE id = ?";
+        String deleteIncontri = "DELETE FROM incontro WHERE id_torneo = ?";
+        String deleteSquadre = "DELETE FROM squadra WHERE id_torneo = ?";
 
-//    public boolean torneoEsistente(String idTorneo){
-//        String query = "SELECT * FROM torneo WHERE id = ?";
-//
-//        try {PreparedStatement statement = conn.prepareStatement(query);
-//    }
+        try {
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement stmt = conn.prepareStatement(updateTorneo)) {
+                stmt.setString(1, torneo.getNome());
+                stmt.setString(2, torneo.getData().toString());
+                stmt.setInt(3, torneo.getIdModalità());
+                stmt.setString(4, torneo.getModalita().getConfigurazione());
+                stmt.setInt(5, torneo.getId());
+                stmt.executeUpdate();
+            }
+
+            try (PreparedStatement stmt = conn.prepareStatement(deleteIncontri)) {
+                stmt.setInt(1, torneo.getId());
+                stmt.executeUpdate();
+            }
+
+            try (PreparedStatement stmt = conn.prepareStatement(deleteSquadre)) {
+                stmt.setInt(1, torneo.getId());
+                stmt.executeUpdate();
+            }
+
+            DatabaseConnessione.getInstance().getSquadraDAO().salvaSquadra(torneo.getId(), torneo.getSquadre());
+
+            conn.commit();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            return false;
+        } finally {
+            try {
+                conn.setAutoCommit(true);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
+
+

@@ -16,13 +16,23 @@ public class HomeModel {
 
     public static Boolean creaTorneo(Torneo torneo) {
         boolean salvataggioTorneo =  DatabaseConnessione.getInstance().getTorneoDAO().creaTorneo(torneo);
-        torneo.inizializzaIncontri();
-        boolean salvataggioIncontro = DatabaseConnessione.getInstance().getIncontroDAO().salvaIncontro(torneo.getId(), torneo.getIncontri());
-        return salvataggioTorneo && salvataggioIncontro;
+        if (salvataggioTorneo){
+            torneo.inizializzaIncontri();
+            return DatabaseConnessione.getInstance().getIncontroDAO().salvaIncontro(torneo.getId(), torneo.getIncontri());
+        }
+        return false;
     }
 
     public static boolean torneoEsistente(String nomeTorneo, int idUtente){
         return DatabaseConnessione.getInstance().getTorneoDAO().torneoEsistente(nomeTorneo, idUtente);
     }
 
+    public static Boolean salvaTorneo(Torneo torneo) {
+        boolean salvataggioTorneo = DatabaseConnessione.getInstance().getTorneoDAO().modificaTorneo(torneo);
+        if (salvataggioTorneo) {
+            torneo.inizializzaIncontri();
+            return DatabaseConnessione.getInstance().getIncontroDAO().salvaIncontro(torneo.getId(), torneo.getIncontri());
+        }
+        return false;
+    }
 }

@@ -4,7 +4,6 @@ import com.ingsw.easytournament.model.HomeModel;
 import com.ingsw.easytournament.model.SessioneTorneo;
 import com.ingsw.easytournament.model.Squadra;
 import com.ingsw.easytournament.model.Torneo;
-import com.ingsw.easytournament.utils.DatabaseConnessione;
 import com.ingsw.easytournament.utils.SceneChanger;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;

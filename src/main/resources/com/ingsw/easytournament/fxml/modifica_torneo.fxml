@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingsw.easytournament.controller.ModificaTorneoController">
+
+    <left>
+        <VBox prefWidth="350.0" spacing="10.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #dcdcdc; -fx-border-width: 0 1 0 0;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <Label text="Modifica Torneo">
+                    <font>
+                        <Font name="System Bold" size="22.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="10.0" />
+                    </VBox.margin>
+                </Label>
+
+                <Label text="Nome Torneo" />
+                <TextField fx:id="campo_nome_torneo" promptText="Inserisci nome" />
+
+                <Label text="Data Inizio" />
+                <DatePicker fx:id="campo_data" prefWidth="350.0" />
+
+                <Label text="Modalità" />
+                <ChoiceBox fx:id="campo_modalita" prefWidth="350.0" />
+
+                <Separator prefWidth="200.0">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </Separator>
+
+                <Label text="Gestione Squadre">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+
+                <HBox spacing="10.0">
+                    <children>
+                        <TextField fx:id="campo_squadra" promptText="Nome squadra" HBox.hgrow="ALWAYS" />
+                        <Button onAction="#aggiungiSquadra" text="+" />
+                    </children>
+                </HBox>
+
+                <ListView fx:id="list_view_squadre" VBox.vgrow="ALWAYS" />
+                <Label fx:id="label_squadre_inserite" text="Squadre inserite: 0" />
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+        <AnchorPane fx:id="box_destra" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Seleziona una modalità per visualizzare le opzioni" textFill="#9a9a9a" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" prefHeight="60.0" style="-fx-background-color: #e0e0e0;" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="button_salva_modifiche" onAction="#salvaModifiche" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-cursor: hand;" text="Salva Modifiche">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Button>
+            </children>
+         <BorderPane.margin>
+            <Insets right="15.0" />
+         </BorderPane.margin>
+        </HBox>
+    </bottom>
+
+</BorderPane>

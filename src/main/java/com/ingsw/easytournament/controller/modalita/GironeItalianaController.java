@@ -3,13 +3,13 @@ package com.ingsw.easytournament.controller.modalita;
 import com.ingsw.easytournament.model.GironeItaliana;
 import com.ingsw.easytournament.model.Modalita;
 import com.ingsw.easytournament.model.SessioneTorneo;
-import com.ingsw.easytournament.utils.DatabaseConnessione;
+import com.ingsw.easytournament.model.Torneo;
 import com.ingsw.easytournament.utils.SceneChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class GironeItalianaController{
+public class GironeItalianaController implements ControlloreOpzioni {
 
     @FXML
     private Button button_avanti;
@@ -57,6 +57,34 @@ public class GironeItalianaController{
         castModalita.setAndataEritorno(andataEritorno);
 
         SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/riepilogo_creazione.fxml", "/com/ingsw/easytournament/css/riepilogo_creazione.css", button_avanti.getScene());
+    }
+
+    @Override
+    public void caricaDati(Torneo torneo) {
+        //nascondo pulsanti, servono solo in modifica
+        if (button_avanti != null) button_avanti.setVisible(false);
+        if (button_indietro != null) button_indietro.setVisible(false);
+
+        if (torneo.getModalita() instanceof GironeItaliana) {
+            GironeItaliana g = (GironeItaliana) torneo.getModalita();
+
+            spinner_vittoria.getValueFactory().setValue(g.getPuntiVittoria());
+            spinner_pareggio.getValueFactory().setValue(g.getPuntiPareggio());
+            spinner_sconfitta.getValueFactory().setValue(g.getPuntiSconfitta());
+            scelta_andata_ritorno.setSelected(g.isAndataEritorno());
+        }
+    }
+
+    @Override
+    public void salvaDati(Torneo torneo) {
+        if (torneo.getModalita() instanceof GironeItaliana) {
+            GironeItaliana g = (GironeItaliana) torneo.getModalita();
+
+            g.setPuntiVittoria(spinner_vittoria.getValue());
+            g.setPuntiPareggio(spinner_pareggio.getValue());
+            g.setPuntiSconfitta(spinner_sconfitta.getValue());
+            g.setAndataEritorno(scelta_andata_ritorno.isSelected());
+        }
     }
 
     @FXML

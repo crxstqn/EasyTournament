@@ -93,9 +93,12 @@ public class CardTorneoController {
 
     @FXML
     void modificaTorneo(ActionEvent event) {
-        if (LocalDate.now().isBefore(torneo.getData()) || LocalDate.now().isEqual(torneo.getData())) {
+        if (LocalDate.now().isBefore(torneo.getData())) {
+            SessioneTorneo.getInstance().eliminaTorneo();
             SessioneTorneo.getInstance().setBozzaTorneo(torneo);
-            SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/aggiungi_torneo.fxml","/com/ingsw/easytournament/css/aggiungi_torneo.css", "Modifica Torneo");
+            SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/modifica_torneo.fxml","/com/ingsw/easytournament/css/modifica_torneo.css", "Modifica Torneo");
+            label_nome_torneo.setText(torneo.getNome());
+            label_data.setText(torneo.getData().toString());
         }
         else {
             mostraAlert("Non puoi modificare un torneo già iniziato");
