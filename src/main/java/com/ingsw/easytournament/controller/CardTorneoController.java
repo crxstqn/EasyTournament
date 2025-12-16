@@ -96,7 +96,7 @@ public class CardTorneoController {
         if (LocalDate.now().isBefore(torneo.getData())) {
             SessioneTorneo.getInstance().eliminaTorneo();
             SessioneTorneo.getInstance().setBozzaTorneo(torneo);
-            SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/modifica_torneo.fxml","/com/ingsw/easytournament/css/modifica_torneo.css", "Modifica Torneo");
+            SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/modifica_torneo.fxml", "/com/ingsw/easytournament/css/aggiungi_modifica_torneo.css", "Modifica Torneo");
             label_nome_torneo.setText(torneo.getNome());
             label_data.setText(torneo.getData().toString());
         }

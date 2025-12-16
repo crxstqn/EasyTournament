@@ -27,6 +27,12 @@ public class ModificaTorneoController {
     private AnchorPane box_destra;
 
     @FXML
+    private Button button_aggiungi;
+
+    @FXML
+    private Button button_salva_modifiche;
+
+    @FXML
     private DatePicker campo_data;
 
     @FXML
@@ -36,10 +42,13 @@ public class ModificaTorneoController {
     private TextField campo_nome_torneo;
 
     @FXML
-    private Button button_salva_modifiche;
+    private TextField campo_squadra;
 
     @FXML
-    private TextField campo_squadra;
+    private Label label_gestione_squadre;
+
+    @FXML
+    private Label label_modifica_torneo;
 
     @FXML
     private Label label_squadre_inserite;
@@ -105,7 +114,7 @@ public class ModificaTorneoController {
                     setText(null);
                     setGraphic(null);
                     // È buona norma resettare lo stile per evitare artefatti grafici
-                    setStyle("");
+                    //setStyle("");
                 } else {
                     // Se c'è una squadra, configura la Label e mostra l'HBox personalizzato
                     labelNome.setText(item.getNome());
@@ -146,8 +155,7 @@ public class ModificaTorneoController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent nodoOpzioni = loader.load();
 
-            String cssPath = "/com/ingsw/easytournament/css/modalita_torneo.css";
-            nodoOpzioni.getStylesheets().add(getClass().getResource(cssPath).toExternalForm());
+            nodoOpzioni.getStylesheets().add(getClass().getResource("/com/ingsw/easytournament/css/modalita_torneo.css").toExternalForm());
 
             box_destra.getChildren().setAll(nodoOpzioni);
             AnchorPane.setTopAnchor(nodoOpzioni, 0.0);

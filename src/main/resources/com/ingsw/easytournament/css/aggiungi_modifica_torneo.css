@@ -7,7 +7,6 @@
     -fx-background-radius: 12px;
 }
 
-
 .label {
     -fx-text-fill: #2c3e50;
     -fx-font-size: 14px;
@@ -20,6 +19,12 @@
     -fx-text-fill: #6c757d;
     -fx-font-weight: 500;
     -fx-font-style: italic;
+}
+
+#label_modifica_torneo {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
 }
 
 .text-field, .date-picker {
@@ -382,6 +387,31 @@
     -fx-effect: none;
     -fx-scale-x: 0.9;
     -fx-scale-y: 0.9;
+}
+
+#button_salva_modifiche {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20px;
+    -fx-padding: 8px 25px;
+    -fx-cursor: hand;
+    -fx-background-color: linear-gradient(to bottom, #007bff, #0056b3);
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.3), 8, 0, 0, 3);
+}
+
+#button_salva_modifiche:hover {
+    -fx-background-color: linear-gradient(to bottom, #0056b3, #004085);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.5), 12, 0, 0, 6);
+    -fx-translate-y: -3px;
+    -fx-scale-x: 1.02;
+}
+
+#button_salva_modifiche:pressed {
+    -fx-background-color: #004085;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 4, 0, 0, 1);
+    -fx-translate-y: 0;
+    -fx-scale-x: 0.98;
 }
 
 .text-field,

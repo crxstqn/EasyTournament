@@ -196,7 +196,7 @@ public class CreaTorneoController {
 
         int numeroSquadre = elencoSquadre.toArray().length;
         String fxmlDestinazione = "";
-        String cssDestinazione = "/com/ingsw/easytournament/css/modalita_torneo.css";;
+        String cssDestinazione = "/com/ingsw/easytournament/css/modalita_torneo.css";
 
         switch (modalitaSelezionata) {
             //girone all'italiana

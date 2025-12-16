@@ -89,7 +89,7 @@ public class GironeItalianaController implements ControlloreOpzioni {
 
     @FXML
     void tornaIndietro(ActionEvent event) {
-        SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/aggiungi_torneo.fxml", "/com/ingsw/easytournament/css/aggiungi_torneo.css", button_indietro.getScene());
+        SceneChanger.getInstance().changeModalityScene("/com/ingsw/easytournament/fxml/aggiungi_torneo.fxml", "/com/ingsw/easytournament/css/aggiungi_modifica_torneo.css", button_indietro.getScene());
     }
 
 }

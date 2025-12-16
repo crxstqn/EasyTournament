@@ -14,80 +14,116 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingsw.easytournament.controller.ModificaTorneoController">
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingsw.easytournament.controller.ModificaTorneoController">
 
     <left>
-        <VBox prefWidth="350.0" spacing="10.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #dcdcdc; -fx-border-width: 0 1 0 0;" BorderPane.alignment="CENTER">
+        <VBox prefHeight="600.0" prefWidth="400.0" BorderPane.alignment="CENTER">
             <padding>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
             <children>
-                <Label text="Modifica Torneo">
+                <Label fx:id="label_modifica_torneo" text="Modifica Torneo">
                     <font>
-                        <Font name="System Bold" size="22.0" />
+                        <Font size="22.0" />
                     </font>
                     <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets bottom="10.0" left="20.0" />
                     </VBox.margin>
                 </Label>
 
-                <Label text="Nome Torneo" />
-                <TextField fx:id="campo_nome_torneo" promptText="Inserisci nome" />
+                <Label text="Nome Torneo">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+               </VBox.margin></Label>
+                <TextField fx:id="campo_nome_torneo" promptText="Inserisci nome">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin></TextField>
 
-                <Label text="Data Inizio" />
-                <DatePicker fx:id="campo_data" prefWidth="350.0" />
+                <Label text="Data Inizio">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+               </VBox.margin></Label>
+                <DatePicker fx:id="campo_data" maxWidth="1.7976931348623157E308">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin></DatePicker>
 
-                <Label text="Modalità" />
-                <ChoiceBox fx:id="campo_modalita" prefWidth="350.0" />
+                <Label text="Modalità">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+               </VBox.margin></Label>
+                <ChoiceBox fx:id="campo_modalita" maxWidth="1.7976931348623157E308">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin></ChoiceBox>
 
                 <Separator prefWidth="200.0">
                     <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets left="20.0" right="20.0" top="20.0" />
                     </VBox.margin>
                 </Separator>
 
-                <Label text="Gestione Squadre">
+                <Label fx:id="label_gestione_squadre" text="Gestione Squadre">
                     <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font size="14.0" />
                     </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+               </VBox.margin>
                 </Label>
 
-                <HBox spacing="10.0">
+                <HBox>
                     <children>
-                        <TextField fx:id="campo_squadra" promptText="Nome squadra" HBox.hgrow="ALWAYS" />
-                        <Button onAction="#aggiungiSquadra" text="+" />
+                        <TextField fx:id="campo_squadra" promptText="Nome squadra">
+                     <HBox.margin>
+                        <Insets left="20.0" right="10.0" />
+                     </HBox.margin></TextField>
+                        <Button fx:id="button_aggiungi" onAction="#aggiungiSquadra" text="+" />
                     </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
                 </HBox>
+            <HBox alignment="BASELINE_RIGHT">
+               <children>
+                      <Label fx:id="label_squadre_inserite" text="Squadre inserite: 0" />
+               </children>
+               <VBox.margin>
+                  <Insets right="20.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
 
-                <ListView fx:id="list_view_squadre" VBox.vgrow="ALWAYS" />
-                <Label fx:id="label_squadre_inserite" text="Squadre inserite: 0" />
+                <ListView fx:id="list_view_squadre" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="5.0" />
+               </VBox.margin></ListView>
             </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
         </VBox>
     </left>
 
     <center>
-        <AnchorPane fx:id="box_destra" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-            <children>
-                <Label text="Seleziona una modalità per visualizzare le opzioni" textFill="#9a9a9a" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Label>
-            </children>
+        <AnchorPane fx:id="box_destra" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="60.0" />
+         </BorderPane.margin>
         </AnchorPane>
     </center>
 
     <bottom>
-        <HBox alignment="CENTER_RIGHT" prefHeight="60.0" style="-fx-background-color: #e0e0e0;" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="button_salva_modifiche" onAction="#salvaModifiche" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-cursor: hand;" text="Salva Modifiche">
+                <Button fx:id="button_salva_modifiche" onAction="#salvaModifiche" text="Salva Modifiche">
                     <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Italic" size="13.0" />
                     </font>
                 </Button>
             </children>
          <BorderPane.margin>
-            <Insets right="15.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" />
          </BorderPane.margin>
         </HBox>
     </bottom>
