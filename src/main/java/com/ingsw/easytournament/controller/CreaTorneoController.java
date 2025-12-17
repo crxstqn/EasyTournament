@@ -165,7 +165,7 @@ public class CreaTorneoController {
             return;
         }
 
-        if (!campoNomeTorneo.matches("[a-zA-Z0-9]+")){
+        if (!campoNomeTorneo.matches("[a-zA-Z0-9 ]+")){
             mostraAlert("Il nome del torneo non può contenere caratteri speciali!");
             return;
         }
@@ -213,7 +213,7 @@ public class CreaTorneoController {
             //eliminazione diretta
             case 1:{
                 boolean èUnaPotenzaDi2 = (numeroSquadre > 0) && ((numeroSquadre & (numeroSquadre - 1)) == 0);
-                if (èUnaPotenzaDi2 == false){
+                if (èUnaPotenzaDi2 == false || numeroSquadre < 2){
                     mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
                     return;
                 }
@@ -228,10 +228,10 @@ public class CreaTorneoController {
 
     private void modificaParametriTorneo() {
         if (torneoAttuale == null) {
-            torneoAttuale = new Torneo(campo_nome_torneo.getText(), campo_data.getValue(), campo_modalita.getSelectionModel().getSelectedIndex(), elencoSquadre);
+            torneoAttuale = new Torneo(campo_nome_torneo.getText().trim(), campo_data.getValue(), campo_modalita.getSelectionModel().getSelectedIndex(), elencoSquadre);
             SessioneTorneo.getInstance().setBozzaTorneo(torneoAttuale);
         } else {
-            torneoAttuale.setNome(campo_nome_torneo.getText());
+            torneoAttuale.setNome(campo_nome_torneo.getText().trim());
             torneoAttuale.setData(campo_data.getValue());
             torneoAttuale.setIdModalità(campo_modalita.getSelectionModel().getSelectedIndex());
             torneoAttuale.setSquadre(elencoSquadre);
