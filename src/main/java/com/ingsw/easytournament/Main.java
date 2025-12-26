@@ -1,6 +1,5 @@
 package com.ingsw.easytournament;
 
-import com.ingsw.easytournament.model.EasyTournamentApplication;
 import javafx.application.Application;
 
 public class Main {

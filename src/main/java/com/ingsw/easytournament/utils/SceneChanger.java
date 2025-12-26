@@ -1,0 +1,105 @@
+package com.ingsw.easytournament.utils;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+public class SceneChanger {
+
+    private static Stage mainStage; // stage principale condiviso
+
+    private static SceneChanger instance;
+
+    private SceneChanger(){}
+
+    public static SceneChanger getInstance() {
+        if (instance == null) {
+            instance = new SceneChanger();
+        }
+        return instance;
+    }
+
+    public void setStage(Stage stage) {
+        mainStage = stage;
+    }
+
+    public void changeScene(String fxmlPath, String cssPath, boolean resizable) {
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneChanger.class.getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Scene scene = mainStage.getScene();
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(getClass().getResource(cssPath).toExternalForm());
+
+            mainStage.setResizable(resizable);
+
+            // magari da rivedere
+            if (fxmlPath.equals("/com/ingsw/easytournament/fxml/login.fxml")) {
+                mainStage.centerOnScreen();
+                mainStage.setWidth(870);
+                mainStage.setHeight(765);
+                mainStage.centerOnScreen();
+            }
+
+            if (scene == null) {
+                scene = new Scene(root);
+                mainStage.setScene(scene);
+            } else {
+                scene.setRoot(root);
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void createModalityStage(String fxmlPath, String cssPath, String titolo) {
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneChanger.class.getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(getClass().getResource(cssPath).toExternalForm());
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+
+            stage.setTitle(titolo);
+            stage.setScene(scene);
+            stage.showAndWait();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void changeModalityScene(String fxml, String css, Scene vecchiaScena) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) vecchiaScena.getWindow();
+
+            vecchiaScena.setRoot(root);
+
+            vecchiaScena.getStylesheets().clear();
+            vecchiaScena.getStylesheets().add(getClass().getResource(css).toExternalForm());
+
+
+            stage.sizeToScene();
+            stage.centerOnScreen();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

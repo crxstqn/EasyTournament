@@ -1,0 +1,95 @@
+package com.ingsw.easytournament.model;
+
+public class Incontro {
+    private int id;
+    private int idTorneo;
+    private Squadra squadra1;
+    private Squadra squadra2;
+    private int punteggioSquadra1;
+    private int punteggioSquadra2;
+    private int gruppo;
+
+    public Incontro(int idTorneo, int gruppo, int id, int punteggioSquadra1, int punteggioSquadra2, Squadra squadra1, Squadra squadra2) {
+        this.idTorneo = idTorneo;
+        this.gruppo = gruppo;
+        this.id = id;
+        this.punteggioSquadra1 = punteggioSquadra1;
+        this.punteggioSquadra2 = punteggioSquadra2;
+        this.squadra1 = squadra1;
+        this.squadra2 = squadra2;
+    }
+
+    public Incontro(int idTorneo, Squadra squadra1, Squadra squadra2, int gruppo) {
+        this.idTorneo = idTorneo;
+        this.punteggioSquadra1 = -1;
+        this.punteggioSquadra2 = -1;
+        this.squadra2 = squadra2;
+        this.squadra1 = squadra1;
+        this.gruppo = gruppo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdTorneo() {
+        return idTorneo;
+    }
+
+    public void setIdTorneo(int idTorneo) {
+        this.idTorneo = idTorneo;
+    }
+
+    public int getPunteggioSquadra1() {
+        return punteggioSquadra1;
+    }
+
+    public void setPunteggioSquadra1(int punteggioSquadra1) {
+        this.punteggioSquadra1 = punteggioSquadra1;
+    }
+
+    public int getPunteggioSquadra2() {
+        return punteggioSquadra2;
+    }
+
+    public void setPunteggioSquadra2(int punteggioSquadra2) {
+        this.punteggioSquadra2 = punteggioSquadra2;
+    }
+
+    public Squadra getSquadra1() {
+        return squadra1;
+    }
+
+    public void setSquadra1(Squadra squadra1) {
+        this.squadra1 = squadra1;
+    }
+
+    public Squadra getSquadra2() {
+        return squadra2;
+    }
+
+    public void setSquadra2(Squadra squadra2) {
+        this.squadra2 = squadra2;
+    }
+
+    public int getGruppo() {
+        return gruppo;
+    }
+
+    public void setGruppo(int gruppo) {
+        this.gruppo = gruppo;
+    }
+
+    @Override
+    public String toString() {
+        if (getPunteggioSquadra1() == -1 || getPunteggioSquadra2() == -1) {
+            return getSquadra1().getNome() + "  -  " + getSquadra2().getNome();
+        } else {
+            return getSquadra1().getNome() + "  " + getPunteggioSquadra1() + "  -  " + getPunteggioSquadra2() + "  " + getSquadra2().getNome();
+        }
+    }
+}

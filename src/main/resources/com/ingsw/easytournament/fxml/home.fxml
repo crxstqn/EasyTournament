@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingsw.easytournament.controller.HomeController">
+   <top>
+      <HBox fx:id="hbox_superiore" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="easy_tournament_label" text="EasyTournament" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets bottom="20.0" left="20.0" top="30.0" />
+               </HBox.margin>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="benvenuto_label" text="Benvenuto">
+               <HBox.margin>
+                  <Insets bottom="20.0" right="70.0" top="30.0" />
+               </HBox.margin>
+            </Label>
+             <Button fx:id="bottone_logout" mnemonicParsing="false" onAction="#logout" styleClass="button-logout" text="Logout">
+                 <HBox.margin>
+                     <Insets bottom="20.0" right="20.0" top="30.0" />
+                 </HBox.margin>
+             </Button>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox fx:id="vbox_centrale" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="hbox_centrale">
+               <children>
+                  <Label fx:id="i_miei_tornei_label" text="I miei tornei">
+                     <HBox.margin>
+                        <Insets left="20.0" top="60.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="bottone_aggiungi" mnemonicParsing="false" onAction="#aggiungiTorneo" text="+">
+                     <HBox.margin>
+                        <Insets right="70.0" top="60.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <ScrollPane fx:id="scroll_pane" fitToWidth="true" hbarPolicy="NEVER" pannable="true" VBox.vgrow="ALWAYS">
+               <content>
+                  <FlowPane fx:id="flow_pane" hgap="20.0" prefWrapLength="0" vgap="20.0">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </FlowPane>
+               </content>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

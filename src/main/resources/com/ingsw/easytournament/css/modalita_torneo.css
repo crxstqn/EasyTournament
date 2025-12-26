@@ -1,0 +1,221 @@
+.root {
+
+    -fx-background-color: #f4f6f8;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.choice-box {
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 0 10px;
+    -fx-min-height: 38px;
+    -fx-max-height: 38px;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+}
+
+.choice-box:focused, .choice-box:showing {
+    -fx-background-color: white;
+    -fx-border-color: #007bff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 5, 0, 0, 0);
+}
+
+.choice-box .open-button { -fx-background-color: transparent; }
+.choice-box .arrow { -fx-background-color: #666666; }
+.choice-box:hover .arrow { -fx-background-color: #007bff; }
+
+.choice-box .context-menu {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #e0e0e0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 3);
+    -fx-padding: 5px;
+}
+
+.choice-box .menu-item { -fx-padding: 8px 12px; -fx-background-radius: 5px; }
+.choice-box .menu-item:focused, .choice-box .menu-item:hover { -fx-background-color: #f0f7ff; }
+.choice-box .menu-item .label { -fx-text-fill: #333333; -fx-font-weight: normal; }
+
+
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #555555;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 6px 0;
+}
+
+#label_titolo {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 0 0 15px 0;
+}
+
+
+.text-field, .spinner, .choice-box, .date-picker {
+    -fx-background-color: white;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #495057;
+
+    -fx-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+
+.spinner {
+    -fx-background-color: white;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-padding: 0;
+    -fx-pref-height: 32px;
+    -fx-pref-width: 110px;
+    -fx-font-size: 13px;
+}
+
+.spinner .text-field {
+    -fx-background-radius: 15px 0 0 15px;
+    -fx-border-radius: 15px 0 0 15px;
+    -fx-padding: 6px;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 15px 15px 0;
+    -fx-padding: 6px 8px;
+    -fx-cursor: hand;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: #f1f3f5;
+}
+
+.spinner .increment-arrow,
+.spinner .decrement-arrow {
+    -fx-background-color: #6c757d;
+}
+
+
+.check-box {
+    -fx-font-size: 14px;
+    -fx-text-fill: #495057;
+    -fx-cursor: hand;
+    -fx-padding: 5px 0;
+}
+
+
+.check-box .box {
+    -fx-background-color: white;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 3px;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 2, 0, 0, 1);
+
+    -fx-transition: background-color 0.2s, border-color 0.2s;
+}
+
+
+.check-box:hover .box {
+    -fx-border-color: #007bff;
+}
+
+
+.check-box:selected .box {
+    -fx-background-color: #007bff;
+    -fx-border-color: #007bff;
+}
+
+
+.check-box:selected .mark {
+    -fx-background-color: white;
+    -fx-shape: "M0,4 L3,7 L9,1 L8,0 L3,5 L1,3 Z";
+    -fx-scale-shape: false;
+}
+
+
+#button_avanti,
+#button_indietro {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20px;
+    -fx-padding: 8px 25px;
+    -fx-cursor: hand;
+}
+
+
+#button_avanti {
+    -fx-background-color: linear-gradient(to bottom, #007bff, #0056b3);
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.3), 8, 0, 0, 3);
+}
+
+#button_avanti:hover {
+    -fx-background-color: linear-gradient(to bottom, #0056b3, #004085);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.5), 12, 0, 0, 6);
+    -fx-translate-y: -3px;
+    -fx-scale-x: 1.02;
+}
+
+#button_avanti:pressed {
+    -fx-background-color: #004085;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 4, 0, 0, 1);
+    -fx-translate-y: 0;
+    -fx-scale-x: 0.98;
+}
+
+
+#button_indietro {
+    -fx-background-color: linear-gradient(to bottom, #d9dbde, #cfd1d4); /* Grigio leggermente più scuro */
+    -fx-text-fill: #2b2b2c;
+}
+
+#button_indietro:hover {
+    -fx-background-color: linear-gradient(to bottom, #e6e7e9, #d8d9db);
+    -fx-translate-y: -1px;
+}
+
+#button_indietro:pressed {
+    -fx-background-color: linear-gradient(to bottom, #c7c9cc, #bfc1c3);
+    -fx-translate-y: 0;
+}
+
+#button_crea_torneo{
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20px;
+    -fx-padding: 8px 25px;
+    -fx-background-color: linear-gradient(to bottom, #007bff, #0056b3);
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.3), 8, 0, 0, 3);
+}
+
+#button_crea_torneo:hover {
+    -fx-background-color: linear-gradient(to bottom, #0056b3, #004085);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.5), 12, 0, 0, 6);
+    -fx-translate-y: -3px;
+    -fx-scale-x: 1.02;
+}
+
+#button_crea_torneo:pressed {
+    -fx-background-color: #004085;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 4, 0, 0, 1);
+    -fx-translate-y: 0;
+    -fx-scale-x: 0.98;
+}

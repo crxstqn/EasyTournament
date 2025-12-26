@@ -1,0 +1,160 @@
+
+.root {
+    -fx-background-color: #f4f6f8;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+
+#label_titolo {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+
+.label {
+    -fx-font-size: 17px;
+    -fx-text-fill: #555555;
+    -fx-font-weight: bold;
+}
+
+.scroll-pane {
+    -fx-background-color: white;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+
+    -fx-background-insets: 0;
+    -fx-padding: 20px;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 4);
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+#label_descrizione {
+    -fx-text-fill: #333333;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: normal;
+    -fx-line-spacing: 6px;
+    -fx-padding: 0;
+}
+
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 10px;
+}
+.scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: #dcdcdc;
+    -fx-background-radius: 10px;
+}
+.scroll-pane .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #bfbfbf;
+}
+.scroll-pane .scroll-bar .increment-button,
+.scroll-pane .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: " ";
+    -fx-opacity: 0;
+}
+.scroll-pane .corner {
+    -fx-background-color: transparent;
+}
+
+#list_view_squadre {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #e0e0e0;
+    -fx-padding: 5px;
+
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 5, 0, 0, 2);
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 6px 10px;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-border-color: transparent transparent #f4f4f4 transparent;
+}
+
+.list-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #f0f7ff;
+    -fx-text-fill: #007bff;
+    -fx-background-radius: 6px;
+}
+
+
+#list_view_squadre .scroll-bar:horizontal {
+    -fx-visible: false;
+    -fx-pref-height: 0;
+}
+
+#list_view_squadre .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8px;
+}
+#list_view_squadre .scroll-bar:vertical .thumb {
+    -fx-background-color: #cccccc;
+    -fx-background-radius: 10px;
+}
+
+#button_crea_torneo,
+#button_indietro {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20px;
+    -fx-padding: 8px 25px;
+    -fx-cursor: hand;
+}
+
+
+#button_crea_torneo {
+    -fx-background-color: linear-gradient(to bottom, #007bff, #0056b3);
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.3), 8, 0, 0, 3);
+}
+
+#button_crea_torneo:hover {
+    -fx-background-color: linear-gradient(to bottom, #0056b3, #004085);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.5), 12, 0, 0, 6);
+    -fx-translate-y: -3px;
+    -fx-scale-x: 1.02;
+}
+
+#button_crea_torneo:pressed {
+    -fx-background-color: #004085;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.2), 4, 0, 0, 1);
+    -fx-translate-y: 0;
+    -fx-scale-x: 0.98;
+}
+
+
+#button_indietro {
+    -fx-background-color: linear-gradient(to bottom, #d9dbde, #cfd1d4);
+    -fx-text-fill: #2b2b2c;
+}
+
+#button_indietro:hover {
+    -fx-background-color: linear-gradient(to bottom, #e6e7e9, #d8d9db);
+    -fx-translate-y: -1px;
+}
+
+#button_indietro:pressed {
+    -fx-background-color: linear-gradient(to bottom, #c7c9cc, #bfc1c3);
+    -fx-translate-y: 0;
+}
