@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/Ix0BRiuI)
 # EasyTournament
 
 **EasyTournament** è un'applicazione desktop progettata per semplificare la gestione, l'organizzazione e la visualizzazione di tornei sportivi o competitivi. Il sistema permette di gestire diverse modalità di gioco, come gironi all'italiana o eliminazione diretta, offrendo un'interfaccia intuitiva per utenti e amministratori.
