@@ -91,7 +91,6 @@ public class HomeController {
 
     @FXML
     void aggiungiTorneo(ActionEvent event) {
-        // non dovremmo controllare che non esiste una istanza già?
         SessioneTorneo.getInstance().eliminaTorneo();
         SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/aggiungi_torneo.fxml", "/com/ingsw/easytournament/css/aggiungi_modifica_torneo.css", "Aggiungi Torneo");
         caricaTornei();

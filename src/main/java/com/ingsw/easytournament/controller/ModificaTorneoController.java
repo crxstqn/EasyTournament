@@ -200,108 +200,110 @@ public class ModificaTorneoController {
 
     @FXML
     void salvaModifiche(ActionEvent event) {
-        String  campoNomeTorneo = campo_nome_torneo.getText().trim();
-        int modalitaSelezionata = campo_modalita.getSelectionModel().getSelectedIndex();
-        LocalDate oggi = LocalDate.now();
-        LocalDate dataInserita = campo_data.getValue();
+        if (mostraAlert("Vuoi modificare il torneo?", Alert.AlertType.CONFIRMATION)) {
 
-        //logica nome torneo
-        if (campoNomeTorneo.isEmpty()) {
-            mostraAlert("Campo nome torneo vuoto!");
-            return;
-        }
+            String campoNomeTorneo = campo_nome_torneo.getText().trim();
+            int modalitaSelezionata = campo_modalita.getSelectionModel().getSelectedIndex();
+            LocalDate oggi = LocalDate.now();
+            LocalDate dataInserita = campo_data.getValue();
 
-        if (!campoNomeTorneo.matches("[a-zA-Z0-9]+")){
-            mostraAlert("Il nome del torneo non può contenere caratteri speciali!");
-            return;
-        }
-
-        //logica data
-        if (dataInserita == null){
-            mostraAlert("Data inserita vuota!");
-            return;
-        }
-
-        if (dataInserita.isBefore(oggi)){
-            mostraAlert("La data inserita non deve essere precedente alla data odierna!");
-            return;
-        }
-
-        //logica numero squadre + modalità
-        if (campo_modalita.getValue() == null) {
-            mostraAlert("Nessuna modalita selezionata!");
-            return;
-        }
-
-        if (!campo_nome_torneo.getText().trim().equals(torneo.getNome())){
-            boolean esisteGia = HomeModel.torneoEsistente(campo_nome_torneo.getText().trim(), SessioneUtente.getInstance().getUserId());
-
-            if (esisteGia){
-                mostraAlert("Esiste già un torneo con questo nome!");
+            //logica nome torneo
+            if (campoNomeTorneo.isEmpty()) {
+                mostraAlert("Campo nome torneo vuoto!");
                 return;
             }
-        }
 
-        int numeroSquadre = elencoSquadre.toArray().length;
-        switch (modalitaSelezionata) {
-            //girone all'italiana
-            case 0: {
-                if (numeroSquadre < 2) {
-                    mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
+            if (!campoNomeTorneo.matches("[a-zA-Z0-9]+")) {
+                mostraAlert("Il nome del torneo non può contenere caratteri speciali!");
+                return;
+            }
+
+            //logica data
+            if (dataInserita == null) {
+                mostraAlert("Data inserita vuota!");
+                return;
+            }
+
+            if (dataInserita.isBefore(oggi)) {
+                mostraAlert("La data inserita non deve essere precedente alla data odierna!");
+                return;
+            }
+
+            //logica numero squadre + modalità
+            if (campo_modalita.getValue() == null) {
+                mostraAlert("Nessuna modalita selezionata!");
+                return;
+            }
+
+            if (!campo_nome_torneo.getText().trim().equals(torneo.getNome())) {
+                boolean esisteGia = HomeModel.torneoEsistente(campo_nome_torneo.getText().trim(), SessioneUtente.getInstance().getUserId());
+
+                if (esisteGia) {
+                    mostraAlert("Esiste già un torneo con questo nome!");
                     return;
                 }
-                break;
             }
 
-            //eliminazione diretta
-            case 1:{
-                boolean èUnaPotenzaDi2 = (numeroSquadre > 0) && ((numeroSquadre & (numeroSquadre - 1)) == 0);
-                if (èUnaPotenzaDi2 == false){
-                    mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
-                    return;
+            int numeroSquadre = elencoSquadre.toArray().length;
+            switch (modalitaSelezionata) {
+                //girone all'italiana
+                case 0: {
+                    if (numeroSquadre < 2) {
+                        mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
+                        return;
+                    }
+                    break;
                 }
-                break;
-            }
-        }
-        modificaParametriTorneo();
-        this.controllerOpzioniCorrente.salvaDati(torneo);
 
-        if (torneo.getIdModalità() == 1) {
-            // Recuperiamo l'oggetto modalità castato
-            if (torneo.getModalita() instanceof EliminazioneDiretta) {
-                EliminazioneDiretta ed = (EliminazioneDiretta) torneo.getModalita();
-
-                // SE la finalina è attiva E le squadre sono 2 o meno -> ERRORE
-                if (ed.isFinalina() && elencoSquadre.size() <= 2) {
-                    mostraAlert("Non puoi avere la finalina 3°/4° posto con meno di 4 squadre! Aggiungi squadre o togli la spunta.");
-                    return; // Blocca il salvataggio
+                //eliminazione diretta
+                case 1: {
+                    boolean èUnaPotenzaDi2 = (numeroSquadre > 0) && ((numeroSquadre & (numeroSquadre - 1)) == 0);
+                    if (èUnaPotenzaDi2 == false) {
+                        mostraAlert("Il numero delle squadre inserito non è valido per la modalità selezionata");
+                        return;
+                    }
+                    break;
                 }
             }
+            modificaParametriTorneo();
+            this.controllerOpzioniCorrente.salvaDati(torneo);
+
+            if (torneo.getIdModalità() == 1) {
+                // Recuperiamo l'oggetto modalità castato
+                if (torneo.getModalita() instanceof EliminazioneDiretta) {
+                    EliminazioneDiretta ed = (EliminazioneDiretta) torneo.getModalita();
+
+                    // SE la finalina è attiva E le squadre sono 2 o meno -> ERRORE
+                    if (ed.isFinalina() && elencoSquadre.size() <= 2) {
+                        mostraAlert("Non puoi avere la finalina 3°/4° posto con meno di 4 squadre! Aggiungi squadre o togli la spunta.");
+                        return; // Blocca il salvataggio
+                    }
+                }
+            }
+
+            button_salva_modifiche.setDisable(true);
+            //salvo nel db
+            Task<Boolean> salvaTorneo = new Task<>() {
+                @Override
+                protected Boolean call() throws Exception {
+                    return HomeModel.salvaTorneo(torneo);
+                }
+            };
+
+            salvaTorneo.setOnSucceeded(e -> {
+                boolean salvato = salvaTorneo.getValue();
+                if (salvato) {
+                    mostraAlert("Torneo modificato con successo!");
+                    Stage stage = (Stage) button_salva_modifiche.getScene().getWindow();
+                    stage.close();
+                } else {
+                    button_salva_modifiche.setDisable(false);
+                    mostraAlert("Errore durante la modifica del torneo!");
+                }
+            });
+
+            new Thread(salvaTorneo).start();
         }
-
-        button_salva_modifiche.setDisable(true);
-        //salvo nel db
-        Task<Boolean> salvaTorneo = new Task<>() {
-            @Override
-            protected Boolean call() throws Exception {
-                return HomeModel.salvaTorneo(torneo);
-            }
-        };
-
-        salvaTorneo.setOnSucceeded(e -> {
-            boolean salvato = salvaTorneo.getValue();
-            if (salvato){
-                mostraAlert("Torneo modificato con successo!");
-                Stage stage = (Stage) button_salva_modifiche.getScene().getWindow();
-                stage.close();
-            }
-            else {
-                button_salva_modifiche.setDisable(false);
-                mostraAlert("Errore durante la modifica del torneo!");
-            }
-        });
-
-        new Thread(salvaTorneo).start();
     }
 
     private void modificaParametriTorneo() {
@@ -322,6 +324,23 @@ public class ModificaTorneoController {
 
         alert.setContentText(testoErrore);
         alert.showAndWait();
+    }
+
+    private boolean mostraAlert(String testoErrore, Alert.AlertType tipo) {
+        Alert alert = new Alert(tipo);
+        alert.setHeaderText(null);
+        alert.setTitle("Attenzione");
+        alert.setGraphic(null);
+        alert.setContentText(testoErrore);
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add("/com/ingsw/easytournament/css/alert.css");
+
+        alert.showAndWait();
+        if (tipo == Alert.AlertType.CONFIRMATION) {
+            return alert.getResult() == ButtonType.OK;
+        }
+        return true;
     }
 
 }
