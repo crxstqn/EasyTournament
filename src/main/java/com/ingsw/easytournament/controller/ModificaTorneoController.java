@@ -213,7 +213,7 @@ public class ModificaTorneoController {
                 return;
             }
 
-            if (!campoNomeTorneo.matches("[a-zA-Z0-9]+")) {
+            if (!campoNomeTorneo.matches("[a-zA-Z0-9 ]+")) {
                 mostraAlert("Il nome del torneo non può contenere caratteri speciali!");
                 return;
             }
