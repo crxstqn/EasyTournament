@@ -7,7 +7,8 @@
 
 * **Autenticazione Sicura:** Sistema di registrazione e login per gli utenti con cifratura delle password tramite BCrypt.
 * **Gestione Tornei:** Creazione, modifica ed eliminazione di tornei personalizzati.
-* **Modalità di Gioco:** * **Girone all'italiana:** Gestione di scontri dove tutti i partecipanti si affrontano tra loro.
+* **Modalità di Gioco:**
+    * **Girone all'italiana:** Gestione di scontri dove tutti i partecipanti si affrontano tra loro.
     * **Eliminazione Diretta:** Gestione di tabelloni a scontro unico.
 * **Gestione Squadre ed Incontri:** Inserimento dei partecipanti e aggiornamento dei risultati in tempo reale.
 * **Dashboard Statistiche:** Visualizzazione dell'andamento dei tornei e dei dettagli di ogni incontro.
