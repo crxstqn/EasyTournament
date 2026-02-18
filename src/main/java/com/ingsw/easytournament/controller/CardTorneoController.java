@@ -14,6 +14,8 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Optional;
 
 public class CardTorneoController {
@@ -98,7 +100,13 @@ public class CardTorneoController {
             SessioneTorneo.getInstance().setBozzaTorneo(torneo);
             SceneChanger.getInstance().createModalityStage("/com/ingsw/easytournament/fxml/modifica_torneo.fxml", "/com/ingsw/easytournament/css/aggiungi_modifica_torneo.css", "Modifica Torneo");
             label_nome_torneo.setText(torneo.getNome());
-            label_data.setText(torneo.getData().toString());
+
+            String anno = String.valueOf(torneo.getData().getYear());
+            String mese = String.valueOf(torneo.getData().getMonthValue());
+            String giorno = String.valueOf(torneo.getData().getDayOfMonth());
+
+            label_data.setText(giorno + "-" +  mese + "-"+  anno);
+
         }
         else {
             mostraAlert("Non puoi modificare un torneo già iniziato");
@@ -108,7 +116,11 @@ public class CardTorneoController {
     public void setTorneo(Torneo torneo) {
         this.torneo = torneo;
         label_nome_torneo.setText(torneo.getNome());
-        label_data.setText(torneo.getData().toString());
+        String anno = String.valueOf(torneo.getData().getYear());
+        String mese = String.valueOf(torneo.getData().getMonthValue());
+        String giorno = String.valueOf(torneo.getData().getDayOfMonth());
+
+        label_data.setText(giorno + "-" +  mese + "-"+  anno);
     }
 
     public void setHomeController(HomeController homeController) {
