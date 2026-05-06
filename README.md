@@ -1,24 +1,80 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/Ix0BRiuI)
 # EasyTournament
 
-**EasyTournament** è un'applicazione desktop progettata per semplificare la gestione, l'organizzazione e la visualizzazione di tornei sportivi o competitivi. Il sistema permette di gestire diverse modalità di gioco, come gironi all'italiana o eliminazione diretta, offrendo un'interfaccia intuitiva per utenti e amministratori.
+**EasyTournament** è un'applicazione desktop sviluppata in JavaFX per la gestione completa di tornei sportivi e competitivi.  
+Il sistema consente di creare tornei personalizzati, gestire squadre e incontri, aggiornare i risultati e visualizzare l'andamento della competizione tramite un'interfaccia grafica semplice e intuitiva.
 
-## 🚀 Funzionalità Principali
+Il progetto è stato realizzato seguendo il pattern architetturale **MVC (Model-View-Controller)**, con persistenza locale dei dati tramite **SQLite** e gestione sicura delle credenziali utente tramite **BCrypt**.
 
-* **Autenticazione Sicura:** Sistema di registrazione e login per gli utenti con cifratura delle password tramite BCrypt.
-* **Gestione Tornei:** Creazione, modifica ed eliminazione di tornei personalizzati.
-* **Modalità di Gioco:**
-    * **Girone all'italiana:** Gestione di scontri dove tutti i partecipanti si affrontano tra loro.
-    * **Eliminazione Diretta:** Gestione di tabelloni a scontro unico.
-* **Gestione Squadre ed Incontri:** Inserimento dei partecipanti e aggiornamento dei risultati in tempo reale.
-* **Dashboard Statistiche:** Visualizzazione dell'andamento dei tornei e dei dettagli di ogni incontro.
+---
 
-## 🛠️ Tecnologie Utilizzate
+## Funzionalità principali
 
-Il progetto è sviluppato in **Java** seguendo l'architettura **MVC** (Model-View-Controller) e utilizza i seguenti strumenti:
+- **Registrazione e login utenti**
+  - Sistema di autenticazione con credenziali cifrate tramite BCrypt.
+  - Accesso sicuro alle funzionalità dell'applicazione.
 
-* **Linguaggio:** Java 25.
-* **Interfaccia Grafica:** [JavaFX](https://openjfx.io/) (versione 23.0.1) per un'esperienza utente desktop moderna.
-* **Database:** [SQLite](https://www.sqlite.org/) tramite driver JDBC per la persistenza locale dei dati.
-* **Sicurezza:** [jBCrypt](https://www.mindrot.org/projects/jBCrypt/) per l'hashing sicuro delle credenziali.
-* **Build Automation:** [Apache Maven](https://maven.apache.org/) per la gestione delle dipendenze e del ciclo di vita del software.
+- **Gestione dei tornei**
+  - Creazione, modifica ed eliminazione di tornei.
+  - Configurazione dei partecipanti e della modalità di competizione.
+
+- **Modalità di competizione**
+  - **Girone all'italiana**: ogni squadra affronta tutte le altre partecipanti.
+  - **Eliminazione diretta**: gestione di tabelloni a scontro singolo.
+
+- **Gestione squadre e incontri**
+  - Inserimento e organizzazione delle squadre partecipanti.
+  - Aggiornamento dei risultati degli incontri.
+  - Visualizzazione dello stato di avanzamento del torneo.
+
+- **Statistiche e riepiloghi**
+  - Consultazione dei dettagli dei tornei.
+  - Visualizzazione dei risultati e dell'andamento della competizione.
+
+---
+
+## Tecnologie utilizzate
+
+- **Java 25**
+- **JavaFX 23.0.1** per l'interfaccia grafica desktop
+- **SQLite** per la persistenza locale dei dati
+- **JDBC** per l'interazione con il database
+- **jBCrypt** per l'hashing sicuro delle password
+- **Apache Maven** per la gestione delle dipendenze e del ciclo di build
+- **Pattern MVC** per separare logica applicativa, interfaccia grafica e gestione dei dati
+
+---
+
+## Architettura
+
+Il progetto segue il pattern **Model-View-Controller**:
+
+- **Model**: contiene le classi che rappresentano le entità principali dell'applicazione, come utenti, tornei, squadre e incontri.
+- **View**: gestisce l'interfaccia grafica realizzata con JavaFX.
+- **Controller**: coordina l'interazione tra interfaccia utente, logica applicativa e persistenza dei dati.
+- **Database layer**: gestisce le operazioni di lettura e scrittura su SQLite tramite JDBC.
+
+Questa struttura rende il codice più organizzato, manutenibile e facilmente estendibile.
+
+---
+
+## Obiettivo del progetto
+
+EasyTournament nasce con l'obiettivo di semplificare la gestione di competizioni strutturate, evitando la gestione manuale di calendari, risultati e classifiche.
+
+Il progetto mi ha permesso di approfondire:
+
+- sviluppo di applicazioni desktop in Java;
+- progettazione di interfacce grafiche con JavaFX;
+- gestione della persistenza con SQLite e JDBC;
+- applicazione del pattern MVC;
+- sicurezza di base nella gestione delle password;
+- modellazione della logica di business per tornei e competizioni.
+
+---
+
+## Possibili sviluppi futuri
+
+- Esportazione dei risultati in PDF o CSV.
+- Miglioramento della dashboard statistica.
+- Supporto a più ruoli utente, come amministratore e partecipante.
+- Migrazione verso un database server-side per uso multiutente.
